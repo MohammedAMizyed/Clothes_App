@@ -1,0 +1,154 @@
+{
+  "skip": "skip",
+  "exchangePolicy": {
+    "title": "Replacement according to simplified controls",
+    "description": "The 'Exchange Under Simplified Rules' policy will be drafted manually by the site administrator to fit the business needs and local laws. This generator only provides an editable template. The admin must review and adapt the text before publishing.",
+    "commitment": "We are committed to offering product exchanges under simplified rules that protect customers' rights and streamline the process, in accordance with applicable consumer protection laws and industry standards."
+  },
+  "storeInfo": {
+    "aboutStore": "An Emirati online store specializing in modest hijab clothing, combining elegance and comfort in a wide range of sizes from S to 12XL, providing a unique and seamless shopping experience at any time."
+  },
+  "footer": {
+    "sections": "Sections",
+    "dresses": "Dresses",
+    "swimwear": "Swimwear",
+    "travelClothes": "Travel Clothes",
+    "hijabsAndPrayerClothes": "Hijabs and Prayer Clothes",
+    "winterClothes": "Winter Clothes",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+    "footerCopy": "@2025 Oasis of Zain. All rights reserved."
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "intro": "At [Your Website/App Name], we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you use our services.",
+    "sections": {
+      "infoWeCollect": "1. Information We Collect",
+      "howWeUse": "2. How We Use Your Information",
+      "protectInfo": "3. How We Protect Your Information",
+      "cookies": "4. Cookies",
+      "thirdPartySharing": "5. Sharing Information with Third Parties",
+      "externalLinks": "6. External Links",
+      "yourRights": "7. Your Rights",
+      "policyUpdates": "8. Changes to This Privacy Policy",
+      "contactUs": "9. Contact Us"
+    },
+    "infoDetails": {
+      "title": "We may collect the following types of information:",
+      "personal": "Personal Information: Such as your name, email address, phone number—provided when you register or fill out forms.",
+      "nonPersonal": "Non-Personal Information: Such as device type, operating system, browser type, IP address, and browsing behavior on our platform."
+    },
+    "usage": {
+      "intro": "The information we collect is used to:",
+      "improveServices": "Provide and improve our services.",
+      "communicate": "Communicate with you regarding updates, news, or support.",
+      "personalize": "Personalize your user experience.",
+      "legal": "Comply with legal obligations."
+    },
+    "security": "We implement a variety of security measures to ensure the safety of your personal information against unauthorized access, alteration, disclosure, or destruction.",
+    "cookiesText": "We may use cookies to enhance your experience and analyze site usage. You can choose to disable cookies through your browser settings, but some features may not function properly as a result.",
+    "thirdParty": {
+      "intro": "We do not share your personal information with third parties except in the following cases:",
+      "withConsent": "With your explicit consent.",
+      "byLaw": "To comply with legal requirements.",
+      "serviceProviders": "With trusted service providers who assist us in operating our platform (who also adhere to privacy standards)."
+    },
+    "externalLinksText": "Our website/app may contain links to external websites. We are not responsible for the privacy practices or content of those sites.",
+    "rights": {
+      "intro": "You have the right to:",
+      "access": "Access the personal data we hold about you.",
+      "update": "Request corrections or updates.",
+      "delete": "Request deletion of your data (unless required to retain it by law)."
+    },
+    "updates": "We may update this Privacy Policy from time to time. Significant changes will be communicated through email or a notice on our platform.",
+    "contact": {
+      "intro": "If you have any questions or concerns regarding this Privacy Policy, please contact us:",
+      "email": "📧 Email: [your@email.com]",
+      "phone": "📞 Phone: [your phone number]"
+    }
+  },
+  "storeInfo2": {
+    "aboutStore": "An Emirati online store specializing in modest hijab clothing, combining elegance and comfort in a wide range of sizes from S to 12XL, offering you a smooth and exceptional shopping experience at any time."
+  },
+  "sizeGuide": {
+    "title": "Choose Your Size with Confidence",
+    "description": "Follow the size guide for perfect comfort and style. All you need is to measure your bust and hip accurately, and we will tell you the suitable size for you.",
+    "note": "Important Note: It is recommended to use a soft measuring tape, and take the measurements while wearing light clothing for accurate results.",
+    "chest": "Bust Measurement:",
+    "hip": "Hip Measurement:"
+  },
+  "saveButton": "Save",
+  "measurementInstructions": {
+    "chest": {
+      "title": "How to Measure Bust",
+      "steps": "Wrap the measuring tape around the fullest part of your chest (usually just above the nipples).Make sure the tape is straight and not too tight or loose.Keep the tape parallel to the floor."
+    },
+    "hip": {
+      "title": "How to Measure Hips",
+      "steps": "Wrap the measuring tape around the widest part of your hips (top of the hip).Ensure the tape is horizontal and parallel.Do not pull the tape too tight."
+    },
+    "tips": {
+      "title": "Tips for More Accurate Results",
+      "points": "It is recommended to take measurements twice to ensure accuracy.If your measurements fall between two sizes, choose the larger size for more comfort.You can ask someone else to help with measuring for more precise results."
+    }
+  },
+  "logIn": {
+    "ForgotPassword": "Forgot your password?",
+    "title": "Welcome, we are glad to see you again.",
+    "description": "Please enter your details to access your account.",
+    "haveNotAccount": "You do not have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "signIn": "sign in now",
+    "register": "Register now ",
+    "ptn": "Log In",
+    "errorIntr": "required",
+    "errorPhone": "The number must be at lest 9 number",
+    "errorPassword": "The password must be at least 6 characters long.",
+    "errorIntr2": "\nIt should only contain numbers"
+  },
+  "signUp": {
+    "ptn": "Sigin In",
+    "doUAgree": "Do you agree to the ",
+    "privacyPolicy": "privacy policy?",
+    "haveAccount": "Already have an account?",
+    "logNow": "Log in now",
+    "title": "Create your account in seconds",
+    "description": "Register now and enjoy an exceptional shopping experience.",
+    "doblockUAgree": "Do you agree to the"
+  },
+  "SignUp": {
+    "secondName": "SecondName",
+    "firstName": "FirstName",
+    "password": "password",
+    "confirmPassword": "Confirm Password",
+    "Palestine": "Palestine",
+    "firstNameE": "The first name is required",
+    "secondNameE": "The second name is required",
+    "introE": "This is required",
+    "phoneE": "This phone must be at lest 6 numbers",
+    "passwordE": "the password must be at lest 6 letters",
+    "passwordConfirmE": "The confirm password is required",
+    "passwordMatchE": "the passwords dosn't match",
+    "isAgree": "You must agrre whut privacy policy",
+    "cuntryE": "country is required"
+  },
+  "header": {
+    "eearch": "Find your model....",
+    "search": "Find your model....",
+    "btn1": "new account",
+    "btn2": "my account"
+  },
+  "landing": {
+    "btn": "Shop Now",
+    "title": "All your needs as a veiled woman... and all sizes are available at\n              Wahat Al Zain.",
+    "description": "   Shop with confidence... because you will always find your size at\n              Wahat Al Zain"
+  },
+  "size": {
+    "title": "We saved your measurements, your data has been saved successfully!",
+    "discription": "With the measurement information you've entered, it's easier for us to recommend products that fit you perfectly in size and shape. Enjoy a faster, more accurate shopping experience!",
+    "btn": "Do you want to modify your size?",
+    "btn2": "Find your size now",
+    "title2": "Your guide to your right size",
+    "discription2": "Why choose randomly? With us, you can easily find your ideal size based on your weight, so you feel comfortable and stylish at the same time."
+  }
+}

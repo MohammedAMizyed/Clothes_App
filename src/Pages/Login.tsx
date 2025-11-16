@@ -1,0 +1,113 @@
+import { Button } from "@/components/ui/button"
+import img from "../assets/Illustration (1).svg"
+import { t } from "i18next"
+import { useForm, type SubmitHandler } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+
+import * as z from "zod"
+
+export default function Login() {
+  const userSchema = z.object({
+    introduction: z.string().min(1, t("logIn.errorIntr")),
+    phone: z
+      .string()
+      .min(9, t("logIn.errorPhone"))
+      .regex(/^[0-9]+$/, t("logIn.errorIntr2")),
+    password: z.string().min(6, t("logIn.errorPassword")),
+  })
+  type userSchemaType = z.infer<typeof userSchema>
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<userSchemaType>({
+    mode: "onBlur",
+    resolver: zodResolver(userSchema),
+  })
+  const onSubmit: SubmitHandler<userSchemaType> = (data) => {
+    console.log("Mohammed")
+    console.log(data)
+    reset()
+  }
+
+  return (
+    <div className="container">
+      <div className="h-screen flex justify-center text-[#1A1A1A]">
+        <div className="flex justify-center items-center gap-5 flex-col sm:flex-row">
+          <div className="sm:min-w-[517px] max-w-[181px] sm:min-h-[511px]">
+            <img className="w-full h-full" src={img} alt="img" />
+          </div>
+          <div className="flex justify-center items-center flex-col">
+            <h1 className="px-5 sm:my-5 my-2 sm:text-[40px] text-[20px] font-bold text-center">
+              {t("logIn.title")}
+            </h1>
+            <h3 className="mb-5 sm:text-[24px] text-[14px] text-center sm:font-semibold font-normal">
+              {t("logIn.description")}
+            </h3>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="flex gap-2 mb-5">
+                <input
+                  {...register("introduction", { required: true })}
+                  className="bg-white outline-none myShadow max-w-[60px] rounded-2xl p-3 "
+                  type="text"
+                  placeholder="+972"
+                />
+
+                <input
+                  {...register("phone", { required: true })}
+                  className="bg-white  outline-none myShadow min-w-[250px] w-full rounded-2xl p-3"
+                  type="text"
+                  placeholder="0599634192"
+                />
+              </div>
+              {errors.introduction && (
+                <span className="text-[#d10404] mb-3 ">
+                  {errors.introduction.message}
+                </span>
+              )}
+              {errors.introduction && errors.phone ? "| | |" : ""}{" "}
+              {errors.phone && (
+                <span className="text-[#d10404] mb-3 ">
+                  {errors.phone?.message}
+                </span>
+              )}
+              {errors.introduction && errors.phone ? (
+                <div className="mb-2"></div>
+              ) : null}
+              <input
+                {...register("password", { required: true })}
+                className="bg-white   outline-none myShadow rounded-2xl p-3 w-full   "
+                type="text"
+                placeholder="Password"
+              />
+              {errors.password && (
+                <span className="text-[#d10404] mt-5 mb-3 block">
+                  {errors.password?.message}
+                </span>
+              )}
+              <span className="text-[10px] my-4 mx-2 block font-medium sm:hidden">
+                {t("logIn.ForgotPassword")}
+              </span>
+              <div className="flex mb-3 ">
+                <Button
+                  variant="default"
+                  title={t("logIn.ptn")}
+                  className="min-w-[320px]! rounded-2xl! text-[16px]! h-full sm:font-[600]! font-[100]! mt-5!"
+                />
+              </div>
+            </form>
+            <p className=" hidden sm:block font-normal  text-[12px] text-[#1A1A1A80]">
+              {t("logIn.haveNotAccount")}
+              <span className="text-black">{t("logIn.signIn")} </span>
+            </p>
+            <p className="sm:hidden font-normal text-[12px] text-[#1A1A1A80]">
+              {t("logIn.dontHaveAccount")}{" "}
+              <span className="text-black"> {t("logIn.register")} </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
