@@ -5,7 +5,6 @@ import { CarouselProducts } from "./components/products-carousel"
 
 function App() {
   const isTrue = false
-  const newVar = ""
   return (
     <div className="flex min-h-svh flex-col items-center justify-center">
       <Button
