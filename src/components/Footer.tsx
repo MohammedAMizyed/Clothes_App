@@ -1,5 +1,5 @@
 import FacebookIcon from "../assets/Frame (4).svg"
-import InstagramIcon from "../assets/Frame (3).svg"
+import InstagramIcon from "../assets/Frame (2).svg"
 import LinkedInIcon from "../assets/Frame (2).svg"
 import logo from "../assets/Frame 135.svg"
 import { useTranslation } from "react-i18next"
@@ -52,7 +52,7 @@ export default function Footer() {
                 +990 120 129 129{" "}
               </h2>
             </div>
-            <div className="sm:m-0 m-auto">
+            <div className="sm:m-0 m-auto flex">
               <img src={FacebookIcon} alt="FacebookIcon" className="mx-2" />
               <img src={InstagramIcon} alt="InstagramIcon" className="mx-2" />
               <img src={LinkedInIcon} alt="LinkedInIcon" className="mx-2" />

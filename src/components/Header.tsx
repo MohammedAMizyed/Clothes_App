@@ -49,7 +49,7 @@ export default function Header() {
             <div className="flex gap-2 ">
               <Button
                 className={cn(
-                  `myShadow  text-[16px]! font-bold! rounded-[14px]! bg-white! text-[#ff914c]!`
+                  `cursor-pointer myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`
                 )}
               >
                 {t("header.btn2")}
@@ -57,7 +57,7 @@ export default function Header() {
 
               <Button
                 className={cn(
-                  "myShadow!  bg-[#ff914c]! text-[16px]! font-bold! rounded-[14px]! "
+                  "cursor-pointer myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] "
                 )}
                 variant="default"
               >

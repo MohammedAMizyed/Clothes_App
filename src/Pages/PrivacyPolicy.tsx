@@ -1,4 +1,4 @@
-import Footer from "../components/ui/Footer"
+import Footer from "../components/Footer"
 import { useTranslation } from "react-i18next"
 
 export default function PrivacyPolicy() {
