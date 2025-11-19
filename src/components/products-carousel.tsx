@@ -57,7 +57,7 @@ export function CarouselProducts() {
       }}
       className="w-full container max-w-[1350px] m-auto  "
     >
-      <CarouselContent>
+      <CarouselContent className="select-none">
         {imges.map((box) => (
           <CarouselItem key={box.id} className="md:basis-1/2 lg:basis-1/4  ">
             <div className="p-2">
