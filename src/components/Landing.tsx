@@ -22,16 +22,20 @@ export default function Landing() {
             <h3 className="sm:text-[20px] text-[12px] text-center font-medium  text-[#FFFCF9] my-5 ">
               {t("landing.description")}
             </h3>
+
             <Button
-              title={t("landing.btn")}
-              className="uppercase! sm:flex! hidden! mt-15!  pb-10! text-[18px]! font-normal! py-6!  px-10! mx-auto! w-fit! rounded-[16px]!"
+              className="cursor-pointer hover:bg-white  uppercase! sm:flex! hidden! mt-15!  pb-10! text-[18px]! font-normal! py-6!  px-10! mx-auto! w-fit! rounded-[16px]! text-[#FF914C] bg-[#FFFCF9]"
               variant="default"
-            />
+            >
+              {t("landing.btn")}
+            </Button>
+
             <Button
-              title={t("landing.btn")}
-              className="uppercase! sm:hidden! mt-5! text-[12px]! font-normal! py-6! px-15! mx-auto! w-fit! rounded-[16px]! bg-white! text-[#FF914C]!"
+              className="cursor-pointer hover:bg-white  uppercase! sm:hidden! mt-5! text-[12px]! font-normal! py-6! px-15! mx-auto flex text-center w-fit! rounded-[16px]! bg-white! text-[#FF914C]!"
               variant="default"
-            />
+            >
+              {t("landing.btn")}
+            </Button>
           </div>
         </div>
         <div className="absolute sm:bottom-[-120px] bottom-20 left-5 rounded-[50%] sm:left-[30px] myShadow p-3 bg-[white]">

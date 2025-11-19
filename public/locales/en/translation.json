@@ -150,5 +150,13 @@
     "btn2": "Find your size now",
     "title2": "Your guide to your right size",
     "discription2": "Why choose randomly? With us, you can easily find your ideal size based on your weight, so you feel comfortable and stylish at the same time."
+  },
+  "carousel": {
+    "ptn": "Show more",
+    "title": "Hijabs",
+    "title2": "Travel",
+    "title3": "Swimming",
+    "title4": "Winter",
+    "title5": "Dresses"
   }
 }
