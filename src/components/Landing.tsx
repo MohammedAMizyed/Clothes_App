@@ -1,6 +1,6 @@
-import landingImg from "../assets/landingImg.jpg"
+import landingImg from "../assets/9e2cfb595cf1b04ef3ea991f7a9905ff6b59b6d9 (1).jpg"
 import { Button } from "./ui/button"
-import cardIcon from "../assets/Group.svg"
+import cardIcon from "../assets/Group (1).svg"
 import { useTranslation } from "react-i18next"
 export default function Landing() {
   const { t } = useTranslation()
