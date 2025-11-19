@@ -1,5 +1,5 @@
 import { t } from "i18next"
-import img from "../assets/OBJECTS (1).svg"
+import img from "../assets/OBJECTS (2).svg"
 import { Button } from "@/components/ui/button"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "react-i18next"
-import Women from "../assets/women-enjoying-mental-health 1 (2).svg"
+import Women from "../assets/women-enjoying-mental-health 1 (1).svg"
 export default function Sizing() {
   const { t } = useTranslation()
   // const [dir] = useState(i18n.dir()) // احصل على direction من i18n
