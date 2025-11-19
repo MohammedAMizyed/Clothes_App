@@ -20,32 +20,32 @@ export function CarouselProducts() {
   const imges: imgesTypes[] = [
     {
       id: 0,
-      url: "../../src/assets/2d1972ff4929dbf8abc101328c5a2d4d29085e61.jpg",
+      url: "../../src/assets/2d1972ff4929dbf8abc101328c5a2d4d29085e61 (1).jpg",
       title: t("carousel.title"),
       ptn: t("carousel.ptn"),
     },
     {
       id: 1,
-      url: "../../src/assets/5bca1585016a940aab1ba1adf8f2f2eb34ed41d6.jpg",
+      url: "../../src/assets/5bca1585016a940aab1ba1adf8f2f2eb34ed41d6 (1).jpg",
       title: t("carousel.title2"),
       ptn: t("carousel.ptn"),
     },
     {
       id: 2,
-      url: "../../src/assets/9dec17673afe033eacc3cfa62dc435f0f02432fd.jpg",
+      url: "../../src/assets/9dec17673afe033eacc3cfa62dc435f0f02432fd (1).jpg",
       title: t("carousel.title3"),
       ptn: t("carousel.ptn"),
     },
 
     {
       id: 5,
-      url: "../../src/assets/70ecfa26776f7e24647dad77d130671d8cb3e762.jpg",
+      url: "../../src/assets/70ecfa26776f7e24647dad77d130671d8cb3e762 (1).jpg",
       title: t("carousel.title4"),
       ptn: t("carousel.ptn"),
     },
     {
       id: 6,
-      url: "../../src/assets/520aecec1e002f77294a1f2029316ae8145bef46.jpg",
+      url: "../../src/assets/f86d3f4a53e2edee6fee0e4be6886c2b65edb4ef (1).jpg",
       title: t("carousel.title5"),
       ptn: t("carousel.ptn"),
     },
