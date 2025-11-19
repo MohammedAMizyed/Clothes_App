@@ -1,4 +1,4 @@
-import sizeImg from "../assets/1225a1e0bdd005e1c291c1fd1a40a10c0cdbab7b.jpg"
+import sizeImg from "../assets/1225a1e0bdd005e1c291c1fd1a40a10c0cdbab7b (1).jpg"
 import { useTranslation } from "react-i18next"
 import { Button } from "./ui/button"
 export default function Size() {

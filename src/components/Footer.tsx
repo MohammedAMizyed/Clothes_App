@@ -1,7 +1,7 @@
-import FacebookIcon from "../assets/Frame (4).svg"
-import InstagramIcon from "../assets/Frame (2).svg"
-import LinkedInIcon from "../assets/Frame (2).svg"
-import logo from "../assets/Frame 135.svg"
+import FacebookIcon from "../assets/Capa_1.svg"
+import InstagramIcon from "../assets/Group (1).svg"
+import LinkedInIcon from "../assets/Frame (5).svg"
+import logo from "../assets/Frame 135 (1).svg"
 import { useTranslation } from "react-i18next"
 export default function Footer() {
   const { t } = useTranslation()
