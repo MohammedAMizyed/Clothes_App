@@ -19,13 +19,15 @@ export default function Size() {
         <h2 className={"sm:text-[22px] sm:font-bold text-[12px] font-normal"}>
           {t("size.discription2")}
         </h2>
+
         <Button
-          title={t("size.btn2")}
           variant="default"
           className={
-            "bg-[#FFFCF9]! m-auto! mt-15! py-7! text-[#FF914C]! font-[500]! text-[24px]! rounded-[16px]! w-fit! sm:px-10! px-7!"
+            "cursor-pointer bg-[#FFFCF9]! m-auto! mt-15! py-7! text-[#FF914C]! font-[500]! text-[24px]! rounded-[16px]! w-fit! sm:px-10! px-7!"
           }
-        />
+        >
+          {t("size.btn2")}
+        </Button>
       </div>
     </div>
   )

@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useTranslation } from "react-i18next"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -49,9 +50,15 @@ function Carousel({
   children,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
+  const { i18n } = useTranslation()
+
+  const _opts: CarouselOptions = {
+    direction: i18n.language === "ar" ? "rtl" : "ltr",
+    ...opts,
+  }
   const [carouselRef, api] = useEmblaCarousel(
     {
-      ...opts,
+      ..._opts,
       axis: orientation === "horizontal" ? "x" : "y",
     },
     plugins
@@ -107,9 +114,9 @@ function Carousel({
       value={{
         carouselRef,
         api: api,
-        opts,
+        opts: _opts,
         orientation:
-          orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+          orientation || (_opts?.axis === "y" ? "vertical" : "horizontal"),
         scrollPrev,
         scrollNext,
         canScrollPrev,
@@ -183,7 +190,7 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 rounded-full p-6 ml-2 cursor-pointer ",
+        "absolute size-8 rounded-full p-6 ml-2 cursor-pointer hover:bg-[#FF914C] bg-[#FF914C] text-white hover:text-white sm:flex hidden ",
         orientation === "horizontal"
           ? "top-1/2 -left-12 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -213,10 +220,10 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 rounded-full p-6! -mr-6 cursor-pointer ",
+        "absolute size-8 rounded-full p-6! -mr-6 cursor-pointer hover:bg-[#e17f42] bg-[#FF914C] text-white hover:text-white sm:flex hidden  ",
         orientation === "horizontal"
           ? "top-1/2 -right-1 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-/2 rotate-90",
+          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollNext}

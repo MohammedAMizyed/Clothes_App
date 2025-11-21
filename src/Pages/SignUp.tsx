@@ -37,10 +37,10 @@ export default function SignUp() {
     reset()
   }
   return (
-    <div className="container rtl">
+    <div className="container">
       <div className="h-screen flex items-center justify-center ">
         <div className="flex gap-5 flex-col items-center sm:flex-row">
-          <div className="sm:max-w-[515px] max-w-[145px] sm:max-h-[454px] max-h-[125px]">
+          <div className="select-none sm:max-w-[515px] max-w-[145px] sm:max-h-[454px] max-h-[125px]">
             <img className="w-full h-full" src={img} alt="img" />
           </div>
           <div className="flex items-center justify-center flex-col">
@@ -130,15 +130,18 @@ export default function SignUp() {
                 </span>
               )}
               <Button
+                className={
+                  "cursor-pointer bg-[#ff914c] hover:bg-[#ff914cde] w-full! sm:rounded-[16px]! rounded-xl! my-3!"
+                }
                 variant="default"
-                className={"w-full! sm:rounded-[16px]! rounded-xl! my-3!"}
-                title={t("signUp.ptn")}
-              />
-              <div className="sm:font-semibold sm:text-[16px] font-medium text-[10px]  my-2">
+              >
+                {t("signUp.ptn")}
+              </Button>
+              <div className="flex justify-center items-center gap-2  sm:font-semibold sm:text-[16px] font-medium text-[10px]  my-2">
                 <input
                   {...register("isAgree")}
                   type="checkbox"
-                  className="mr-2 w-[15px] h-[15px]"
+                  className="  checked:bg-[#ff914c] checked:text-white  border-2 cursor-pointer mr-2 w-[15px] h-[15px] shadow-none!"
                 />
                 {t("signUp.doblockUAgree")}
                 <span className="text-black font-bo2d">
@@ -153,7 +156,7 @@ export default function SignUp() {
             </form>
             <div className="text-[#1A1A1A80] text-[12px] font-normal ">
               {t("signUp.haveAccount")}{" "}
-              <span className="text-black">{t("si2nUp.logNow")}</span>
+              <span className="text-black">{t("sinUp.logNow")}</span>
             </div>
           </div>
         </div>

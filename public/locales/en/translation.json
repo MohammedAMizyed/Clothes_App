@@ -158,5 +158,23 @@
     "title3": "Swimming",
     "title4": "Winter",
     "title5": "Dresses"
+  },
+  "shop": {
+    "title": "Latest dresses:",
+    "seeMore": "See more",
+    "title2": "Our offers:",
+    "titl3": "Large sizes:",
+    "content": {
+      "title": "Black abaya",
+      "price": "26 UAE",
+      "oldPrice": "99 UAE",
+      "colors": "7 color",
+      "btn": "Add to Cart",
+      "headTitle": "Plus size",
+      "headNot": "60%"
+    }
+  },
+  "sinUp": {
+    "logNow": "Log In Now"
   }
 }

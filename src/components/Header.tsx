@@ -49,7 +49,8 @@ export default function Header() {
             <div className="flex gap-2 ">
               <Button
                 className={cn(
-                  `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`
+                  `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
+                  "h-11"
                 )}
               >
                 {t("header.btn2")}
@@ -57,7 +58,8 @@ export default function Header() {
 
               <Button
                 className={cn(
-                  "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] "
+                  "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
+                  "h-11"
                 )}
                 variant="default"
               >

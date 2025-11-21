@@ -59,21 +59,31 @@ export function CarouselProducts() {
     >
       <CarouselContent className="select-none">
         {imges.map((box) => (
-          <CarouselItem key={box.id} className="md:basis-1/2 lg:basis-1/4  ">
+          <CarouselItem key={box.id} className="basis-1/4  ">
             <div className="p-2">
               <Card>
-                <CardContent className="p-0 relative ">
+                <CardContent className="p-0 relative cursor-pointer ">
                   <img
-                    className="object-cover h-[400px] w-[320px]"
+                    className="object-cover sm:h-[400px] h-[145px] sm:w-[320px] w-[95px]"
                     src={box.url}
                     alt="img"
                   />
                   <div className="absolute inset-0 bg-black/40"></div>
-                  <div className="absolute text-center top-[50%] left-[50%] transform-[translate(-50%,-50%)]">
+                  <div className="hidden sm:block absolute text-center top-[50%] left-[50%] transform-[translate(-50%,-50%)]">
                     <p className="text-white sm:text-[30px] font-medium mb-2">
                       {box.title}
                     </p>
                     <Button className="bg-[#FFFCF9] rounded-[16px] hover:bg-[#e8e6e6] cursor-pointer hover:myShadow text-[#FF914C] sm:text-[20px] py-6 px-5  font-semibold">
+                      {box.ptn}
+                    </Button>
+                  </div>
+                  <div className="sm:hidden block absolute text-center top-[50%] left-[50%] transform-[translate(-50%,-50%)]">
+                    <p className="text-[#FFFCF9] text-[8px] font-bold mb-2 ">
+                      {box.title}
+                    </p>
+                  </div>
+                  <div className="sm:hidden block absolute text-center -top-2 left-0 ">
+                    <Button className="bg-[#FFFCF9] rounded-br-[40px] w-[62px] h-[17px] rounded-tl-[8px] text-[8px] hover:bg-[#e8e6e6] cursor-pointer text-[#FF914C]  muShadow   font-semibold">
                       {box.ptn}
                     </Button>
                   </div>
