@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button"
-import img from "../assets/Group (1).svg"
+import img from "../assets/loginimg.svg"
 import { t } from "i18next"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-
+import { Link } from "react-router-dom"
 import * as z from "zod"
 
-export default function Login() {
+export default function LogIn() {
   const userSchema = z.object({
     introduction: z.string().min(1, t("logIn.errorIntr")),
     phone: z
@@ -91,20 +91,25 @@ export default function Login() {
               </span>
               <div className="flex mb-3 ">
                 <Button
+                  className="min-w-[320px]! bg-[#ff914c] cursor-pointer hover:bg-[#ff914cd2] transition-all duration-200 rounded-2xl! text-[16px]! h-full sm:font-semibold! font-thin! mt-5!"
                   variant="default"
-                  title={t("logIn.ptn")}
-                  className="min-w-[320px]! rounded-2xl! text-[16px]! h-full sm:font-[600]! font-[100]! mt-5!"
-                />
+                >
+                  {t("logIn.ptn")}
+                </Button>
               </div>
             </form>
-            <p className=" hidden sm:block font-normal  text-[12px] text-[#1A1A1A80]">
-              {t("logIn.haveNotAccount")}
-              <span className="text-black">{t("logIn.signIn")} </span>
-            </p>
-            <p className="sm:hidden font-normal text-[12px] text-[#1A1A1A80]">
-              {t("logIn.dontHaveAccount")}{" "}
-              <span className="text-black"> {t("logIn.register")} </span>
-            </p>
+            <Link to={"/signup"}>
+              <p className=" hidden sm:block font-normal  text-[12px] text-[#1A1A1A80]">
+                {t("logIn.haveNotAccount")}
+                <span className="text-black">{t("logIn.signIn")} </span>
+              </p>
+            </Link>
+            <Link to={"/signup"}>
+              <p className="cursor-pointer sm:hidden font-normal text-[12px] text-[#1A1A1A80]">
+                {t("logIn.dontHaveAccount")}{" "}
+                <span className="text-black"> {t("logIn.register")} </span>
+              </p>
+            </Link>
           </div>
         </div>
       </div>

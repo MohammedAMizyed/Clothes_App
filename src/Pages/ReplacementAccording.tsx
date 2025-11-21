@@ -7,7 +7,6 @@ export default function ReplacementAccording() {
   return (
     <>
       <div
-        dir="rtl"
         className={cn(
           " mb-20! container m-auto flex items-center justify-center flex-col"
         )}

@@ -12,7 +12,6 @@ export default function Home() {
       <Landing />
       <Size />
       <CarouselProducts />
-
       <ShowCarousel />
       <Footer />
     </div>

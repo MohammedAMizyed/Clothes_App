@@ -23,15 +23,7 @@ export default function Sizing() {
     },
   ]
   return (
-    <div dir="ltr" className=" container m-auto bg-[rgb(255,252,249)] ">
-      {/* <div
-        className={`flex w-fit items-center relative ${
-          dir === "rtl" ? "left-[220px]" : "left-[1220px]"
-        } top-[85px]`}
-      >
-        <MyButton title={"skip"} s="text-[16px]!" r={"rounded-[10px]!"} />
-      </div> */}
-
+    <div className=" container m-auto bg-[rgb(255,252,249)] ">
       <div className=" h-[95vh] flex justify-center items-center flex-col">
         <div className=" flex sm:gap-[30px] gap-2 sm:flex-row flex-col">
           <div className="sm:min-w-[410px] sm:mt-0 mt-[300px]  sm:h-[522px] h-[172px] min-w-[142px] overflow-hidden sm:rounded-none  rounded-tr-[250px]  rounded-br-[250px]  rounded-bl-[550px] rounded-tl-[550px]">
@@ -83,9 +75,10 @@ export default function Sizing() {
                 </div>
                 <Button
                   variant="default"
-                  title={t("saveButton")}
-                  className="text-[16px]! rounded-[16px]! w-full! h-[50px]!"
-                />
+                  className="bg-[#ff914c] hover:bg-[#ff914ce4] cursor-pointer myShadow text-[16px]! rounded-2xl! w-full! h-[50px]!"
+                >
+                  {t("saveButton")}
+                </Button>
               </form>
               <div className="mb-4 sm:mb-0">
                 {Blocks.map((block) => {
@@ -94,7 +87,7 @@ export default function Sizing() {
                       <h2 className="font-semibold my-2 text-[12px] leading-[100%]">
                         {t(block.title)}
                       </h2>
-                      <p className="max-w-[315px] leading-[150%] text-[#1A1A1A] p-2 myShadow rounded-2xl bg-[#FFFFFF]  font-normal text-[12px] leading-[100%]">
+                      <p className="max-w-[315px] text-[#1A1A1A] p-2 myShadow rounded-2xl bg-[#FFFFFF]  font-normal text-[12px] leading-[100%]">
                         {t(block.body)}
                       </p>
                     </div>

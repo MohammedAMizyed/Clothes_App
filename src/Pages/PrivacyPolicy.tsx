@@ -91,10 +91,7 @@ export default function PrivacyPolicy() {
   ]
   return (
     <>
-      <div
-        dir="rtl"
-        className="ltr:hidden mb-20 container m-auto flex items-center justify-center flex-col"
-      >
+      <div className="ltr:hidden mb-20 container m-auto flex items-center justify-center flex-col">
         <h1 className=" my-7 sm:font-bold w-full text-center text-[18px] sm:text-[40px] ">
           {t("privacyPolicy.title")}
         </h1>

@@ -24,14 +24,14 @@ export default function Landing() {
             </h3>
 
             <Button
-              className="cursor-pointer hover:bg-white  uppercase! sm:flex! hidden! mt-15!  pb-10! text-[18px]! font-normal! py-6!  px-10! mx-auto! w-fit! rounded-[16px]! text-[#FF914C] bg-[#FFFCF9]"
+              className="cursor-pointer hover:bg-white  uppercase! sm:flex! hidden! mt-15!  pb-10! text-[18px]! font-normal! py-6!  px-10! mx-auto! w-fit! rounded-2xl! text-[#FF914C] bg-[#FFFCF9]"
               variant="default"
             >
               {t("landing.btn")}
             </Button>
 
             <Button
-              className="cursor-pointer hover:bg-white  uppercase! sm:hidden! mt-5! text-[12px]! font-normal! py-6! px-15! mx-auto flex text-center w-fit! rounded-[16px]! bg-white! text-[#FF914C]!"
+              className="cursor-pointer hover:bg-white  uppercase! sm:hidden! mt-5! text-[12px]! font-normal! py-6! px-15! mx-auto flex text-center w-fit! rounded-2xl! bg-white! text-[#FF914C]!"
               variant="default"
             >
               {t("landing.btn")}

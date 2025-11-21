@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 import logo from "../assets/Frame 135 (1).svg"
 import logoAlt from "../assets/image 1 (1).svg"
 import WorldIcon from "../assets/Group 2 (1).svg"
@@ -7,10 +8,24 @@ import ListIcon from "../assets/Group 15 (1).svg"
 import { useTranslation } from "react-i18next"
 import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
+import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import i18n from "@/i18n"
 export default function Header() {
   const { t } = useTranslation()
+  useEffect(() => {
+    i18n.changeLanguage(i18n.language)
+  }, [])
+  function handleChangeLang() {
+    if (i18n.language === "ar") {
+      i18n.changeLanguage("en")
+    } else {
+      i18n.changeLanguage("ar")
+    }
+  }
+
   return (
-    <div className="m-4 sm:relative absolute z-20 w-full mx-auto" dir="ltr">
+    <div className="m-4 sm:relative absolute z-20 w-full mx-auto">
       <div className="container">
         <div className="bg-[#fffcf9] myShadow border-[#f2dfc7] border flex items-center justify-between px-5  py-2 sm:rounded-[25px] rounded-[12px]">
           <div className=" block sm:hidden w-[25px] h-[18px]">
@@ -21,9 +36,12 @@ export default function Header() {
           </div>
           <div className="sm:block hidden">
             <div className=" flex gap-2 items-center">
-              <span className="flex font- bold gap-1 justify-center items-center">
+              <span
+                onClick={handleChangeLang}
+                className="cursor-pointer flex font- bold gap-1 justify-center items-center"
+              >
                 <img src={WorldIcon} alt="WorldIcon" />
-                EN
+                {i18n.language == "ar" ? "EN" : "AR"}
               </span>
               <span>
                 <img src={HardIcon} alt="HardIcon" />
@@ -37,7 +55,7 @@ export default function Header() {
                 <input
                   placeholder={t("header.search")}
                   type="text"
-                  className="pl-9 placeholder:text-[#1A1A1A] placeholder:font-bold  min-w-[353px] rounded-[15px] border border-[#b6a896] min-h-[45px] shadow-none! outline-none"
+                  className="pl-9 pr-9! placeholder:text-[#1A1A1A] placeholder:font-bold  min-w-[353px] rounded-[15px] border border-[#b6a896] min-h-[45px] shadow-none! outline-none"
                 ></input>
               </div>
             </div>
@@ -47,24 +65,27 @@ export default function Header() {
           </div>
           <div className="sm:block hidden">
             <div className="flex gap-2 ">
-              <Button
-                className={cn(
-                  `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
-                  "h-11"
-                )}
-              >
-                {t("header.btn2")}
-              </Button>
-
-              <Button
-                className={cn(
-                  "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
-                  "h-11"
-                )}
-                variant="default"
-              >
-                {t("header.btn1")}
-              </Button>
+              <Link to={"/login"}>
+                <Button
+                  className={cn(
+                    `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
+                    "h-11"
+                  )}
+                >
+                  {t("header.btn2")}
+                </Button>
+              </Link>
+              <Link to={"/signup"}>
+                <Button
+                  className={cn(
+                    "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
+                    "h-11"
+                  )}
+                  variant="default"
+                >
+                  {t("header.btn1")}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

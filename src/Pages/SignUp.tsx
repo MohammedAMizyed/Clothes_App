@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { Link } from "react-router-dom"
 export default function SignUp() {
   const dataSchema = z
     .object({
@@ -154,10 +155,12 @@ export default function SignUp() {
                 </span>
               )}
             </form>
-            <div className="text-[#1A1A1A80] text-[12px] font-normal ">
-              {t("signUp.haveAccount")}{" "}
-              <span className="text-black">{t("sinUp.logNow")}</span>
-            </div>
+            <Link to={"/login"}>
+              <div className="text-[#1A1A1A80] text-[12px] font-normal ">
+                {t("signUp.haveAccount")}{" "}
+                <span className="text-black">{t("sinUp.logNow")}</span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
