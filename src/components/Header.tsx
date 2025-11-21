@@ -10,9 +10,8 @@ import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
-import i18n from "@/i18n"
 export default function Header() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   useEffect(() => {
     i18n.changeLanguage(i18n.language)
   }, [])

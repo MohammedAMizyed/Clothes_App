@@ -26,7 +26,7 @@ export default function ProductCard({
   return (
     <Card className="shadow-none border-0 mb-15">
       <CardContent className={"p-0 relative cursor-pointer "}>
-        <div className="">
+        <div className="m-2">
           <div className="relative overflow-hidden rounded-4xl myShadow">
             <img
               className="object-cover  h-[339px] w-[339px]"

@@ -172,9 +172,15 @@
       "btn": "Add to Cart",
       "headTitle": "Plus size",
       "headNot": "60%"
-    }
+    },
+    "title3": "More Hijabs and prayer clothes :"
   },
   "sinUp": {
     "logNow": "Log In Now"
+  },
+  "pluseSize": "Pluse Size",
+  "swipe": {
+    "disc": "Practical and modern designs that meet your need for modesty and elegance, offering true comfort during every beach or pool outing. Choose your color and size with ease... and live your summer with confidence!\n",
+    "title": "Sharia-compliant swimming collection... elegance and comfort for all body types\n"
   }
 }
