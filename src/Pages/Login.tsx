@@ -91,7 +91,7 @@ export default function LogIn() {
               </span>
               <div className="flex mb-3 ">
                 <Button
-                  className="min-w-[320px]! bg-[#ff914c] cursor-pointer hover:bg-[#ff914cd2] transition-all duration-200 rounded-2xl! text-[16px]! h-full sm:font-semibold! font-thin! mt-5!"
+                  className="myShadow min-w-[320px]! bg-[#ff914c] cursor-pointer hover:bg-[#ff914cd2] transition-all duration-200 rounded-2xl! text-[16px]! h-full sm:font-semibold! font-thin! mt-5!"
                   variant="default"
                 >
                   {t("logIn.ptn")}

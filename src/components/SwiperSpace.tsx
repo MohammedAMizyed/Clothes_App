@@ -19,17 +19,17 @@ import { EffectCards } from "swiper/modules"
 export default function SwiperSpace() {
   const { t } = useTranslation()
   return (
-    <>
+    <div className="sm:max-w-[1300px] max-w-[700px] overflow-hidden m-auto">
       <Swiper
         dir="rtl"
         effect={"cards"}
         grabCursor={true}
         modules={[EffectCards]}
-        className="mySwiper w-full max-w-[800px] select-none mb-10! mt-0! mx-auto! "
+        className="mySwiper overflow-hidden w-full sm:max-w-[440px]! max-w-[160px]! select-none mb-10! mt-0! mx-auto! "
         cardsEffect={{
           rotate: false,
           slideShadows: false,
-          perSlideOffset: 30,
+          perSlideOffset: 50,
           perSlideRotate: 0,
         }}
       >
@@ -39,7 +39,7 @@ export default function SwiperSpace() {
         {[img, img2, img3, img4, img5].map((url, index) => {
           return (
             <SwiperSlide key={index} className="shadow-none overflow-visible! ">
-              <div className="sm:h-[700px] sm:w-[434px] overflow-clip rounded-3xl myShadow border-5 border-white relative">
+              <div className="sm:h-[700px] h-[286px] w-[164px] sm:w-[444px] overflow-clip rounded-3xl myShadow border-5 border-white relative">
                 <img
                   className="w-full h-full object-cover"
                   src={url}
@@ -58,6 +58,6 @@ export default function SwiperSpace() {
           )
         })}
       </Swiper>
-    </>
+    </div>
   )
 }

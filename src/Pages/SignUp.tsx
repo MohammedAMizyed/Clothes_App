@@ -132,7 +132,7 @@ export default function SignUp() {
               )}
               <Button
                 className={
-                  "cursor-pointer bg-[#ff914c] hover:bg-[#ff914cde] w-full! sm:rounded-[16px]! rounded-xl! my-3!"
+                  "myShadow cursor-pointer bg-[#ff914c] hover:bg-[#ff914cde] w-full! sm:rounded-[16px]! rounded-xl! my-3!"
                 }
                 variant="default"
               >
