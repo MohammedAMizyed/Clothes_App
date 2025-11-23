@@ -10,10 +10,14 @@ import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 export default function Header() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const location = useLocation()
   const { t, i18n } = useTranslation()
   useEffect(() => {
     i18n.changeLanguage(i18n.language)
+    console.log(location)
   }, [])
   function handleChangeLang() {
     if (i18n.language === "ar") {
@@ -24,7 +28,12 @@ export default function Header() {
   }
 
   return (
-    <div className="m-4 sm:relative absolute z-20 w-full mx-auto">
+    <div
+      className={cn(
+        "m-4 sm:relative absolute z-20 w-full mx-auto",
+        location.pathname === "/shopping" ? "sm:absolute" : "sm:relative"
+      )}
+    >
       <div className="container">
         <div className="bg-[#fffcf9] myShadow border-[#f2dfc7] border flex items-center justify-between px-5  py-2 sm:rounded-[25px] rounded-[12px]">
           <div className=" block sm:hidden w-[25px] h-[18px]">

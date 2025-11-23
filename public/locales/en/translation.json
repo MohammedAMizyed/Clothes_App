@@ -182,5 +182,18 @@
   "swipe": {
     "disc": "Practical and modern designs that meet your need for modesty and elegance, offering true comfort during every beach or pool outing. Choose your color and size with ease... and live your summer with confidence!\n",
     "title": "Sharia-compliant swimming collection... elegance and comfort for all body types\n"
-  }
+  },
+  "shopping": {
+    "title": "The latest distinctive pieces at Wahat Al Zain",
+    "description": "Dresses, Islamic rosary clothes, the best place for veiled women",
+    "head": "All available pieces:"
+  },
+  "home": "Home",
+  "filter by": "Filter By",
+  "Our available items": "Our available items",
+  "Determine your exact size": "Determine your exact size",
+  "Dimensions for weights": "Dimensions for weights",
+  "plus size": "Plus Size",
+  "our exclusive offers": "Our exclusive offers",
+  "dresses": "dresses"
 }

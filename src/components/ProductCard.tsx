@@ -1,5 +1,7 @@
 import { Button } from "./ui/button"
 import { Card, CardContent } from "./ui/card"
+import { useTranslation } from "react-i18next"
+import { cn } from "@/lib/utils"
 type product = {
   urlImg: string
   plusSize: string
@@ -23,6 +25,8 @@ export default function ProductCard({
   colors,
   btnTitle,
 }: product) {
+  const { i18n } = useTranslation()
+
   return (
     <Card className="shadow-none border-0 sm:mb-15 ">
       <CardContent className={"p-0 relative cursor-pointer "}>
@@ -35,8 +39,22 @@ export default function ProductCard({
             />
             <div className="absolute inset-0 bg-black/20"></div>
 
-            <div className="sm:flex hidden absolute bg-[#FF914C] overflow-hidden   rounded-bl-[28px] border border-l-2  top-0  text-white">
-              <div className=" bg-black p-2 text-[14px] font-bold  border border-l-2">
+            <div
+              className={cn(
+                "sm:flex hidden absolute bg-[#FF914C] overflow-hidden  border  top-0  text-white",
+                i18n.language === "ar"
+                  ? "rounded-bl-[28px]  border-l-2"
+                  : "rounded-br-[28px] -left-1 border-r-2"
+              )}
+            >
+              <div
+                className={cn(
+                  " bg-black p-2 text-[14px] font-bold   border border-l-2",
+                  i18n.language === "ar"
+                    ? "rounded-bl-3xl pl-3"
+                    : "rounded-br-3xl pr-3"
+                )}
+              >
                 {" "}
                 {plusSize}
               </div>

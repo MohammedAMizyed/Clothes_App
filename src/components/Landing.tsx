@@ -2,6 +2,7 @@ import landingImg from "../assets/9e2cfb595cf1b04ef3ea991f7a9905ff6b59b6d9 (1).j
 import { Button } from "./ui/button"
 import cardIcon from "../assets/card.svg"
 import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom"
 export default function Landing() {
   const { t } = useTranslation()
   return (
@@ -22,20 +23,22 @@ export default function Landing() {
             <h3 className="sm:text-[20px] text-[12px] text-center font-medium  text-[#FFFCF9] my-5 ">
               {t("landing.description")}
             </h3>
-
-            <Button
-              className="cursor-pointer hover:bg-white  uppercase! sm:flex! hidden! mt-15!  pb-10! text-[18px]! font-normal! py-6!  px-10! mx-auto! w-fit! rounded-2xl! text-[#FF914C] bg-[#FFFCF9]"
-              variant="default"
-            >
-              {t("landing.btn")}
-            </Button>
-
-            <Button
-              className="cursor-pointer hover:bg-white  uppercase! sm:hidden! mt-5! text-[12px]! font-normal! py-6! px-15! mx-auto flex text-center w-fit! rounded-2xl! bg-white! text-[#FF914C]!"
-              variant="default"
-            >
-              {t("landing.btn")}
-            </Button>
+            <Link to="/shopping">
+              <Button
+                className="cursor-pointer hover:bg-white  uppercase! sm:flex! hidden! mt-15!  pb-10! text-[18px]! font-normal! py-6!  px-10! mx-auto! w-fit! rounded-2xl! text-[#FF914C] bg-[#FFFCF9]"
+                variant="default"
+              >
+                {t("landing.btn")}
+              </Button>
+            </Link>
+            <Link to={"/shopping"}>
+              <Button
+                className="cursor-pointer hover:bg-white  uppercase! sm:hidden! mt-5! text-[12px]! font-normal! py-6! px-15! mx-auto flex text-center w-fit! rounded-2xl! bg-white! text-[#FF914C]!"
+                variant="default"
+              >
+                {t("landing.btn")}
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="absolute sm:bottom-[-120px] bottom-20 left-5 rounded-[50%] sm:left-[30px] myShadow p-3 bg-[white]">

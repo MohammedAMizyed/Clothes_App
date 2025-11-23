@@ -1,9 +1,10 @@
 import "./index.css"
 import Home from "./Pages/Home"
 import SignUp from "./Pages/SignUp"
-import LogIn from "./Pages/Login"
+import LogIn from "./Pages/LogIn"
 import { Routes, Route } from "react-router-dom"
 import Sizing from "./Pages/Sizing"
+import Shopping from "./Pages/Shopping"
 
 import { useTranslation } from "react-i18next"
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route element={<Home />} path="/" />
         <Route element={<Home />} path="/home" />
         <Route element={<Sizing />} path="/sizing" />
+        <Route element={<Shopping />} path="/shopping" />
       </Routes>
     </div>
   )
