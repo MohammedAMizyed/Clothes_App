@@ -186,7 +186,8 @@
   "shopping": {
     "title": "The latest distinctive pieces at Wahat Al Zain",
     "description": "Dresses, Islamic rosary clothes, the best place for veiled women",
-    "head": "All available pieces:"
+    "head": "All available pieces:",
+    "headmob": "All clothes available"
   },
   "home": "Home",
   "filter by": "Filter By",
@@ -195,5 +196,8 @@
   "Dimensions for weights": "Dimensions for weights",
   "plus size": "Plus Size",
   "our exclusive offers": "Our exclusive offers",
-  "dresses": "dresses"
+  "dresses": "dresses",
+  "Add my size": "Add my size",
+  "Now you can know your exact size easily": "Now you can know your exact size easily",
+  "Filter Now": "Filter Now"
 }

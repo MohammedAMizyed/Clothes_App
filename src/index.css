@@ -9,6 +9,11 @@
     margin: auto !important;
   }
 }
+/* لما الأكورديون ينفتح أخفي الـ div */
+[data-state="open"] .lorem-box {
+  display: none;
+}
+
 body {
   font-family: "Cairo", sans-serif;
   background-color: #fffcf9;

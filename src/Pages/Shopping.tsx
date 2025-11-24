@@ -5,10 +5,15 @@ import ProductCard from "@/components/ProductCard"
 import exampleImg from "../assets/eximple.jpg"
 import likeIcon from "../assets/like.svg"
 import arrow from "../assets/Vector 110.svg"
+import underArrow from "../assets/under arrow.svg"
 import filter from "../assets/Vector.svg"
 import AccordionComponent from "@/components/AccordionComponent"
 import { Button } from "@/components/ui/button"
+import Footer from "@/components/Footer"
+import { useState } from "react"
+import { cn } from "@/lib/utils"
 export default function Shopping() {
+  const [mobule, setMobule] = useState<boolean>(true)
   const { t } = useTranslation()
   return (
     <>
@@ -29,8 +34,8 @@ export default function Shopping() {
             {t("shopping.description")}
           </p>
         </div>
-        <div className="flex items-start justify-center">
-          <div className="flex-3/4">
+        <div className=" hidden sm:flex items-start justify-center sm:flex-row flex-col-reverse ">
+          <div className="sm:flex-3/4">
             <h1 className="mb-3 font-bold text-[35px]">{t("shopping.head")}</h1>
             <div className="flex gap-3 flex-wrap ">
               <div className="">
@@ -85,9 +90,113 @@ export default function Shopping() {
                   discTitle={t("shop.content.title")}
                 />
               </div>
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>{" "}
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>{" "}
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>{" "}
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>{" "}
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>{" "}
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>{" "}
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>{" "}
+              <div className="">
+                <ProductCard
+                  newPrice={t("shop.content.price")}
+                  oldPrice={t("shop.content.oldPrice")}
+                  colors={t("shop.content.colors")}
+                  urlImg={exampleImg}
+                  plusSize={t("shop.content.headTitle")}
+                  rate={t("shop.content.headNot")}
+                  btnTitle={t("shop.content.btn")}
+                  iconUrl={likeIcon}
+                  discTitle={t("shop.content.title")}
+                />
+              </div>
             </div>
           </div>
-          <div className="flex-1/4">
+          <div className="sm:flex-1/4">
             <div className="flex gap-1 justify-center items-center">
               <h2 className="text-[#1a1a1a9d] text-[24px] font-medium">Home</h2>
               <img src={arrow} alt="arrow icon" />
@@ -97,94 +206,136 @@ export default function Shopping() {
               <h2 className="text-[24px] font-bold">{t("filter by")}</h2>
               <img src={filter} alt="filterIcon" />
             </div>
-            <AccordionComponent
-              title={t("Our available items")}
-              description={
-                <div>
-                  <div className="flex gap-2 items-center ">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                    />
-                    <h3 id="plus" className="text-[14px] font-medium">
-                      {t("dresses")}
+            <div className="border-b border-[#1a1a1a]">
+              <AccordionComponent
+                title={t("Our available items")}
+                description={
+                  <div>
+                    <div className="flex gap-2 items-center ">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                      />
+                      <h3 id="plus" className="text-[14px] font-medium">
+                        {t("dresses")}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2 items-center ">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                      />
+                      <h3 id="plus" className="text-[14px] font-medium">
+                        {t("travel clothes")}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2 items-center ">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                      />
+                      <h3 id="plus" className="text-[14px] font-medium">
+                        {t("winter clothes")}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2 items-center ">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                      />
+                      <h3 id="plus" className="text-[14px] font-medium">
+                        {t("swimwear")}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2 items-center ">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                      />
+                      <h3 id="plus" className="text-[14px] font-medium">
+                        {t("Hijabs and prayer clothes")}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2 items-center ">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                      />
+                      <h3 id="plus" className="text-[14px] font-medium">
+                        {t("All available parts")}
+                      </h3>
+                    </div>
+                  </div>
+                }
+              />
+            </div>
+            <div className="border-b border-[#1a1a1a]">
+              <AccordionComponent
+                title={t("Determine your exact size")}
+                description={
+                  <div>
+                    <h3 className="text-[12px] font-semibold mb-3">
+                      {t("Now you can know your exact size easily")}
+                    </h3>
+                    <Button
+                      className="myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
+                      variant={"default"}
+                    >
+                      {t("Add my size")}
+                    </Button>
+                  </div>
+                }
+              />
+            </div>
+            <div className="border-b border-[#1a1a1a]">
+              <AccordionComponent
+                title={t("Dimensions for weights")}
+                description={
+                  <div>
+                    <h4 className="text-[14px font-semibold">S ( 45 →55k ) </h4>
+                    <h4 className="text-[14px font-semibold">M ( 55 →65k )</h4>
+                    <h4 className="text-[14px font-semibold">
+                      large (65 →75k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      2X large (80 →85k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      3X large (85 →90k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      4X large (90→95k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      5X large (95→100k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      6X large (100→105k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      7X large (105→110k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      8X large (110→115k)
+                    </h4>
+                    <h4 className="text-[14px font-semibold">
+                      {" "}
+                      9X large (115→120k )
+                    </h4>
+                    <h3 className="text-[20px] font-semibold text-center text-[#ff0000]">
+                      FREE SIZE
                     </h3>
                   </div>
-                  <div className="flex gap-2 items-center ">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                    />
-                    <h3 id="plus" className="text-[14px] font-medium">
-                      {t("travel clothes")}
-                    </h3>
-                  </div>
-                  <div className="flex gap-2 items-center ">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                    />
-                    <h3 id="plus" className="text-[14px] font-medium">
-                      {t("winter clothes")}
-                    </h3>
-                  </div>
-                  <div className="flex gap-2 items-center ">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                    />
-                    <h3 id="plus" className="text-[14px] font-medium">
-                      {t("swimwear")}
-                    </h3>
-                  </div>
-                  <div className="flex gap-2 items-center ">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                    />
-                    <h3 id="plus" className="text-[14px] font-medium">
-                      {t("Hijabs and prayer clothes")}
-                    </h3>
-                  </div>
-                  <div className="flex gap-2 items-center ">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                    />
-                    <h3 id="plus" className="text-[14px] font-medium">
-                      {t("All available parts")}
-                    </h3>
-                  </div>
-                </div>
-              }
-            />
-            <AccordionComponent
-              title={t("Determine your exact size")}
-              description={
-                <div>
-                  <h3 className="text-[12px] font-semibold mb-3">
-                    {t("Now you can know your exact size easily")}
-                  </h3>
-                  <Button
-                    className="rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[12px] font-medium"
-                    variant={"default"}
-                  >
-                    {t("Add my size")}
-                  </Button>
-                </div>
-              }
-            />
-            <AccordionComponent
-              title={t("Dimensions for weights")}
-              description={
-                <div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Impedit explicabo aut vitae culpa in, expedita hic enim autem
-                  et reprehenderit minima ut praesentium blanditiis eaque quod
-                  deleniti beatae laudantium voluptates?
-                </div>
-              }
-            />
+                }
+              />
+            </div>
             <div className="flex gap-2 items-center ">
               <input
                 type="checkbox"
@@ -206,6 +357,193 @@ export default function Shopping() {
           </div>
         </div>
       </div>
+      <div className="container flex flex-col sm:hidden">
+        <div className={cn("mt-7")}>
+          <AccordionComponent
+            title={
+              <div className="  w-full flex items-baseline  justify-between  ">
+                <div>
+                  <h1 className="mb-3  text-[16px] font-semibold">
+                    {t("shopping.headmob")}
+                  </h1>
+                </div>
+
+                <div className="flex gap-1 justify-center items-center ">
+                  <h2 className="text-[16px] font-medium">{t("filter by")}</h2>
+                  <img className="w-5!" src={filter} alt="filterIcon" />
+                </div>
+              </div>
+            }
+            description={
+              <div className="mb-20">
+                <div className="border-b border-[#1a1a1a]">
+                  <AccordionComponent
+                    title={t("Our available items")}
+                    description={
+                      <div>
+                        <div className="flex gap-2 items-center ">
+                          <input
+                            type="checkbox"
+                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                          />
+                          <h3 id="plus" className="text-[14px] font-medium">
+                            {t("dresses")}
+                          </h3>
+                        </div>
+                        <div className="flex gap-2 items-center ">
+                          <input
+                            type="checkbox"
+                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                          />
+                          <h3 id="plus" className="text-[14px] font-medium">
+                            {t("travel clothes")}
+                          </h3>
+                        </div>
+                        <div className="flex gap-2 items-center ">
+                          <input
+                            type="checkbox"
+                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                          />
+                          <h3 id="plus" className="text-[14px] font-medium">
+                            {t("winter clothes")}
+                          </h3>
+                        </div>
+                        <div className="flex gap-2 items-center ">
+                          <input
+                            type="checkbox"
+                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                          />
+                          <h3 id="plus" className="text-[14px] font-medium">
+                            {t("swimwear")}
+                          </h3>
+                        </div>
+                        <div className="flex gap-2 items-center ">
+                          <input
+                            type="checkbox"
+                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                          />
+                          <h3 id="plus" className="text-[14px] font-medium">
+                            {t("Hijabs and prayer clothes")}
+                          </h3>
+                        </div>
+                        <div className="flex gap-2 items-center ">
+                          <input
+                            type="checkbox"
+                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                          />
+                          <h3 id="plus" className="text-[14px] font-medium">
+                            {t("All available parts")}
+                          </h3>
+                        </div>
+                      </div>
+                    }
+                  />
+                </div>
+                <div className="border-b border-[#1a1a1a]">
+                  <AccordionComponent
+                    title={t("Determine your exact size")}
+                    description={
+                      <div>
+                        <h3 className="text-[12px] font-semibold mb-3">
+                          {t("Now you can know your exact size easily")}
+                        </h3>
+                        <Button
+                          className="myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
+                          variant={"default"}
+                        >
+                          {t("Add my size")}
+                        </Button>
+                      </div>
+                    }
+                  />
+                </div>
+                <div className="border-b border-[#1a1a1a]">
+                  <AccordionComponent
+                    title={t("Dimensions for weights")}
+                    description={
+                      <div>
+                        <h4 className="text-[14px font-semibold">
+                          S ( 45 →55k ){" "}
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          M ( 55 →65k )
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          large (65 →75k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          2X large (80 →85k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          3X large (85 →90k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          4X large (90→95k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          5X large (95→100k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          6X large (100→105k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          7X large (105→110k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          8X large (110→115k)
+                        </h4>
+                        <h4 className="text-[14px font-semibold">
+                          {" "}
+                          9X large (115→120k )
+                        </h4>
+                        <h3 className="text-[20px] font-semibold text-center text-[#ff0000]">
+                          FREE SIZE
+                        </h3>
+                      </div>
+                    }
+                  />
+                </div>
+                <div className="flex my-3 gap-2 items-center ">
+                  <input
+                    type="checkbox"
+                    className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                  />
+                  <h3 id="plus" className="text-[20px] font-medium">
+                    {t("plus size")}
+                  </h3>
+                </div>
+                <div className="flex my-3 gap-2 items-center ">
+                  <input
+                    type="checkbox"
+                    className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                  />
+                  <h3 className="text-[20px] font-medium">
+                    {t("our exclusive offers")}
+                  </h3>
+                </div>
+                <Button className="bg-[#ff914c] text-[15px] font-normal my-2 myShadow w-full">
+                  {t("Filter Now")}
+                </Button>
+              </div>
+            }
+          />
+        </div>
+        <div className="lorem-box">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
+          voluptatibus deserunt nam ducimus dolore! Optio aperiam sint totam
+          ullam neque cumque dolore officia tempora, sunt aspernatur voluptas
+          autem voluptatem fuga!
+        </div>
+      </div>
+
+      <Footer />
     </>
   )
 }

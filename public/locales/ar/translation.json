@@ -186,7 +186,8 @@
   "shopping": {
     "title": "أحدث القطع المميزة لدى واحة الزين",
     "description": "فساتين ملابس مسبحة اسلامية افضل مكان للمحجبات",
-    "head": "جميع القطع المتوفرة:"
+    "head": "جميع القطع المتوفرة:",
+    "headmob": "جميع الملابس متوفرة"
   },
   "home": "بيت",
   "filter by": "تصفنيف حسب",
@@ -194,5 +195,8 @@
   "Determine your exact size": "تحديد الحجم الدقيق الخاص بك",
   "Dimensions for weights": "أبعاد للأوزان",
   "plus size": "حجم كبير",
-  "our exclusive offers": "عروضنا الحصرية"
+  "our exclusive offers": "عروضنا الحصرية",
+  "Add my size": "أضف مقاسي",
+  "Now you can know your exact size easily": "الآن يمكنك معرفة حجمك الدقيق بسهولة",
+  "Filter Now": "تصنيف الآن"
 }
