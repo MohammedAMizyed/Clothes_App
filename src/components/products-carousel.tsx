@@ -57,14 +57,14 @@ export function CarouselProducts() {
       }}
       className="w-full container max-w-[1350px] m-auto  "
     >
-      <CarouselContent className="select-none my-7">
+      <CarouselContent className="select-none mx-1 ">
         {imges.map((box) => (
           <CarouselItem key={box.id} className="basis-1/4  ">
             <div className="p-2">
               <Card>
-                <CardContent className="p-0 relative cursor-pointer ">
+                <CardContent className="p-0  relative cursor-pointer ">
                   <img
-                    className="object-cover sm:h-[400px] h-[145px] sm:w-[320px] w-[95px]"
+                    className="object-cover sm:h-[400px] h-[145px] sm:w-[340px] w-[95px]"
                     src={box.url}
                     alt="img"
                   />

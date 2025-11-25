@@ -30,7 +30,7 @@ export function ShowCarousel({
         </h3>
         <span className="underline text-[#006FFF]">{seeMore}</span>
       </div>
-      <CarouselContent className="select-none ">
+      <CarouselContent className="select-none gap-2 ml-2 sm:ml-0">
         <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
           <ProductCard
             newPrice={t("shop.content.price")}

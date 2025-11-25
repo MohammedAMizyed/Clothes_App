@@ -1,7 +1,10 @@
+/* eslint-disable react-hooks/immutability */
 import { Button } from "./ui/button"
 import { Card, CardContent } from "./ui/card"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
+import { useLocation } from "react-router-dom"
+
 type product = {
   urlImg: string
   plusSize: string
@@ -26,14 +29,18 @@ export default function ProductCard({
   btnTitle,
 }: product) {
   const { i18n } = useTranslation()
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const location = useLocation()
   return (
     <Card className="shadow-none border-0 sm:mb-15 ">
       <CardContent className={"p-0 relative cursor-pointer "}>
-        <div className="my-2 ml-3">
+        <div className="my-2  sm:ml-3">
           <div className="relative overflow-hidden sm:rounded-4xl rounded-2xl myShadow">
             <img
-              className="object-cover  sm:h-[339px] h-[125px] w-[140px] sm:w-[339px]"
+              className={cn(
+                "object-cover  sm:h-[339px] h-[125px]  sm:w-[339px]",
+                location.pathname === "/" ? "w-[145px]" : "w-[120px]"
+              )}
               src={urlImg}
               alt="img"
             />

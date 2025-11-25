@@ -5,16 +5,21 @@ import ProductCard from "@/components/ProductCard"
 import exampleImg from "../assets/eximple.jpg"
 import likeIcon from "../assets/like.svg"
 import arrow from "../assets/Vector 110.svg"
-import underArrow from "../assets/under arrow.svg"
 import filter from "../assets/Vector.svg"
 import AccordionComponent from "@/components/AccordionComponent"
 import { Button } from "@/components/ui/button"
 import Footer from "@/components/Footer"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { useEffect } from "react"
+
 export default function Shopping() {
-  const [mobule, setMobule] = useState<boolean>(true)
+  const [open, setOpen] = useState<boolean>(true)
   const { t } = useTranslation()
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setOpen(false)
+  }, [])
   return (
     <>
       <Header />
@@ -287,7 +292,7 @@ export default function Shopping() {
                 }
               />
             </div>
-            <div className="border-b border-[#1a1a1a]">
+            <div className="border-b  border-[#1a1a1a]">
               <AccordionComponent
                 title={t("Dimensions for weights")}
                 description={
@@ -533,13 +538,170 @@ export default function Shopping() {
                 </Button>
               </div>
             }
+            onToggle={(value) => {
+              setOpen(value)
+            }}
           />
         </div>
-        <div className="lorem-box">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
-          voluptatibus deserunt nam ducimus dolore! Optio aperiam sint totam
-          ullam neque cumque dolore officia tempora, sunt aspernatur voluptas
-          autem voluptatem fuga!
+        <div className={cn("mb-20", open ? "hidden" : "flex")}>
+          <div className="flex gap-1.5 flex-wrap ">
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>{" "}
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>{" "}
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>{" "}
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>{" "}
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>{" "}
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>{" "}
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>{" "}
+            <div className="">
+              <ProductCard
+                newPrice={t("shop.content.price")}
+                oldPrice={t("shop.content.oldPrice")}
+                colors={t("shop.content.colors")}
+                urlImg={exampleImg}
+                plusSize={t("shop.content.headTitle")}
+                rate={t("shop.content.headNot")}
+                btnTitle={t("shop.content.btn")}
+                iconUrl={likeIcon}
+                discTitle={t("shop.content.title")}
+              />
+            </div>
+          </div>
         </div>
       </div>
 
