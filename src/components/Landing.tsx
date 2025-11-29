@@ -17,7 +17,7 @@ export default function Landing() {
           <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-black/10 via-black/35 to-black/70"></div>
 
           <div className="absolute top-[50%] left-[50%]  transform-[translate(-50%,-50%)]  ">
-            <h1 className="sm:text-[50px] sm:w-[893px] w-[340px] text-[18px]  font-extrabold text-center sm:text-right  text-white ">
+            <h1 className="sm:text-[50px] sm:w-[493px] lg:w-[893px] w-[340px] text-[18px]  font-extrabold text-center sm:text-right  text-white ">
               {t("landing.title")}
             </h1>
             <h3 className="sm:text-[20px] text-[12px] text-center font-medium  text-[#FFFCF9] my-5 ">

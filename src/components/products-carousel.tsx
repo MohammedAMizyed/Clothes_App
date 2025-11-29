@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel"
 
 export function CarouselProducts() {
@@ -55,9 +53,9 @@ export function CarouselProducts() {
       opts={{
         align: "start",
       }}
-      className="w-full container max-w-[1350px] m-auto  "
+      className="w-full container m-auto  "
     >
-      <CarouselContent className="select-none mx-1 ">
+      <CarouselContent className="select-none mt-10 mx-1 sm:mx-7  ">
         {imges.map((box) => (
           <CarouselItem key={box.id} className="basis-1/4  ">
             <div className="p-2">
@@ -93,8 +91,8 @@ export function CarouselProducts() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      {/* <CarouselPrevious className="ml-10" />
+      <CarouselNext className="mr-1.5" /> */}
     </Carousel>
   )
 }

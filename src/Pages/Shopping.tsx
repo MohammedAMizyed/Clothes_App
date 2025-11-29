@@ -12,10 +12,10 @@ import Footer from "@/components/Footer"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { useEffect } from "react"
-
 export default function Shopping() {
   const [open, setOpen] = useState<boolean>(true)
   const { t } = useTranslation()
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false)
@@ -31,8 +31,8 @@ export default function Shopping() {
         />
       </div>
       <div className="container">
-        <div className="sm:block hidden absolute  top-[40%] left-[50%] transform-[translate(-50%,-40%)]">
-          <h1 className=" text-center  text-[#FFFCF9] text-[50px] font-bold sm:min-w-[1000px]">
+        <div className="sm:block hidden absolute md:top-[100px] md:transform-[translateX(-50%)] md:w-full  lg:top-[40%] left-[50%] lg:transform-[translate(-50%,-40%)]">
+          <h1 className=" text-center  text-[#FFFCF9] text-[50px] font-bold lg:min-w-[1000px]">
             {t("shopping.title")}
           </h1>
           <p className="text-center text-[#FFFCF9] text-[30px] font-medium">
@@ -202,7 +202,7 @@ export default function Shopping() {
             </div>
           </div>
           <div className="sm:flex-1/4">
-            <div className="flex gap-1 justify-center items-center">
+            <div className={cn("flex gap-1 justify-center items-center")}>
               <h2 className="text-[#1a1a1a9d] text-[24px] font-medium">Home</h2>
               <img src={arrow} alt="arrow icon" />
               <h2 className="text-[24px] font-bold">Products</h2>

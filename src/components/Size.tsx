@@ -24,7 +24,7 @@ export default function Size() {
           <Button
             variant="default"
             className={
-              "cursor-pointer bg-[#FFFCF9]! m-auto! mt-15! py-7! text-[#FF914C]! font-medium! text-[24px]! rounded-2xl! w-fit! sm:px-10! px-7!"
+              "cursor-pointer bg-[#FFFCF9]! m-auto! mt-15! py-7! text-[#FF914C]! font-medium! sm:text-[24px]! text-[16px] rounded-2xl! w-fit! sm:px-10! px-7!"
             }
           >
             {t("size.btn2")}

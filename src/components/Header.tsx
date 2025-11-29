@@ -35,14 +35,18 @@ export default function Header() {
       )}
     >
       <div className="container">
-        <div className="bg-[#fffcf9] myShadow border-[#f2dfc7] border flex items-center justify-between px-5  py-2 sm:rounded-[25px] rounded-[12px]">
+        <div className="bg-[#fffcf9] myShadow border-[#f2dfc7] border flex items-center justify-between sm:justify-center px-5  py-2 sm:rounded-[25px] rounded-[12px]">
           <div className=" block sm:hidden w-[25px] h-[18px]">
             <img src={logoAlt} className="w-full h-full" alt="logo" />
           </div>
           <div className="block sm:hidden">
-            <img src={ListIcon} alt="listIcon" />
+            <img
+              className="flex justify-center "
+              src={ListIcon}
+              alt="listIcon"
+            />
           </div>
-          <div className="sm:block hidden">
+          <div className="sm:block hidden flex-1/3">
             <div className=" flex gap-2 items-center">
               <span
                 onClick={handleChangeLang}
@@ -63,16 +67,16 @@ export default function Header() {
                 <input
                   placeholder={t("header.search")}
                   type="text"
-                  className="pl-9 pr-9! placeholder:text-[#1A1A1A] placeholder:font-bold  min-w-[353px] rounded-[15px] border border-[#b6a896] min-h-[45px] shadow-none! outline-none"
+                  className="pl-9 pr-9! placeholder:text-[#1A1A1A] placeholder:font-bold  w-full rounded-[15px] border border-[#b6a896] min-h-[45px] shadow-none! outline-none"
                 ></input>
               </div>
             </div>
           </div>
-          <div className="sm:block hidden">
+          <div className="sm:flex justify-center hidden  flex-1/3">
             <img src={logo} alt="logo" />
           </div>
-          <div className="sm:block hidden">
-            <div className="flex gap-2 ">
+          <div className="sm:block hidden  flex-1/3 ">
+            <div className="flex gap-2  justify-end">
               <Link to={"/login"}>
                 <Button
                   className={cn(
