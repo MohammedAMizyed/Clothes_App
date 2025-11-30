@@ -12,6 +12,7 @@ import Footer from "@/components/Footer"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 export default function Shopping() {
   const [open, setOpen] = useState<boolean>(true)
   const { t } = useTranslation()
@@ -203,7 +204,11 @@ export default function Shopping() {
           </div>
           <div className="sm:flex-1/4">
             <div className={cn("flex gap-1 justify-center items-center")}>
-              <h2 className="text-[#1a1a1a9d] text-[24px] font-medium">Home</h2>
+              <Link to={"/"}>
+                <h2 className="text-[#1a1a1a9d] text-[24px] font-medium cursor-pointer">
+                  Home
+                </h2>
+              </Link>
               <img src={arrow} alt="arrow icon" />
               <h2 className="text-[24px] font-bold">Products</h2>
             </div>

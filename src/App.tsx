@@ -5,8 +5,9 @@ import LogIn from "./Pages/LogIn"
 import { Routes, Route } from "react-router-dom"
 import Sizing from "./Pages/Sizing"
 import Shopping from "./Pages/Shopping"
-
+import ReplacementAccording from "./Pages/ReplacementAccording"
 import { useTranslation } from "react-i18next"
+import ProductDetails from "./Pages/ProductDetails"
 function App() {
   const { i18n } = useTranslation()
   return (
@@ -18,6 +19,11 @@ function App() {
         <Route element={<Home />} path="/home" />
         <Route element={<Sizing />} path="/sizing" />
         <Route element={<Shopping />} path="/shopping" />
+        <Route element={<ProductDetails />} path="/productDetails" />
+        <Route
+          element={<ReplacementAccording />}
+          path="/replacementAccording"
+        />
       </Routes>
     </div>
   )

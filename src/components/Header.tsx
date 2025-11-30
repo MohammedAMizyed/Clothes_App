@@ -31,7 +31,10 @@ export default function Header() {
     <div
       className={cn(
         "m-4 sm:relative absolute z-20 w-full mx-auto",
-        location.pathname === "/shopping" ? "sm:absolute" : "sm:relative"
+        location.pathname === "/shopping" ||
+          location.pathname === "/productDetails"
+          ? "sm:absolute"
+          : "sm:relative"
       )}
     >
       <div className="container">
