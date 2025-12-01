@@ -9,6 +9,9 @@ import noteIcon from "../assets/post-it 1.svg"
 import { Link } from "react-router-dom"
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel"
 import Footer from "@/components/Footer"
+import { ProductDetailsCarouselCol } from "@/components/ProductDetailsCaroselCol"
+import { ProductDetailsCarouselRow } from "@/components/ProductDetailsCarosulRow"
+import { ProductDetailsCarouselRowSmole } from "@/components/ProductDetailsCarouselRowSmole"
 export default function ProductDetails() {
   const { t, i18n } = useTranslation()
   const sizes = [
@@ -58,11 +61,14 @@ export default function ProductDetails() {
           <img src={arrowImg} alt="arrowIcon" />
           <h2 className="text-[24px] font-bold">Products</h2>
         </div>
-        <div className="flex gap-10">
-          <div>
-            <ProductDetailsCarousel></ProductDetailsCarousel>
+        <div className="flex gap-15">
+          <div className="flex">
+            <ProductDetailsCarousel />
+            <div>
+              <ProductDetailsCarouselCol />
+            </div>
           </div>
-          <div></div>
+
           <div>
             <h3 className="text-[#A97C50] font-semibold text-[14px]">
               {t("productDetails.catoucory")}
@@ -92,7 +98,9 @@ export default function ProductDetails() {
                 12 {t("productDetails.color")}
               </h4>
             </div>
-            <div className="text-[40px]">slider</div>
+            <div className="text-[40px]">
+              <ProductDetailsCarouselRowSmole />
+            </div>
             <div>
               <h3 className="text-[16px] font-bold my-2">
                 {t("productDetails.cm")}
@@ -144,8 +152,19 @@ export default function ProductDetails() {
             </div>
           </div>
         </div>
+        <div className="mb-15">
+          <div className="flex my-5 justify-between items-center">
+            <h3 className="text-[30px] font-medium">
+              {t("productDetails.more")}
+            </h3>
+            <p className="text-[#006FFF] text-[20px] font-medium">
+              {t("seeMore")}
+            </p>
+          </div>
+          <ProductDetailsCarouselRow />
+        </div>
       </div>
-      <Footer></Footer>
+      <Footer />
     </>
   )
 }

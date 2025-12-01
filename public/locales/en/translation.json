@@ -211,11 +211,13 @@
     "color": "color",
     "cm": "Measurements:",
     "cmDescription": "Every body has its own details, so we'll let you add your size easily and recommend the most suitable one for you!",
-    "note": "Your exact size will be determined when you add your measurements based on bust and hip circumference."
+    "note": "Your exact size will be determined when you add your measurements based on bust and hip circumference.",
+    "more": "More dresses:"
   },
   "addMySize": "add my size",
   "baunow": "buy it now",
   "addtocart": "add to cart",
   "accept": "We accept exchanges under simplified terms",
-  "learnMore": "Learn more here"
+  "learnMore": "Learn more here",
+  "seeMore": "seeMore >"
 }
