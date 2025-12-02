@@ -12,11 +12,11 @@ import ProductDetailsImg from "../assets/product detauls.jpg"
 export default function ProductDetailsCarousel() {
   const { i18n } = useTranslation()
   return (
-    <div>
+    <div className="select-none">
       <Carousel>
-        <CarouselContent className="ml-0 cursor-pointer max-w-[460px]">
+        <CarouselContent className="ml-0 cursor-pointer max-w-[259px] sm:max-w-[460px]">
           <CarouselItem className="w-[460px]">
-            <div className="max-w-[432px] overflow-hidden rounded-2xl max-h-[754px]">
+            <div className="sm:max-w-[432px] max-w-[259px] overflow-hidden rounded-2xl max-h-[335px] sm:max-h-[754px]">
               <img
                 className="object-cover h-full  w-full"
                 src={ProductDetailsImg}
@@ -25,7 +25,7 @@ export default function ProductDetailsCarousel() {
             </div>
           </CarouselItem>
           <CarouselItem className="w-[460px]">
-            <div className="max-w-[432px] overflow-hidden rounded-2xl max-h-[754px]">
+            <div className="sm:max-w-[432px] max-w-[259px] overflow-hidden rounded-2xl max-h-[335px] sm:max-h-[754px]">
               <img
                 className="object-cover h-full  w-full"
                 src={ProductDetailsImg}
@@ -34,7 +34,7 @@ export default function ProductDetailsCarousel() {
             </div>
           </CarouselItem>
           <CarouselItem className="w-[460px]">
-            <div className="max-w-[432px] overflow-hidden rounded-2xl max-h-[754px]">
+            <div className="sm:max-w-[432px] max-w-[259px] overflow-hidden rounded-2xl max-h-[335px] sm:max-h-[754px]">
               <img
                 className="object-cover h-full  w-full"
                 src={ProductDetailsImg}
@@ -43,7 +43,7 @@ export default function ProductDetailsCarousel() {
             </div>
           </CarouselItem>{" "}
           <CarouselItem className="w-[460px]">
-            <div className="max-w-[432px] overflow-hidden rounded-2xl max-h-[754px]">
+            <div className="sm:max-w-[432px] max-w-[259px] overflow-hidden rounded-2xl max-h-[335px] sm:max-h-[754px]">
               <img
                 className="object-cover h-full  w-full"
                 src={ProductDetailsImg}

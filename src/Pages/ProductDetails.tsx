@@ -36,7 +36,7 @@ export default function ProductDetails() {
       <div className="relative">
         <Header />
         <img
-          className="object-cover w-full h-[250px]"
+          className="select-none object-cover w-full h-[98px] sm:h-[250px]"
           src={backgroundImg}
           alt="img"
         />
@@ -44,7 +44,7 @@ export default function ProductDetails() {
       </div>
       <div className="container">
         <div className="text-center my-15">
-          <h1 className="mb-2 sm:font-bold font-medium text-[16px] sm:text-[40px] ">
+          <h1 className="mb-2 sm:font-bold font-medium text-[18px] sm:text-[40px] ">
             {t("productDetails.title")}
           </h1>
           <p className=" text-[12px] font-normal sm:text-[24px] sm:font-semibold">
@@ -53,16 +53,27 @@ export default function ProductDetails() {
         </div>
         <div
           className={cn(
-            "flex gap-2 ",
+            "flex gap-2 mb-5 items-center",
             i18n.language === "en" ? "justify-start" : "flex-row-reverse"
           )}
         >
-          <h2 className="text-[#1a1a1a9d] text-[24px] font-bold">Home</h2>
-          <img src={arrowImg} alt="arrowIcon" />
-          <h2 className="text-[24px] font-bold">Products</h2>
+          <Link to={"/"}>
+            <h2 className=" cursor-pointer text-[#1a1a1a9d] sm:text-[24px] text-[12px] font-normal sm:font-bold">
+              Home
+            </h2>
+          </Link>
+
+          <img
+            className="sm:w-fill max-w-[44px]"
+            src={arrowImg}
+            alt="arrowIcon"
+          />
+          <h2 className="sm:text-[24px] text-[17px] font-normal sm:font-bold">
+            Products Details
+          </h2>
         </div>
-        <div className="flex gap-15">
-          <div className="flex">
+        <div className="flex sm:gap-15 gap-3 flex-col sm:flex-row">
+          <div className="flex sm:gap-0 gap-4">
             <ProductDetailsCarousel />
             <div>
               <ProductDetailsCarouselCol />
@@ -73,55 +84,65 @@ export default function ProductDetails() {
             <h3 className="text-[#A97C50] font-semibold text-[14px]">
               {t("productDetails.catoucory")}
             </h3>
-            <div className="flex justify-between items-center">
-              <h2 className="text-[40px] font-bold">
+            <div className="flex my-2 justify-between items-center">
+              <h2 className="sm:text-[40px] sm:font-bold text-[14px] font-normal">
                 {t("productDetails.abaya")}
               </h2>
-              <img src={likeIcon} alt="likeIcon" />
+              <button className="cursor-pointer">
+                <img
+                  className="sm:w-full w-[15px]"
+                  src={likeIcon}
+                  alt="likeIcon"
+                />
+              </button>
             </div>
             <div className="flex gap-2 items-center">
-              <h2 className="text-[24px] font-bold">
+              <h2 className="sm:text-[24px] text-[12px] font-normal sm:font-bold">
                 120 {t("productDetails.uae")}
               </h2>
-              <span className="text-[16px] font-medium line-through text-[#A97C50]">
+              <span className="sm:text-[16px] text-[8px] font-medium line-through text-[#A97C50]">
                 150 {t("productDetails.uae")}
               </span>
             </div>
-            <p className="text-[#A97C50] text-[18px] font-normal">
+            <p className="my-1 text-[#A97C50] sm:text-[18px] text-[8px] font-medium sm:font-normal">
               {t("productDetails.paragraph")}
             </p>
-            <div className="flex gap-2 items-center">
-              <h3 className="text-[16px] font-bold">
-                {t("productDetails.colors")}:
-              </h3>
-              <h4 className="text-[12px] font-normal">
-                12 {t("productDetails.color")}
-              </h4>
+            <div className="sm:m-0 m-2">
+              <div className="flex sm:gap-2 gap-1 items-center">
+                <h3 className="sm:text-[16px] text-[12px] font-normal sm:font-bold">
+                  {t("productDetails.colors")}:
+                </h3>
+                <h4 className="sm:text-[12px] text-[8px] font-normal">
+                  12 {t("productDetails.color")}
+                </h4>
+              </div>
+              <div className="text-[40px]">
+                <ProductDetailsCarouselRowSmole />
+              </div>
             </div>
-            <div className="text-[40px]">
-              <ProductDetailsCarouselRowSmole />
-            </div>
-            <div>
-              <h3 className="text-[16px] font-bold my-2">
+            <div className="sm:m-0 m-2">
+              <h3 className=" text-[8px] sm:text-[16px] sm:font-bold font-normal my-2">
                 {t("productDetails.cm")}
               </h3>
-              <p className="my-2 text-[10px] font-bold">
+              <p className="my-2 sm:text-[10px] font-normal text-[8px] sm:font-bold">
                 {t("productDetails.cmDescription")}
               </p>
-              <Button className=" myShadow bg-[#FF914C] rounded-[16px] mx-4 mb-2">
+              <Button className="text-[8px] sm:text-[12px] cursor-pointer myShadow bg-[#FF914C] rounded-[16px] mx-4 mb-2">
                 {t("addMySize")}
               </Button>
             </div>
             <div className="">
               <div className="flex items-center gap-2">
                 <img src={noteIcon} alt="noteIcon" />
-                <h3 className="underline ">{t("productDetails.note")}</h3>
+                <h3 className="underline text-[8px] sm:text-[10px] ">
+                  {t("productDetails.note")}
+                </h3>
               </div>
-              <div className="my-4 flex gap-2 flex-wrap">
+              <div className="my-4 flex sm:gap-2 gap-1 flex-wrap">
                 {sizes.map((item, index) => {
                   return (
                     <div
-                      className="w-12 h-12 text-[15px] font-bold flex items-center justify-center  border-2 border-black rounded-sm "
+                      className="cursor-pointer w-6 h-6 sm:w-12 sm:h-12 text-[8px] sm:text-[15px] font-bold flex items-center justify-center  border-2 border-black rounded-sm "
                       key={index}
                     >
                       {item}
@@ -133,11 +154,11 @@ export default function ProductDetails() {
             <div className="flex gap-2">
               <Button
                 variant={"outline"}
-                className="text-[#FF914C] myShadow rounded-[18px] text-[24px] p-6 "
+                className="cursor-pointer text-[#FF914C] myShadow rounded-[18px] text-[12px] sm:text-[24px] p-6 "
               >
                 {t("baunow")}
               </Button>
-              <Button className="bg-[#FF914C] myShadow text-[24px] p-6 font-medium rounded-[18px] ">
+              <Button className="cursor-pointer bg-[#FF914C] myShadow text-[12px] sm:text-[24px] p-6 font-medium rounded-[18px] ">
                 {t("addtocart")}
               </Button>
               <div></div>
@@ -152,7 +173,7 @@ export default function ProductDetails() {
             </div>
           </div>
         </div>
-        <div className="mb-15">
+        <div className="mb-15 hidden sm:block">
           <div className="flex my-5 justify-between items-center">
             <h3 className="text-[30px] font-medium">
               {t("productDetails.more")}

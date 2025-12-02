@@ -1,4 +1,10 @@
 /* eslint-disable react-hooks/immutability */
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
 import logo from "../assets/Frame 135 (1).svg"
 import logoAlt from "../assets/image 1 (1).svg"
 import WorldIcon from "../assets/Group 2 (1).svg"
@@ -11,6 +17,7 @@ import { cn } from "@/lib/utils"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
+
 export default function Header() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const location = useLocation()
@@ -39,15 +46,44 @@ export default function Header() {
     >
       <div className="container">
         <div className="bg-[#fffcf9] myShadow border-[#f2dfc7] border flex items-center justify-between sm:justify-center px-5  py-2 sm:rounded-[25px] rounded-[12px]">
-          <div className=" block sm:hidden w-[25px] h-[18px]">
+          <div className=" select-none block sm:hidden w-[25px] h-[18px]">
             <img src={logoAlt} className="w-full h-full" alt="logo" />
           </div>
-          <div className="block sm:hidden">
-            <img
-              className="flex justify-center "
-              src={ListIcon}
-              alt="listIcon"
-            />
+          <div className="block sm:hidden relative">
+            <Popover>
+              <PopoverTrigger>
+                <img
+                  className="flex justify-center "
+                  src={ListIcon}
+                  alt="listIcon"
+                />
+              </PopoverTrigger>
+              <PopoverContent className="border-2 rounded-2xl absolute -left-4 max-w-[150px]  border-[#f3e0c8]">
+                <div className="flex flex-col gap-2 ">
+                  <Link to={"/login"}>
+                    <Button
+                      className={cn(
+                        `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
+                        "h-11"
+                      )}
+                    >
+                      {t("header.btn2")}
+                    </Button>
+                  </Link>
+                  <Link to={"/signup"}>
+                    <Button
+                      className={cn(
+                        "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
+                        "h-11"
+                      )}
+                      variant="default"
+                    >
+                      {t("header.btn1")}
+                    </Button>
+                  </Link>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
           <div className="sm:block hidden flex-1/3">
             <div className=" flex gap-2 items-center">
@@ -75,7 +111,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="sm:flex justify-center hidden  flex-1/3">
+          <div className="select-none sm:flex justify-center hidden  flex-1/3">
             <img src={logo} alt="logo" />
           </div>
           <div className="sm:block hidden  flex-1/3 ">
