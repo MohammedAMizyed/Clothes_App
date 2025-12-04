@@ -7,7 +7,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import ProductCard from "./ProductCard"
-
+import { useRecentProduct } from "@/hooks/useResentProducts"
 export function ShowCarousel({
   title,
   seeMore,
@@ -16,7 +16,7 @@ export function ShowCarousel({
   seeMore: string
 }) {
   const { t } = useTranslation()
-
+  const { data, isLoading, error } = useRecentProduct()
   return (
     <Carousel
       opts={{
@@ -30,112 +30,36 @@ export function ShowCarousel({
         </h3>
         <span className="underline text-[#006FFF]">{seeMore}</span>
       </div>
-      <CarouselContent className="select-none gap-2 ml-2 sm:ml-0">
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-        <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
-          <ProductCard
-            newPrice={t("shop.content.price")}
-            oldPrice={t("shop.content.oldPrice")}
-            colors={t("shop.content.colors")}
-            urlImg={exampleImg}
-            plusSize={t("shop.content.headTitle")}
-            rate={t("shop.content.headNot")}
-            btnTitle={t("shop.content.btn")}
-            iconUrl={likeIcon}
-            discTitle={t("shop.content.title")}
-          />
-        </CarouselItem>
-      </CarouselContent>
+      {isLoading ? (
+        <h1 className="animate-pulse font-bold text-[30px]">
+          {t("loading")}...
+        </h1>
+      ) : (
+        <>
+          <CarouselContent className="select-none gap-2 ml-2 sm:ml-0">
+            {data?.map((item) => {
+              return (
+                <div key={item.id}>
+                  <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
+                    <ProductCard
+                      newPrice={item.price + " " + t("usa")}
+                      oldPrice={t("shop.content.oldPrice")}
+                      colors={t("shop.content.colors")}
+                      urlImg={item.main_image_url}
+                      plusSize={t("shop.content.headTitle")}
+                      rate={t("shop.content.headNot")}
+                      btnTitle={t("shop.content.btn")}
+                      iconUrl={likeIcon}
+                      discTitle={t(item.product_name)}
+                    />
+                  </CarouselItem>
+                </div>
+              )
+            })}
+          </CarouselContent>
+        </>
+      )}
+      {error ? <h1>{t("error")}</h1> : null}
     </Carousel>
   )
 }

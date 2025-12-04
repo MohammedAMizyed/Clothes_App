@@ -3,7 +3,10 @@ import InstagramIcon from "../assets/Group (1).svg"
 import LinkedInIcon from "../assets/Frame (5).svg"
 import logo from "../assets/Frame 135 (1).svg"
 import { useTranslation } from "react-i18next"
+import { useCategories } from "@/hooks/useCategories"
 export default function Footer() {
+  const { data, isLoading, isError } = useCategories()
+  console.log(data)
   const { t } = useTranslation()
 
   return (
@@ -24,21 +27,17 @@ export default function Footer() {
                 <li className="text-[16px] sm:font-bold sm:mb-0 mb-4 leading-[160%] ">
                   {t("footer.sections")}
                 </li>
-                <li className="text-[16px] font-normal mb-3 sm:mb-0 leading-[160%] ">
-                  {t("footer.dresses")}
-                </li>
-                <li className="text-[16px] font-normal mb-3 sm:mb-0 leading-[160%]">
-                  {t("footer.swimwear")}
-                </li>{" "}
-                <li className="text-[16px] font-normal mb-3 sm:mb-0 leading-[160%]">
-                  {t("footer.travelClothes")}
-                </li>
-                <li className="text-[16px] font-normal mb-3 sm:mb-0 leading-[160%]">
-                  {t("footer.hijabsAndPrayerClothes")}
-                </li>
-                <li className="text-[16px] font-normal mb-3 sm:mb-0 leading-[160%]">
-                  {t("footer.winterClothes")}
-                </li>
+                {data?.map((category) => {
+                  return <li key={category.id}>{t(category.name)}</li>
+                })}
+                {isLoading ? (
+                  <h1 className=" text-red-600 font-bold animate-pulse">
+                    {t("loading")}...
+                  </h1>
+                ) : null}
+                {isError ? (
+                  <h1 className=" text-red-600 font-bold ">{t("error")}</h1>
+                ) : null}
               </ul>
             </div>
             <div>

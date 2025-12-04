@@ -13,10 +13,13 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useCategories } from "@/hooks/useCategories"
+import { useProducts } from "@/hooks/useProducts"
 export default function Shopping() {
   const [open, setOpen] = useState<boolean>(true)
-  const { t } = useTranslation()
-
+  const { t, i18n } = useTranslation()
+  const { data: categories } = useCategories()
+  const { data: products } = useProducts()
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false)
@@ -40,178 +43,46 @@ export default function Shopping() {
             {t("shopping.description")}
           </p>
         </div>
+        <div
+          className={cn(
+            "flex gap-1  items-center",
+            i18n.language == "ar"
+              ? "justify-start flex-row-reverse"
+              : "justify-start"
+          )}
+        >
+          <Link to={"/"}>
+            <h2 className="text-[#1a1a1a9d] text-[24px] font-medium cursor-pointer">
+              Home
+            </h2>
+          </Link>
+          <img src={arrow} alt="arrow icon" />
+          <h2 className="text-[24px] font-bold">Products</h2>
+        </div>
         <div className=" hidden sm:flex items-start justify-center sm:flex-row flex-col-reverse ">
           <div className="sm:flex-3/4">
             <h1 className="mb-3 font-bold text-[35px]">{t("shopping.head")}</h1>
             <div className="flex gap-3 flex-wrap ">
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>{" "}
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>{" "}
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>{" "}
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>{" "}
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>{" "}
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>{" "}
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>{" "}
-              <div className="">
-                <ProductCard
-                  newPrice={t("shop.content.price")}
-                  oldPrice={t("shop.content.oldPrice")}
-                  colors={t("shop.content.colors")}
-                  urlImg={exampleImg}
-                  plusSize={t("shop.content.headTitle")}
-                  rate={t("shop.content.headNot")}
-                  btnTitle={t("shop.content.btn")}
-                  iconUrl={likeIcon}
-                  discTitle={t("shop.content.title")}
-                />
-              </div>
+              {products?.map((item) => {
+                return (
+                  <div key={item.id}>
+                    <ProductCard
+                      newPrice={t("usa") + "" + item.price}
+                      oldPrice={t("shop.content.oldPrice")}
+                      colors={t("shop.content.colors")}
+                      urlImg={item.main_image_url}
+                      plusSize={t("shop.content.headTitle")}
+                      rate={t("shop.content.headNot")}
+                      btnTitle={t("shop.content.btn")}
+                      iconUrl={likeIcon}
+                      discTitle={item.product_name}
+                    />
+                  </div>
+                )
+              })}
             </div>
           </div>
           <div className="sm:flex-1/4">
-            <div className={cn("flex gap-1 justify-center items-center")}>
-              <Link to={"/"}>
-                <h2 className="text-[#1a1a1a9d] text-[24px] font-medium cursor-pointer">
-                  Home
-                </h2>
-              </Link>
-              <img src={arrow} alt="arrow icon" />
-              <h2 className="text-[24px] font-bold">Products</h2>
-            </div>
             <div className="mt-7 flex justify-between items-center">
               <h2 className="text-[24px] font-bold">{t("filter by")}</h2>
               <img src={filter} alt="filterIcon" />
@@ -221,60 +92,22 @@ export default function Shopping() {
                 title={t("Our available items")}
                 description={
                   <div>
-                    <div className="flex gap-2 items-center ">
-                      <input
-                        type="checkbox"
-                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                      />
-                      <h3 id="plus" className="text-[14px] font-medium">
-                        {t("dresses")}
-                      </h3>
-                    </div>
-                    <div className="flex gap-2 items-center ">
-                      <input
-                        type="checkbox"
-                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                      />
-                      <h3 id="plus" className="text-[14px] font-medium">
-                        {t("travel clothes")}
-                      </h3>
-                    </div>
-                    <div className="flex gap-2 items-center ">
-                      <input
-                        type="checkbox"
-                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                      />
-                      <h3 id="plus" className="text-[14px] font-medium">
-                        {t("winter clothes")}
-                      </h3>
-                    </div>
-                    <div className="flex gap-2 items-center ">
-                      <input
-                        type="checkbox"
-                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                      />
-                      <h3 id="plus" className="text-[14px] font-medium">
-                        {t("swimwear")}
-                      </h3>
-                    </div>
-                    <div className="flex gap-2 items-center ">
-                      <input
-                        type="checkbox"
-                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                      />
-                      <h3 id="plus" className="text-[14px] font-medium">
-                        {t("Hijabs and prayer clothes")}
-                      </h3>
-                    </div>
-                    <div className="flex gap-2 items-center ">
-                      <input
-                        type="checkbox"
-                        className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                      />
-                      <h3 id="plus" className="text-[14px] font-medium">
-                        {t("All available parts")}
-                      </h3>
-                    </div>
+                    {categories?.map((item) => {
+                      return (
+                        <label
+                          key={item.id}
+                          className="cursor-pointer flex gap-2 items-center "
+                        >
+                          <input
+                            type="checkbox"
+                            className=" bg-[#fffcf9]! shadow-none!"
+                          />
+                          <h3 className="text-[14px] font-medium">
+                            {t(item.name)}
+                          </h3>
+                        </label>
+                      )
+                    })}
                   </div>
                 }
               />

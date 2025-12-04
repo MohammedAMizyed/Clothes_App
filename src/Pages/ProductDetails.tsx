@@ -12,25 +12,11 @@ import Footer from "@/components/Footer"
 import { ProductDetailsCarouselCol } from "@/components/ProductDetailsCaroselCol"
 import { ProductDetailsCarouselRow } from "@/components/ProductDetailsCarosulRow"
 import { ProductDetailsCarouselRowSmole } from "@/components/ProductDetailsCarouselRowSmole"
+import { useSizing } from "@/hooks/useSizeing"
 export default function ProductDetails() {
+  const { data, isLoading, error } = useSizing()
   const { t, i18n } = useTranslation()
-  const sizes = [
-    "S",
-    "M",
-    "L",
-    "XL",
-    "2XL",
-    "3XL",
-    "4XL",
-    "5XL",
-    "6XL",
-    "7XL",
-    "8XL",
-    "9XL",
-    "10XL",
-    "11XL",
-    "12XL",
-  ]
+
   return (
     <>
       <div className="relative">
@@ -139,13 +125,27 @@ export default function ProductDetails() {
                 </h3>
               </div>
               <div className="my-4 flex sm:gap-2 gap-1 flex-wrap">
-                {sizes.map((item, index) => {
+                {isLoading ? (
+                  <h1 className="font-bold text-red-600 animate-pulse">
+                    {t("loading")}...
+                  </h1>
+                ) : null}
+                {error ? (
+                  <h1 className="font-bold text-red-600 animate-pulse">
+                    {t("error")}
+                  </h1>
+                ) : null}
+                {data?.map((item) => {
                   return (
                     <div
-                      className="cursor-pointer w-6 h-6 sm:w-12 sm:h-12 text-[8px] sm:text-[15px] font-bold flex items-center justify-center  border-2 border-black rounded-sm "
-                      key={index}
+                      className={cn(
+                        `font-[${item.weight}]`,
+                        item.code === "free-size" ? "w-18!" : "w-6",
+                        " cursor-pointer  h-6 sm:w-12 sm:h-12 text-[8px] sm:text-[15px] font-bold flex items-center justify-center  border-2 border-black rounded-sm "
+                      )}
+                      key={item.id}
                     >
-                      {item}
+                      {item.code}
                     </div>
                   )
                 })}
@@ -161,7 +161,6 @@ export default function ProductDetails() {
               <Button className="cursor-pointer bg-[#FF914C] myShadow text-[12px] sm:text-[24px] p-6 font-medium rounded-[18px] ">
                 {t("addtocart")}
               </Button>
-              <div></div>
             </div>
             <div className="text-[12px] font-semibold flex my-4">
               <p>{t("accept")}</p>--{" "}

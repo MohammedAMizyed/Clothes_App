@@ -8,6 +8,7 @@ import Shopping from "./Pages/Shopping"
 import ReplacementAccording from "./Pages/ReplacementAccording"
 import { useTranslation } from "react-i18next"
 import ProductDetails from "./Pages/ProductDetails"
+
 function App() {
   const { i18n } = useTranslation()
   return (

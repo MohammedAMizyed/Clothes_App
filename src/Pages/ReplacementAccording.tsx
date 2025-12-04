@@ -8,7 +8,7 @@ export default function ReplacementAccording() {
     <>
       <div
         className={cn(
-          " mb-20! container m-auto flex items-center justify-center flex-col"
+          " mb-20! sm:mb-4! container m-auto flex items-center justify-center flex-col"
         )}
       >
         <h1 className="my-18 sm:my-11  sm:font-bold font-medium  w-full text-center leading-[100%]  sm:text-[40px] text-[16px]">

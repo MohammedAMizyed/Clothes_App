@@ -24,7 +24,6 @@ export default function Header() {
   const { t, i18n } = useTranslation()
   useEffect(() => {
     i18n.changeLanguage(i18n.language)
-    console.log(location)
   }, [])
   function handleChangeLang() {
     if (i18n.language === "ar") {

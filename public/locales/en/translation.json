@@ -166,7 +166,7 @@
     "titl3": "Large sizes:",
     "content": {
       "title": "Black abaya",
-      "price": "26 UAE",
+      "price": "UAE",
       "oldPrice": "99 UAE",
       "colors": "7 color",
       "btn": "Add to Cart",
@@ -219,5 +219,18 @@
   "addtocart": "add to cart",
   "accept": "We accept exchanges under simplified terms",
   "learnMore": "Learn more here",
-  "seeMore": "seeMore >"
+  "seeMore": "seeMore >",
+  "Dresses": "Dresses",
+  "Skirts": "Skirts",
+  "Jackets": "Jackets & Coats\nSweat",
+  "Activewear": "Activewear\n",
+  "Swimwear": "Swimwear",
+  "Accessories": "Accessories",
+  "Jackets & Coats": "Jackets & Coats",
+  "jackets-coats": "jackets-coats",
+  "Sweaters & Cardigans": "Sweaters & Cardigans",
+  "Bags & Handbags": "Bags & Handbags",
+  "loading": "Loading",
+  "usa": "UAE",
+  "error": "Somtging went wrong plese try again later"
 }
