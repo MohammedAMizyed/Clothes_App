@@ -38,6 +38,7 @@ export default function Header() {
       className={cn(
         "m-4 sm:relative absolute z-20 w-full mx-auto",
         location.pathname === "/shopping" ||
+          location.pathname === "/shoppingCart" ||
           location.pathname === "/productDetails"
           ? "sm:absolute"
           : "sm:relative"

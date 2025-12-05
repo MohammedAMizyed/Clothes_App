@@ -8,7 +8,8 @@ import Shopping from "./Pages/Shopping"
 import ReplacementAccording from "./Pages/ReplacementAccording"
 import { useTranslation } from "react-i18next"
 import ProductDetails from "./Pages/ProductDetails"
-
+import ShoppingCart from "./Pages/ShoppingCart"
+import Error from "./Pages/Error"
 function App() {
   const { i18n } = useTranslation()
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route element={<Sizing />} path="/sizing" />
         <Route element={<Shopping />} path="/shopping" />
         <Route element={<ProductDetails />} path="/productDetails" />
+        <Route element={<ShoppingCart />} path="/shoppingCart" />
+        <Route element={<Error />} path="*" />
         <Route
           element={<ReplacementAccording />}
           path="/replacementAccording"

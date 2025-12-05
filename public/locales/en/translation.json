@@ -232,5 +232,18 @@
   "Bags & Handbags": "Bags & Handbags",
   "loading": "Loading",
   "usa": "UAE",
-  "error": "Somtging went wrong plese try again later"
+  "error": "Somtging went wrong plese try again later",
+  "shoppingCart": {
+    "title": "Shopping Cart",
+    "description": "Check your selected products before completing your order, and you can easily modify quantities or remove items.",
+    "error": "\"Notice: The items in your cart are not reserved and may sell out quickly. Complete your purchase now to confirm your order.\""
+  },
+  "errorPageMessage": "The page u lokking for is not Found",
+  "back": "Back To Home Page",
+  "product": "Product",
+  "price": "Price",
+  "quantity": "Quantity",
+  "total": "Total",
+  "prayer": "Prayer dress",
+  "product-colors": "color: White | Size : Large"
 }
