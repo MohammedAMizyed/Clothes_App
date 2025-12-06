@@ -37,9 +37,9 @@ export default function Header() {
     <div
       className={cn(
         "m-4 sm:relative absolute z-20 w-full mx-auto",
-        location.pathname === "/shopping" ||
+        location.pathname === "/products" ||
           location.pathname === "/shoppingCart" ||
-          location.pathname === "/productDetails"
+          /\/products\/\d+$/.test(location.pathname)
           ? "sm:absolute"
           : "sm:relative"
       )}

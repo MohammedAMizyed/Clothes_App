@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next"
-import exampleImg from "../assets/eximple.jpg"
 import likeIcon from "../assets/like.svg"
 import {
   Carousel,

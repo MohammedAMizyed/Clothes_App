@@ -32,10 +32,10 @@ export default function ProductCard({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const location = useLocation()
   return (
-    <Link to={"/productDetails"}>
-      <Card className="shadow-none border-0 sm:mb-15 ">
-        <CardContent className={"p-0 relative cursor-pointer "}>
-          <div className="my-2  sm:ml-3">
+    <Card className="shadow-none border-0 sm:mb-15 ">
+      <CardContent className={"p-0 relative cursor-pointer "}>
+        <div className="my-2  sm:ml-3">
+          <Link to={"/products/1"}>
             <div className="relative overflow-hidden sm:rounded-4xl rounded-2xl myShadow">
               <img
                 className={cn(
@@ -71,37 +71,34 @@ export default function ProductCard({
                 </span>
               </div>
             </div>
-            <div className="m-2">
-              <div className=" mb-2 sm:mb-0 flex justify-between items-center ">
-                <h3 className="sm:text-[24px] text-[14px]  font-semibold">
-                  {discTitle}
-                </h3>
-                <div className="myShadow rounded-[50%] sm:p-2 p-1 ">
-                  <img
-                    className="w-[16px] sm:w-full"
-                    src={iconUrl}
-                    alt="icon"
-                  />
-                </div>
+          </Link>
+
+          <div className="m-2">
+            <div className=" mb-2 sm:mb-0 flex justify-between items-center ">
+              <h3 className="sm:text-[24px] text-[14px]  font-semibold">
+                {discTitle}
+              </h3>
+              <div className="myShadow rounded-[50%] sm:p-2 p-1 ">
+                <img className="w-[16px] sm:w-full" src={iconUrl} alt="icon" />
               </div>
-              <div className="flex sm:gap-2 gap-1 justify-start m-y2">
-                <h3 className="text-[#FF914C] sm:text-[25px] text-[14px] font-bold">
-                  {newPrice}
-                </h3>
-                <span className="line-through text-[#00000033] sm:text-[18px] text-[12px]">
-                  {oldPrice}
-                </span>
-              </div>
-              <span className=" text-[#00000033] sm:text-[18px] text-[12px] block">
-                {colors}
-              </span>
-              <Button className="sm:flex hidden text-[24px] font-semibold w-full rounded-[20px] bg-[#FFFFFF] text-[#FF914C] myShadow py-8 cursor-pointer hover:text-white hover:bg-[#FF914C] transition-all duration-200">
-                {btnTitle}
-              </Button>
             </div>
+            <div className="flex sm:gap-2 gap-1 justify-start m-y2">
+              <h3 className="text-[#FF914C] sm:text-[25px] text-[14px] font-bold">
+                {newPrice}
+              </h3>
+              <span className="line-through text-[#00000033] sm:text-[18px] text-[12px]">
+                {oldPrice}
+              </span>
+            </div>
+            <span className=" text-[#00000033] sm:text-[18px] text-[12px] block">
+              {colors}
+            </span>
+            <Button className="sm:flex hidden text-[24px] font-semibold w-full rounded-[20px] bg-[#FFFFFF] text-[#FF914C] myShadow py-8 cursor-pointer hover:text-white hover:bg-[#FF914C] transition-all duration-200">
+              {btnTitle}
+            </Button>
           </div>
-        </CardContent>
-      </Card>
-    </Link>
+        </div>
+      </CardContent>
+    </Card>
   )
 }

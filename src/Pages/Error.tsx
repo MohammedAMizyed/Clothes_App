@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 import Header from "@/components/Header"
+import { Link } from "react-router-dom"
 export default function Error() {
   const { t } = useTranslation()
   return (
@@ -10,9 +11,11 @@ export default function Error() {
         <div className="font-bold sm:text-[40px] text-[#ddd] text-center">
           {t("errorPageMessage")}
         </div>
-        <Button variant={"secondary"} className="cursor-pointer font-bold ">
-          {t("back")}
-        </Button>
+        <Link to={"/"}>
+          <Button variant={"secondary"} className="cursor-pointer font-bold ">
+            {t("back")}
+          </Button>
+        </Link>
       </div>
     </>
   )

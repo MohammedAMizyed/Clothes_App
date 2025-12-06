@@ -13,10 +13,14 @@ import { ProductDetailsCarouselCol } from "@/components/ProductDetailsCaroselCol
 import { ProductDetailsCarouselRow } from "@/components/ProductDetailsCarosulRow"
 import { ProductDetailsCarouselRowSmole } from "@/components/ProductDetailsCarouselRowSmole"
 import { useSizing } from "@/hooks/useSizeing"
+import { useParams, Navigate } from "react-router-dom"
 export default function ProductDetails() {
   const { data, isLoading, error } = useSizing()
   const { t, i18n } = useTranslation()
-
+  const { id } = useParams()
+  if (!id || !/^\d+$/.test(id)) {
+    return <Navigate to={"/error"} replace />
+  }
   return (
     <>
       <div className="relative">

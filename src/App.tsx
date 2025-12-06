@@ -4,12 +4,13 @@ import SignUp from "./Pages/SignUp"
 import LogIn from "./Pages/LogIn"
 import { Routes, Route } from "react-router-dom"
 import Sizing from "./Pages/Sizing"
-import Shopping from "./Pages/Shopping"
+import Products from "./Pages/Products"
 import ReplacementAccording from "./Pages/ReplacementAccording"
 import { useTranslation } from "react-i18next"
 import ProductDetails from "./Pages/ProductDetails"
 import ShoppingCart from "./Pages/ShoppingCart"
 import Error from "./Pages/Error"
+
 function App() {
   const { i18n } = useTranslation()
   return (
@@ -20,8 +21,8 @@ function App() {
         <Route element={<Home />} path="/" />
         <Route element={<Home />} path="/home" />
         <Route element={<Sizing />} path="/sizing" />
-        <Route element={<Shopping />} path="/shopping" />
-        <Route element={<ProductDetails />} path="/productDetails" />
+        <Route element={<Products />} path="/products" />
+        <Route element={<ProductDetails />} path="/products/:id" />
         <Route element={<ShoppingCart />} path="/shoppingCart" />
         <Route element={<Error />} path="*" />
         <Route

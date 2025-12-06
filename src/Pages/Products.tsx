@@ -15,11 +15,19 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useCategories } from "@/hooks/useCategories"
 import { useProducts } from "@/hooks/useProducts"
-export default function Shopping() {
+export default function Products() {
   const [open, setOpen] = useState<boolean>(true)
   const { t, i18n } = useTranslation()
-  const { data: categories } = useCategories()
-  const { data: products } = useProducts()
+  const {
+    data: categories,
+    isLoading: categoriesLoading,
+    error: categoriesError,
+  } = useCategories()
+  const {
+    data: products,
+    isLoading: productsLoading,
+    error: productsError,
+  } = useProducts()
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false)
@@ -62,6 +70,16 @@ export default function Shopping() {
         <div className=" hidden sm:flex items-start justify-center sm:flex-row flex-col-reverse ">
           <div className="sm:flex-3/4">
             <h1 className="mb-3 font-bold text-[35px]">{t("shopping.head")}</h1>
+            {productsLoading ? (
+              <div className="font-bold text-4xl text-center mt-10 animate-pulse ">
+                {t("loading")}...
+              </div>
+            ) : null}
+            {productsError ? (
+              <div className="font-bold text-4xl text-center my-10 text-red-600 ">
+                {t("error")}
+              </div>
+            ) : null}
             <div className="flex gap-3 flex-wrap ">
               {products?.map((item) => {
                 return (
@@ -92,6 +110,16 @@ export default function Shopping() {
                 title={t("Our available items")}
                 description={
                   <div>
+                    {categoriesLoading ? (
+                      <div className="font-bold animate-pulse text-red-600 text-xl">
+                        {t("loading")}...
+                      </div>
+                    ) : null}
+                    {categoriesError ? (
+                      <div className="font-bold animate-pulse text-red-600 text-[20px]!">
+                        {t("error")}
+                      </div>
+                    ) : null}
                     {categories?.map((item) => {
                       return (
                         <label
