@@ -1,6 +1,6 @@
 import { api } from "@/axios"
 import { useQuery } from "@tanstack/react-query"
-import { useTranslation } from "react-i18next"
+
 type Category = {
   id: number
   name: string
@@ -28,18 +28,14 @@ type Data = {
   data: Product[]
 }
 
-const fetchingData = async (lang: string) => {
-  const response = await api.get<Data>(`/products/recent`, {
-    headers: { "Accept-Language": lang },
-  })
+const fetchingData = async () => {
+  const response = await api.get<Data>(`/products/recent`)
   console.log(response)
   return response.data.data
 }
 export const useRecentProduct = () => {
-  const { i18n } = useTranslation()
-  const currentLang = i18n.language || "ar"
   return useQuery({
     queryKey: ["recent"],
-    queryFn: () => fetchingData(currentLang),
+    queryFn: () => fetchingData(),
   })
 }

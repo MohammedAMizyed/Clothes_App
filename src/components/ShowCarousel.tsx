@@ -5,6 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+import { useNavigate } from "react-router-dom"
 import ProductCard from "./ProductCard"
 import { useRecentProduct } from "@/hooks/useResentProducts"
 export function ShowCarousel({
@@ -16,6 +17,7 @@ export function ShowCarousel({
 }) {
   const { t } = useTranslation()
   const { data, isLoading, error } = useRecentProduct()
+  const navigate = useNavigate()
   return (
     <Carousel
       opts={{
@@ -39,7 +41,12 @@ export function ShowCarousel({
             {data?.map((item) => {
               return (
                 <div key={item.id}>
-                  <CarouselItem className="basis-1/3 sm:basis-1/4 sm:pl-4">
+                  <CarouselItem
+                    onClick={() => {
+                      navigate(`/products/${item.id}`)
+                    }}
+                    className="basis-1/3 sm:basis-1/4 sm:pl-4"
+                  >
                     <ProductCard
                       newPrice={item.price + " " + t("usa")}
                       oldPrice={t("shop.content.oldPrice")}
