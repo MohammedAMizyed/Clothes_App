@@ -15,6 +15,7 @@ import { ProductDetailsCarouselRowSmole } from "@/components/ProductDetailsCarou
 import { useSizing } from "@/hooks/useSizeing"
 import { useParams, Navigate } from "react-router-dom"
 import { useProducts } from "@/hooks/useProducts"
+import { useEffect } from "react"
 export default function ProductDetails() {
   const { data, isLoading, error } = useSizing()
   const { t, i18n } = useTranslation()
@@ -24,6 +25,9 @@ export default function ProductDetails() {
     isLoading: loadingProducts,
     error: errorProducts,
   } = useProducts()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   if (!id || !/^\d+$/.test(id)) {
     return <Navigate to={"/error"} replace />
   }
@@ -34,6 +38,7 @@ export default function ProductDetails() {
       </div>
     )
   }
+
   if (loadingProducts) {
     return (
       <div className="font-bold text-[40px] flex justify-center items-centers my-20 animate-pulse ">

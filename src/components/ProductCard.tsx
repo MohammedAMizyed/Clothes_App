@@ -4,6 +4,7 @@ import { Card, CardContent } from "./ui/card"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import { useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 type product = {
   urlImg: string
@@ -15,6 +16,7 @@ type product = {
   oldPrice?: string
   colors?: string
   btnTitle?: string
+  id?: number
 }
 
 export default function ProductCard({
@@ -27,12 +29,19 @@ export default function ProductCard({
   oldPrice,
   colors,
   btnTitle,
+  id,
 }: product) {
   const { i18n } = useTranslation()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const location = useLocation()
+  const navigate = useNavigate()
   return (
-    <Card className="shadow-none border-0 sm:mb-15 ">
+    <Card
+      onClick={() => {
+        navigate(`/products/${id}`)
+      }}
+      className="shadow-none border-0 sm:mb-15 bg-[#fffcf9] "
+    >
       <CardContent className={"p-0 relative cursor-pointer "}>
         <div className="my-2  sm:ml-3">
           <div className="relative overflow-hidden sm:rounded-4xl rounded-2xl myShadow">

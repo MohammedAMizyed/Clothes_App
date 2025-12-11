@@ -94,6 +94,7 @@ export default function Products() {
                       btnTitle={t("shop.content.btn")}
                       iconUrl={likeIcon}
                       discTitle={item.product_name}
+                      id={item.id}
                     />
                   </div>
                 )
