@@ -222,8 +222,8 @@
   "seeMore": "seeMore >",
   "Dresses": "Dresses",
   "Skirts": "Skirts",
-  "Jackets": "Jackets & Coats\nSweat",
-  "Activewear": "Activewear\n",
+  "Jackets": "Jackets & Coats",
+  "Activewear": "Activewear",
   "Swimwear": "Swimwear",
   "Accessories": "Accessories",
   "Jackets & Coats": "Jackets & Coats",
@@ -246,5 +246,15 @@
   "total": "Total",
   "prayer": "Prayer dress",
   "product-colors": "color: White | Size : Large",
-  "catoucory": "catoucory"
+  "catoucory": "catoucory",
+  "All products available": "All Products Available",
+  "There Are No Products In This Category": "There are no products in this category",
+  "There is no products in this size": "there is no products in this size",
+  "free_size": "Free Size",
+  "all products": "All products",
+  "There is no products with plus size": "There is no products with plus size",
+  "By measuring the circumference of the hips and chest": "By measuring the circumference of the hips and chest",
+  "Enter your Name": "Enter your Name",
+  "hip rotation measurement": "hip rotation measurement",
+  "add": "Add"
 }

@@ -25,11 +25,12 @@ export default function LogIn() {
     mode: "onBlur",
     resolver: zodResolver(userSchema),
   })
-  const onSubmit: SubmitHandler<userSchemaType> = (data) => {
-    console.log("Mohammed")
-    console.log(data)
+  const onSubmit: SubmitHandler<userSchemaType> = () => {
     reset()
   }
+  //  const onSubmit: SubmitHandler<userSchemaType> = (data) => {
+  //   reset()
+  // }
 
   return (
     <div className="container">

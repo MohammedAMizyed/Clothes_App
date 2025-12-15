@@ -245,5 +245,15 @@
   "total": "المجموع",
   "prayer": "ثوب الصلاة",
   "product-colors": "اللون: أبيض | \nالحجم: كبير",
-  "catoucory": "قسم"
+  "catoucory": "قسم",
+  "All products available": "جميع المنتجات متوفرة",
+  "There Are No Products In This Category": "لا توجد منتجات من هذه التصنيف",
+  "There is no products in this size": "لا يوجد منتجات بهذا الحجم",
+  "free_size": "حجم غير مخصص",
+  "all products": "جميع المنتجات",
+  "There is no products with plus size": "لا توجد منتجات ذات حجم زائد",
+  "By measuring the circumference of the hips and chest": "عن طريق قياس محيط الوركين والصدر",
+  "Enter your Name": "أدخل اسمك",
+  "hip rotation measurement": "قياس دوران الورك",
+  "add": "اضافة"
 }

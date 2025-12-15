@@ -10,7 +10,5 @@ api.interceptors.request.use((config) => {
 
   config.headers["Accept-Language"] = lang
 
-  console.log("lang", lang, config.headers)
-
   return config
 })

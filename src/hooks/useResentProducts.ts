@@ -30,7 +30,6 @@ type Data = {
 
 const fetchingData = async () => {
   const response = await api.get<Data>(`/products/recent`)
-  console.log(response)
   return response.data.data
 }
 export const useRecentProduct = () => {

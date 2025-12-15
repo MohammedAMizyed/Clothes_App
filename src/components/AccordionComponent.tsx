@@ -11,10 +11,12 @@ export default function AccordionComponent({
   title,
   description,
   onToggle,
+  open,
 }: {
   title: string | ReactNode
   description: ReactNode
   onToggle?: (open: boolean) => void
+  open?: boolean
 }) {
   return (
     <div className="">
@@ -23,7 +25,6 @@ export default function AccordionComponent({
         collapsible
         onValueChange={(value) => {
           onToggle?.(!!value)
-          // console.log(!!value)
         }}
       >
         <AccordionItem className={cn("")} value={"item-1"}>
@@ -34,7 +35,7 @@ export default function AccordionComponent({
           >
             {title}
           </AccordionTrigger>
-          <AccordionContent>{description}</AccordionContent>
+          {open && <AccordionContent>{description}</AccordionContent>}
         </AccordionItem>
       </Accordion>
     </div>

@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next"
 import { useCategories } from "@/hooks/useCategories"
 export default function Footer() {
   const { data, isLoading, isError } = useCategories()
-  console.log(data)
   const { t } = useTranslation()
 
   return (

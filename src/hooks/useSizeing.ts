@@ -10,7 +10,6 @@ type Response = {
 }
 const fetchingData = async () => {
   const response = await api.get<Response>(`/lists/sizes`)
-  console.log(response.data)
   return response.data.data
 }
 export const useSizing = () => {

@@ -28,15 +28,28 @@ type Data = {
   data: Product[]
 }
 
-const fetchingData = async () => {
-  const response = await api.get<Data>(`/products`)
+const fetchingData = async (
+  category_id?: number,
+  size_id?: number,
+  has_plus_size?: boolean
+) => {
+  const response = await api.get<Data>(`/products`, {
+    params: {
+      category_id,
+      size_id,
+      has_plus_size,
+    },
+  })
 
-  console.log(response.data)
   return response.data.data
 }
-export const useProducts = () => {
+export const useProducts = (
+  id?: number,
+  size_id?: number,
+  has_plus_size?: boolean
+) => {
   return useQuery({
-    queryKey: ["products"],
-    queryFn: () => fetchingData(),
+    queryKey: ["products", id, size_id, has_plus_size],
+    queryFn: () => fetchingData(id, size_id, has_plus_size),
   })
 }

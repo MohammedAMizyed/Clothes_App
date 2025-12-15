@@ -112,7 +112,9 @@ export default function Header() {
             </div>
           </div>
           <div className="select-none sm:flex justify-center hidden  flex-1/3">
-            <img src={logo} alt="logo" />
+            <Link to={"/"}>
+              <img src={logo} alt="logo" />
+            </Link>
           </div>
           <div className="sm:block hidden  flex-1/3 ">
             <div className="flex gap-2  justify-end">

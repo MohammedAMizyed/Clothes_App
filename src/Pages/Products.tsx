@@ -1,37 +1,51 @@
+import AccordionComponent from "@/components/AccordionComponent"
+import Footer from "@/components/Footer"
 import Header from "@/components/Header"
-import shoppingImg from "../assets/landingShoppingPage.svg"
-import { useTranslation } from "react-i18next"
 import ProductCard from "@/components/ProductCard"
-import exampleImg from "../assets/eximple.jpg"
+import { Button } from "@/components/ui/button"
+import { useCategories } from "@/hooks/useCategories"
+import { useProducts } from "@/hooks/useProducts"
+import { cn } from "@/lib/utils"
+import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom"
+import shoppingImg from "../assets/landingShoppingPage.svg"
 import likeIcon from "../assets/like.svg"
 import arrow from "../assets/Vector 110.svg"
 import filter from "../assets/Vector.svg"
-import AccordionComponent from "@/components/AccordionComponent"
-import { Button } from "@/components/ui/button"
-import Footer from "@/components/Footer"
-import { useState } from "react"
-import { cn } from "@/lib/utils"
-import { useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useCategories } from "@/hooks/useCategories"
-import { useProducts } from "@/hooks/useProducts"
+import { useSizing } from "@/hooks/useSizeing"
+import DeterminationSize from "@/components/DeterminationSize"
+// import { useSearchParams } from "react-router-dom"
+
 export default function Products() {
   const [open, setOpen] = useState<boolean>(true)
   const { t, i18n } = useTranslation()
+  // const [searchParams, setSearchParams] = useSearchParams()
+
+  const [selected, setSelected] = useState<number | undefined>(undefined)
+  const [selectedSize, setSelectedSize] = useState<number | undefined>(
+    undefined
+  )
+  const [determine, setDetermine] = useState<boolean>(true)
+  const [hasPlusSize, setHasPlusSize] = useState<boolean>(false)
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setOpen(false)
+  }, [])
+
   const {
     data: categories,
     isLoading: categoriesLoading,
     error: categoriesError,
   } = useCategories()
+
   const {
     data: products,
     isLoading: productsLoading,
     error: productsError,
-  } = useProducts()
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setOpen(false)
-  }, [])
+  } = useProducts(selected, selectedSize, hasPlusSize)
+  const { data: sizing, status: sizingStatus } = useSizing()
+
   return (
     <>
       <Header />
@@ -70,21 +84,13 @@ export default function Products() {
         <div className=" hidden sm:flex items-start justify-center sm:flex-row flex-col-reverse ">
           <div className="sm:flex-3/4">
             <h1 className="mb-3 font-bold text-[35px]">{t("shopping.head")}</h1>
-            {productsLoading ? (
-              <div className="font-bold text-4xl text-center mt-10 animate-pulse ">
-                {t("loading")}...
-              </div>
-            ) : null}
-            {productsError ? (
-              <div className="font-bold text-4xl text-center my-10 text-red-600 ">
-                {t("error")}
-              </div>
-            ) : null}
+
             <div className="flex gap-3 flex-wrap ">
               {products?.map((item) => {
                 return (
                   <div key={item.id}>
                     <ProductCard
+                      isPlus={item.has_plus_size}
                       newPrice={t("usa") + "" + item.price}
                       oldPrice={t("shop.content.oldPrice")}
                       colors={t("shop.content.colors")}
@@ -99,6 +105,28 @@ export default function Products() {
                   </div>
                 )
               })}
+              {productsLoading ? (
+                <div className="font-bold text-4xl text-center mt-10 animate-pulse ">
+                  {t("loading")}...
+                </div>
+              ) : null}
+              {productsError ? (
+                <div className="font-bold text-4xl text-center my-10 text-red-600 ">
+                  {t("error")}
+                </div>
+              ) : null}
+              {sizingStatus === "success" &&
+              products?.length === 0 &&
+              !hasPlusSize ? (
+                <div className="font-bold text-4xl text-center my-10 text-red-600 ">
+                  {t("There is no products in this size")}
+                </div>
+              ) : null}
+              {products?.length === 0 && hasPlusSize ? (
+                <div className="font-bold text-4xl text-center my-10 text-red-600 ">
+                  {t("There is no products with plus size")}
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="sm:flex-1/4">
@@ -108,9 +136,30 @@ export default function Products() {
             </div>
             <div className="border-b border-[#1a1a1a]">
               <AccordionComponent
+                open={true}
                 title={t("Our available items")}
                 description={
                   <div>
+                    {categories?.map((item) => {
+                      return (
+                        <label
+                          key={item.id}
+                          className="cursor-pointer flex gap-2 items-center "
+                        >
+                          <input
+                            checked={selected === item.id}
+                            onChange={() => {
+                              setSelected(item.id)
+                            }}
+                            type="radio"
+                            className=" bg-[#fffcf9]! shadow-none! rounded-[opx]!"
+                          />
+                          <h3 className="text-[14px] font-medium">
+                            {t(item.name)}
+                          </h3>
+                        </label>
+                      )
+                    })}
                     {categoriesLoading ? (
                       <div className="font-bold animate-pulse text-red-600 text-xl">
                         {t("loading")}...
@@ -121,95 +170,107 @@ export default function Products() {
                         {t("error")}
                       </div>
                     ) : null}
-                    {categories?.map((item) => {
-                      return (
-                        <label
-                          key={item.id}
-                          className="cursor-pointer flex gap-2 items-center "
-                        >
-                          <input
-                            type="checkbox"
-                            className=" bg-[#fffcf9]! shadow-none!"
-                          />
-                          <h3 className="text-[14px] font-medium">
-                            {t(item.name)}
-                          </h3>
-                        </label>
-                      )
-                    })}
+                    <Button
+                      onClick={() => {
+                        setSelected(undefined)
+                      }}
+                      className="myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
+                      variant={"default"}
+                    >
+                      {t("all products")}
+                    </Button>
                   </div>
                 }
               />
             </div>
             <div className="border-b border-[#1a1a1a]">
               <AccordionComponent
+                open={true}
                 title={t("Determine your exact size")}
                 description={
-                  <div>
-                    <h3 className="text-[12px] font-semibold mb-3">
-                      {t("Now you can know your exact size easily")}
-                    </h3>
-                    <Button
-                      className="myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
-                      variant={"default"}
-                    >
-                      {t("Add my size")}
-                    </Button>
-                  </div>
+                  <>
+                    {determine ? (
+                      <>
+                        <h3 className="text-[12px] font-semibold mb-3">
+                          {t("Now you can know your exact size easily")}
+                        </h3>
+                        <Button
+                          onClick={() => {
+                            setDetermine(false)
+                          }}
+                          className=" myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
+                          variant={"default"}
+                        >
+                          {t("Add my size")}
+                        </Button>
+                      </>
+                    ) : (
+                      <DeterminationSize />
+                    )}
+                  </>
                 }
               />
             </div>
             <div className="border-b  border-[#1a1a1a]">
               <AccordionComponent
+                open={true}
                 title={t("Dimensions for weights")}
                 description={
                   <div>
-                    <h4 className="text-[14px font-semibold">S ( 45 →55k ) </h4>
-                    <h4 className="text-[14px font-semibold">M ( 55 →65k )</h4>
-                    <h4 className="text-[14px font-semibold">
-                      large (65 →75k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      2X large (80 →85k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      3X large (85 →90k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      4X large (90→95k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      5X large (95→100k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      6X large (100→105k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      7X large (105→110k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      8X large (110→115k)
-                    </h4>
-                    <h4 className="text-[14px font-semibold">
-                      {" "}
-                      9X large (115→120k )
-                    </h4>
-                    <h3 className="text-[20px] font-semibold text-center text-[#ff0000]">
-                      FREE SIZE
-                    </h3>
+                    {sizing?.map((item) => {
+                      return (
+                        <div key={item.id}>
+                          {item.code === "free-size" ? (
+                            <Button
+                              onClick={() => {
+                                setSelectedSize(undefined)
+                              }}
+                              className="myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
+                              variant={"default"}
+                            >
+                              {t("free_size")}
+                            </Button>
+                          ) : (
+                            <label
+                              key={item.id}
+                              className="cursor-pointer flex gap-2 items-center "
+                            >
+                              <input
+                                checked={selectedSize === item.id}
+                                onChange={() => {
+                                  setSelectedSize(item.id)
+                                }}
+                                type="radio"
+                                className=" bg-[#fffcf9]! shadow-none! rounded-[opx]!"
+                              />
+                              <div className="text-[14px] font-medium">
+                                {item.code} ({item.weight})
+                              </div>
+                            </label>
+                          )}
+                        </div>
+                      )
+                    })}
+                    {sizingStatus === "pending" ? (
+                      <div className="font-bold text-xl text-center animate-pulse ">
+                        {t("loading")}...
+                      </div>
+                    ) : null}
+                    {sizingStatus === "error" ? (
+                      <div className="font-bold text-xl text-center  text-red-600 ">
+                        {t("error")}
+                      </div>
+                    ) : null}
                   </div>
                 }
               />
             </div>
             <div className="flex gap-2 items-center ">
               <input
+                checked={hasPlusSize}
+                onChange={(e) => {
+                  setHasPlusSize(e.target.checked)
+                }}
                 type="checkbox"
                 className="cursor-pointer bg-[#fffcf9]! shadow-none!"
               />
@@ -246,66 +307,55 @@ export default function Products() {
                 </div>
               </div>
             }
+            open={open}
             description={
               <div className="mb-20">
                 <div className="border-b border-[#1a1a1a]">
                   <AccordionComponent
+                    open={true}
                     title={t("Our available items")}
                     description={
                       <div>
-                        <div className="flex gap-2 items-center ">
-                          <input
-                            type="checkbox"
-                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                          />
-                          <h3 id="plus" className="text-[14px] font-medium">
-                            {t("dresses")}
-                          </h3>
-                        </div>
-                        <div className="flex gap-2 items-center ">
-                          <input
-                            type="checkbox"
-                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                          />
-                          <h3 id="plus" className="text-[14px] font-medium">
-                            {t("travel clothes")}
-                          </h3>
-                        </div>
-                        <div className="flex gap-2 items-center ">
-                          <input
-                            type="checkbox"
-                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                          />
-                          <h3 id="plus" className="text-[14px] font-medium">
-                            {t("winter clothes")}
-                          </h3>
-                        </div>
-                        <div className="flex gap-2 items-center ">
-                          <input
-                            type="checkbox"
-                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                          />
-                          <h3 id="plus" className="text-[14px] font-medium">
-                            {t("swimwear")}
-                          </h3>
-                        </div>
-                        <div className="flex gap-2 items-center ">
-                          <input
-                            type="checkbox"
-                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                          />
-                          <h3 id="plus" className="text-[14px] font-medium">
-                            {t("Hijabs and prayer clothes")}
-                          </h3>
-                        </div>
-                        <div className="flex gap-2 items-center ">
-                          <input
-                            type="checkbox"
-                            className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                          />
-                          <h3 id="plus" className="text-[14px] font-medium">
-                            {t("All available parts")}
-                          </h3>
+                        <div>
+                          {categories?.map((item) => {
+                            return (
+                              <label
+                                key={item.id}
+                                className="cursor-pointer flex gap-2 items-center "
+                              >
+                                <input
+                                  checked={selected === item.id}
+                                  onChange={() => {
+                                    setSelected(item.id)
+                                  }}
+                                  type="radio"
+                                  className=" bg-[#fffcf9]! shadow-none! rounded-[opx]!"
+                                />
+                                <h3 className="text-[14px] font-medium">
+                                  {t(item.name)}
+                                </h3>
+                              </label>
+                            )
+                          })}
+                          {categoriesLoading ? (
+                            <div className="font-bold animate-pulse text-red-600 text-xl">
+                              {t("loading")}...
+                            </div>
+                          ) : null}
+                          {categoriesError ? (
+                            <div className="font-bold animate-pulse text-red-600 text-[20px]!">
+                              {t("error")}
+                            </div>
+                          ) : null}
+                          <Button
+                            onClick={() => {
+                              setSelected(undefined)
+                            }}
+                            className="myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
+                            variant={"default"}
+                          >
+                            {t("all products")}
+                          </Button>
                         </div>
                       </div>
                     }
@@ -313,6 +363,7 @@ export default function Products() {
                 </div>
                 <div className="border-b border-[#1a1a1a]">
                   <AccordionComponent
+                    open={true}
                     title={t("Determine your exact size")}
                     description={
                       <div>
@@ -331,65 +382,62 @@ export default function Products() {
                 </div>
                 <div className="border-b border-[#1a1a1a]">
                   <AccordionComponent
+                    open={true}
                     title={t("Dimensions for weights")}
                     description={
                       <div>
-                        <h4 className="text-[14px font-semibold">
-                          S ( 45 →55k ){" "}
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          M ( 55 →65k )
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          large (65 →75k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          2X large (80 →85k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          3X large (85 →90k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          4X large (90→95k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          5X large (95→100k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          6X large (100→105k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          7X large (105→110k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          8X large (110→115k)
-                        </h4>
-                        <h4 className="text-[14px font-semibold">
-                          {" "}
-                          9X large (115→120k )
-                        </h4>
-                        <h3 className="text-[20px] font-semibold text-center text-[#ff0000]">
-                          FREE SIZE
-                        </h3>
+                        {sizing?.map((item) => {
+                          return (
+                            <div key={item.id}>
+                              {item.code === "free-size" ? (
+                                <Button
+                                  onClick={() => {
+                                    setSelectedSize(undefined)
+                                  }}
+                                  className="myShadow rounded-[26px] block m-auto text-center hover:bg-[#ff914c] bg-[#FF914C] cursor-pointer text-[14px] font-medium"
+                                  variant={"default"}
+                                >
+                                  {t("free_size")}
+                                </Button>
+                              ) : (
+                                <label
+                                  key={item.id}
+                                  className="cursor-pointer flex gap-2 items-center "
+                                >
+                                  <input
+                                    checked={selectedSize === item.id}
+                                    onChange={() => {
+                                      setSelectedSize(item.id)
+                                    }}
+                                    type="radio"
+                                    className=" bg-[#fffcf9]! shadow-none! rounded-[opx]!"
+                                  />
+                                  <div className="text-[14px] font-medium">
+                                    {item.code} ({item.weight})
+                                  </div>
+                                </label>
+                              )}
+                            </div>
+                          )
+                        })}
                       </div>
                     }
                   />
                 </div>
                 <div className="flex my-3 gap-2 items-center ">
-                  <input
-                    type="checkbox"
-                    className="cursor-pointer bg-[#fffcf9]! shadow-none!"
-                  />
-                  <h3 id="plus" className="text-[20px] font-medium">
-                    {t("plus size")}
-                  </h3>
+                  <div className="flex gap-2 items-center ">
+                    <input
+                      checked={hasPlusSize}
+                      onChange={(e) => {
+                        setHasPlusSize(e.target.checked)
+                      }}
+                      type="checkbox"
+                      className="cursor-pointer bg-[#fffcf9]! shadow-none!"
+                    />
+                    <h3 id="plus" className="text-[20px] font-medium">
+                      {t("plus size")}
+                    </h3>
+                  </div>
                 </div>
                 <div className="flex my-3 gap-2 items-center ">
                   <input
@@ -400,7 +448,12 @@ export default function Products() {
                     {t("our exclusive offers")}
                   </h3>
                 </div>
-                <Button className="bg-[#ff914c] text-[15px] font-normal my-2 myShadow w-full">
+                <Button
+                  onClick={() => {
+                    setOpen(false)
+                  }}
+                  className="bg-[#ff914c] text-[15px] font-normal my-2 myShadow w-full"
+                >
                   {t("Filter Now")}
                 </Button>
               </div>
@@ -412,162 +465,46 @@ export default function Products() {
         </div>
         <div className={cn("mb-20", open ? "hidden" : "flex")}>
           <div className="flex gap-1.5 flex-wrap ">
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>{" "}
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>{" "}
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>{" "}
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>{" "}
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>{" "}
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>{" "}
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>{" "}
-            <div className="">
-              <ProductCard
-                newPrice={t("shop.content.price")}
-                oldPrice={t("shop.content.oldPrice")}
-                colors={t("shop.content.colors")}
-                urlImg={exampleImg}
-                plusSize={t("shop.content.headTitle")}
-                rate={t("shop.content.headNot")}
-                btnTitle={t("shop.content.btn")}
-                iconUrl={likeIcon}
-                discTitle={t("shop.content.title")}
-              />
-            </div>
+            {products?.map((item) => {
+              return (
+                <div key={item.id}>
+                  <ProductCard
+                    isPlus={item.has_plus_size}
+                    newPrice={t(item.price)}
+                    oldPrice={t("shop.content.oldPrice")}
+                    colors={t("shop.content.colors")}
+                    urlImg={item.main_image_url}
+                    plusSize={t("shop.content.headTitle")}
+                    rate={t("shop.content.headNot")}
+                    btnTitle={t("shop.content.btn")}
+                    iconUrl={likeIcon}
+                    discTitle={t(item.product_name)}
+                  />
+                </div>
+              )
+            })}
+            {productsLoading ? (
+              <div className="font-bold text-4xl text-center mt-10 animate-pulse ">
+                {t("loading")}...
+              </div>
+            ) : null}
+            {productsError ? (
+              <div className="font-bold text-4xl text-center my-10 text-red-600 ">
+                {t("error")}
+              </div>
+            ) : null}
+            {sizingStatus === "success" &&
+            products?.length === 0 &&
+            !hasPlusSize ? (
+              <div className="font-bold text-4xl text-center my-10 text-red-600 ">
+                {t("There is no products in this size")}
+              </div>
+            ) : null}
+            {products?.length === 0 && hasPlusSize ? (
+              <div className="font-bold text-4xl text-center my-10 text-red-600 ">
+                {t("There is no products with plus size")}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

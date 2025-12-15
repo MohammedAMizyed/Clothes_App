@@ -9,8 +9,6 @@ type Categories = {
 }
 const fetchingData = async () => {
   const response = await api.get<Categories>(`/lists/categories`)
-  console.log(response)
-  console.log(response.data)
   return response.data.data
 }
 export const useCategories = () => {
