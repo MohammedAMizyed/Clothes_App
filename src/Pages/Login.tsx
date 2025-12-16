@@ -3,7 +3,10 @@ import img from "../assets/loginimg.svg"
 import { t } from "i18next"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useLogIn } from "@/hooks/useLogIn"
+import { useEffect } from "react"
+
 import * as z from "zod"
 
 export default function LogIn() {
@@ -25,9 +28,31 @@ export default function LogIn() {
     mode: "onBlur",
     resolver: zodResolver(userSchema),
   })
-  const onSubmit: SubmitHandler<userSchemaType> = () => {
+  const navigate = useNavigate()
+  const { mutate, isPending, error, data } = useLogIn()
+  const onSubmit: SubmitHandler<userSchemaType> = (data) => {
+    const fullPhone = data.introduction + data.phone
+    const fullData = {
+      phone: fullPhone,
+      password: data.password,
+    }
+    mutate(fullData)
+
+    console.log(data)
     reset()
   }
+  useEffect(() => {
+    console.log(data)
+    console.log(data?.message)
+    console.log(data?.data)
+    const token = data?.data?.accessToken
+    if (token) {
+      localStorage.setItem("accessToken", token)
+    }
+    if (data?.message === "Login successful") {
+      navigate("/")
+    }
+  }, [data, navigate])
   //  const onSubmit: SubmitHandler<userSchemaType> = (data) => {
   //   reset()
   // }
@@ -95,7 +120,7 @@ export default function LogIn() {
                   className="myShadow min-w-[320px]! bg-[#ff914c] cursor-pointer hover:bg-[#ff914cd2] transition-all duration-200 rounded-2xl! text-[16px]! h-full sm:font-semibold! font-thin! mt-5!"
                   variant="default"
                 >
-                  {t("logIn.ptn")}
+                  {isPending ? t("logIn.registering") : t("logIn.ptn")}{" "}
                 </Button>
               </div>
             </form>
@@ -108,9 +133,19 @@ export default function LogIn() {
             <Link to={"/signup"}>
               <p className="cursor-pointer sm:hidden font-normal text-[12px] text-[#1A1A1A80]">
                 {t("logIn.dontHaveAccount")}{" "}
-                <span className="text-black"> {t("logIn.register")} </span>
+                <span className="text-black"> {t("logIn.register")}</span>
               </p>
             </Link>
+            {data?.message === "Login successful" && (
+              <p className="text-green-600 text-sm mt-2">
+                {t("logIn.Loginsuccessful")}
+              </p>
+            )}
+            {error && (
+              <p className="text-red-500 text-sm">
+                {error.message} {}
+              </p>
+            )}
           </div>
         </div>
       </div>

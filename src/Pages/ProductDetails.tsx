@@ -22,21 +22,7 @@ export default function ProductDetails() {
   if (!id || !/^\d+$/.test(id)) {
     return <Navigate to={"/error"} replace />
   }
-  if (status === "error") {
-    return (
-      <div className="text-[40px] font-bold text-red-600 my-20 flex justify-center products-center">
-        {t("error")}
-      </div>
-    )
-  }
 
-  if (status === "pending") {
-    return (
-      <div className="font-bold text-[40px] flex justify-center products-centers my-20 animate-pulse ">
-        {t("loading")}...
-      </div>
-    )
-  }
   return (
     <>
       <div className="relative">
@@ -74,8 +60,12 @@ export default function ProductDetails() {
             Products Details
           </h2>
         </div>
-
-        <div key={product.id}>
+        {status === "error" && (
+          <div className="text-[40px] font-bold text-red-600 my-20 flex justify-center products-center">
+            {t("error")}
+          </div>
+        )}
+        <div key={product?.id}>
           <div className="flex sm:gap-15 gap-3 flex-col sm:flex-row">
             <div className="flex sm:gap-0 gap-4">
               <ProductDetailsCarousel />
@@ -86,11 +76,16 @@ export default function ProductDetails() {
 
             <div>
               <h3 className="text-[#A97C50] font-semibold text-[14px]">
-                {t("catoucory")} {t(product.categories[0].name)}
+                {t("catoucory")} {t(product?.categories[0].name)}
+                {status === "pending" && (
+                  <div className="font-bold text-[10px]  products-centers  animate-pulse ">
+                    {t("loading")}...
+                  </div>
+                )}
               </h3>
               <div className="flex my-2 justify-between products-center">
                 <h2 className="sm:text-[40px] sm:font-bold text-[14px] font-normal">
-                  {product.name}
+                  {product?.name}
                 </h2>
                 <button className="cursor-pointer">
                   <img
@@ -102,7 +97,12 @@ export default function ProductDetails() {
               </div>
               <div className="flex gap-2 products-center">
                 <h2 className="sm:text-[24px] text-[12px] font-normal sm:font-bold">
-                  {product.price} {t("productDetails.uae")}
+                  {status === "pending" && (
+                    <div className="font-bold text-[10px]  products-centers  animate-pulse ">
+                      {t("loading")}...
+                    </div>
+                  )}
+                  {product?.price} {t("productDetails.uae")}
                 </h2>
                 <span className="sm:text-[16px] text-[8px] font-medium line-through text-[#A97C50]">
                   150 {t("productDetails.uae")}
@@ -143,7 +143,7 @@ export default function ProductDetails() {
                   </h3>
                 </div>
                 <div className="my-4 flex sm:gap-2 gap-1 flex-wrap">
-                  {product.sizes.map((item) => {
+                  {product?.sizes.map((item) => {
                     return (
                       <div
                         className={cn(
@@ -156,6 +156,11 @@ export default function ProductDetails() {
                       </div>
                     )
                   })}
+                  {status === "pending" && (
+                    <div className="font-bold text-[10px]  products-centers  animate-pulse ">
+                      {t("loading")}...
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="flex gap-2">

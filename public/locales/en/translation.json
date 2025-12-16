@@ -104,7 +104,9 @@
     "errorIntr": "required",
     "errorPhone": "The number must be at lest 9 number",
     "errorPassword": "The password must be at least 6 characters long.",
-    "errorIntr2": "\nIt should only contain numbers"
+    "errorIntr2": "\nIt should only contain numbers",
+    "registering": "Logging in...",
+    "Loginsuccessful": "Login successful"
   },
   "signUp": {
     "ptn": "Sigin In",
@@ -256,5 +258,8 @@
   "By measuring the circumference of the hips and chest": "By measuring the circumference of the hips and chest",
   "Enter your Name": "Enter your Name",
   "hip rotation measurement": "hip rotation measurement",
-  "add": "Add"
+  "add": "Add",
+  "My Orders": "My Orders",
+  "My Profile": "My Profile",
+  "Log Out": "Log Out"
 }

@@ -77,8 +77,9 @@ export default function SignUp() {
               <div className="my-4  flex gap-2">
                 <input
                   {...register("intro")}
+                  maxLength={4}
                   placeholder="+972"
-                  className=" myShadow outline-none p-3 bg-white sm:rounded-2xl rounded-xl max-w-[60px] "
+                  className=" myShadow outline-none p-3 bg-white sm:rounded-2xl rounded-xl w-[60px] "
                   type="text"
                 />{" "}
                 <input

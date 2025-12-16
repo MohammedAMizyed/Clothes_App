@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import profileImg from "../assets/profiel.svg"
 
 export default function Header() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -117,29 +118,80 @@ export default function Header() {
             </Link>
           </div>
           <div className="sm:block hidden  flex-1/3 ">
-            <div className="flex gap-2  justify-end">
-              <Link to={"/login"}>
-                <Button
-                  className={cn(
-                    `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
-                    "h-11"
-                  )}
-                >
-                  {t("header.btn2")}
-                </Button>
-              </Link>
-              <Link to={"/signup"}>
-                <Button
-                  className={cn(
-                    "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
-                    "h-11"
-                  )}
-                  variant="default"
-                >
-                  {t("header.btn1")}
-                </Button>
-              </Link>
-            </div>
+            {localStorage.getItem("accessToken") ? (
+              <div className="flex justify-end">
+                <Popover>
+                  <PopoverTrigger>
+                    <img
+                      className="cursor-pointer relative"
+                      src={profileImg}
+                      alt="profileImg"
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent className="myShadow bg-[#fffcf9] overflow-hidden border-2 rounded-2xl absolute -left-6 max-w-[150px] p-0  border-[#f3e0c8]">
+                    <div className="flex flex-col justify-start ">
+                      <Link to={"/login"}>
+                        <Button
+                          variant={"ghost"}
+                          className={cn(
+                            `cursor-pointer text-[16px] w-full text-end flex justify-start font-bold rounded-none  border-b-2 border-[#f3e0c8] `,
+                            "h-11"
+                          )}
+                        >
+                          {t("My Orders")}
+                        </Button>
+                      </Link>
+                      <Link to={"/signup"}>
+                        <Button
+                          className={cn(
+                            "cursor-pointer text-[16px] w-full text-end flex justify-start border-b-2 border-[#f3e0c8] font-bold rounded-none ",
+                            "h-11"
+                          )}
+                          variant="ghost"
+                        >
+                          {t("My Profile")}
+                        </Button>
+                      </Link>
+                      <Link to={"/signup"}>
+                        <Button
+                          className={cn(
+                            "cursor-pointer text-[16px] w-full text-end flex justify-start font-bold rounded-none ",
+                            "h-11"
+                          )}
+                          variant="ghost"
+                        >
+                          {t("Log Out")}
+                        </Button>
+                      </Link>
+                    </div>
+                  </PopoverContent>
+                </Popover>
+              </div>
+            ) : (
+              <div className="flex gap-2  justify-end">
+                <Link to={"/login"}>
+                  <Button
+                    className={cn(
+                      `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
+                      "h-11"
+                    )}
+                  >
+                    {t("header.btn2")}
+                  </Button>
+                </Link>
+                <Link to={"/signup"}>
+                  <Button
+                    className={cn(
+                      "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
+                      "h-11"
+                    )}
+                    variant="default"
+                  >
+                    {t("header.btn1")}
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -104,7 +104,9 @@
     "errorIntr": "مطلوب",
     "errorPhone": "يجب أن يكون الرقم على الأقل 9 أرقام",
     "errorPassword": "يجب أن تكون كلمة المرور مكونة من 6 أحرف على الأقل.",
-    "errorIntr2": "يجب أن تحتوي على أرقام فقط"
+    "errorIntr2": "يجب أن تحتوي على أرقام فقط",
+    "registering": "جاري تسجيل الدخول...",
+    "Loginsuccessful": "تم تسجيل الدخول بنجاح"
   },
   "signUp": {
     "ptn": "تسجيل الدخول",
@@ -255,5 +257,8 @@
   "By measuring the circumference of the hips and chest": "عن طريق قياس محيط الوركين والصدر",
   "Enter your Name": "أدخل اسمك",
   "hip rotation measurement": "قياس دوران الورك",
-  "add": "اضافة"
+  "add": "اضافة",
+  "My Orders": "طلباتي",
+  "My Profile": "بياناتي",
+  "Log Out": "تسجيل الخروج"
 }
