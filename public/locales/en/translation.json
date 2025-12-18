@@ -132,7 +132,9 @@
     "passwordConfirmE": "The confirm password is required",
     "passwordMatchE": "the passwords dosn't match",
     "isAgree": "You must agrre whut privacy policy",
-    "cuntryE": "country is required"
+    "cuntryE": "country is required",
+    "email": "The Email is required",
+    "emaill": "Email "
   },
   "header": {
     "eearch": "Find your model....",
@@ -261,5 +263,6 @@
   "add": "Add",
   "My Orders": "My Orders",
   "My Profile": "My Profile",
-  "Log Out": "Log Out"
+  "Log Out": "Log Out",
+  "unvilde": "the is unvalud email "
 }

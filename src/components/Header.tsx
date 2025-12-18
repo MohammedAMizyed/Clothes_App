@@ -18,7 +18,6 @@ import { Link } from "react-router-dom"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import profileImg from "../assets/profiel.svg"
-
 export default function Header() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const location = useLocation()
@@ -33,7 +32,10 @@ export default function Header() {
       i18n.changeLanguage("ar")
     }
   }
-
+  const handleLogOutClick = () => {
+    localStorage.removeItem("accessToken")
+    window.location.reload()
+  }
   return (
     <div
       className={cn(
@@ -128,9 +130,9 @@ export default function Header() {
                       alt="profileImg"
                     />
                   </PopoverTrigger>
-                  <PopoverContent className="myShadow bg-[#fffcf9] overflow-hidden border-2 rounded-2xl absolute -left-6 max-w-[150px] p-0  border-[#f3e0c8]">
+                  <PopoverContent className="myShadow bg-[#fffcf9] overflow-hidden border-2 rounded-2xl absolute -left-6 md:max-w-[150px] lg:max-w-[190px] p-0  border-[#f3e0c8]">
                     <div className="flex flex-col justify-start ">
-                      <Link to={"/login"}>
+                      <Link to={"/shoppingCart"}>
                         <Button
                           variant={"ghost"}
                           className={cn(
@@ -152,17 +154,17 @@ export default function Header() {
                           {t("My Profile")}
                         </Button>
                       </Link>
-                      <Link to={"/signup"}>
-                        <Button
-                          className={cn(
-                            "cursor-pointer text-[16px] w-full text-end flex justify-start font-bold rounded-none ",
-                            "h-11"
-                          )}
-                          variant="ghost"
-                        >
-                          {t("Log Out")}
-                        </Button>
-                      </Link>
+
+                      <Button
+                        onClick={handleLogOutClick}
+                        className={cn(
+                          "cursor-pointer text-[16px] w-full text-end flex justify-start font-bold rounded-none ",
+                          "h-11"
+                        )}
+                        variant="ghost"
+                      >
+                        {t("Log Out")}
+                      </Button>
                     </div>
                   </PopoverContent>
                 </Popover>

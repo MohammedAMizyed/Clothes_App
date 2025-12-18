@@ -50,7 +50,7 @@ export default function LogIn() {
       localStorage.setItem("accessToken", token)
     }
     if (data?.message === "Login successful") {
-      navigate("/")
+      navigate("/", { replace: true })
     }
   }, [data, navigate])
   //  const onSubmit: SubmitHandler<userSchemaType> = (data) => {
@@ -84,7 +84,7 @@ export default function LogIn() {
                   {...register("phone", { required: true })}
                   className="bg-white  outline-none myShadow min-w-[250px] w-full rounded-2xl p-3"
                   type="text"
-                  placeholder="0599634192"
+                  placeholder="599634192"
                 />
               </div>
               {errors.introduction && (

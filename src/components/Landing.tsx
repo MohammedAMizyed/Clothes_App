@@ -23,6 +23,7 @@ export default function Landing() {
             <h3 className="sm:text-[20px] text-[12px] text-center font-medium  text-[#FFFCF9] my-5 ">
               {t("landing.description")}
             </h3>
+
             <Link to="/products">
               <Button
                 className="cursor-pointer hover:bg-white  uppercase! sm:flex! hidden! mt-15!  pb-10! text-[18px]! font-normal! py-6!  px-10! mx-auto! w-fit! rounded-2xl! text-[#FF914C] bg-[#FFFCF9]"

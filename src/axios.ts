@@ -10,5 +10,8 @@ api.interceptors.request.use((config) => {
 
   config.headers["Accept-Language"] = lang
 
+  const accessToken = window.localStorage.getItem("accessToken")
+  config.headers.Authorization = `Bearer ${accessToken}`
+
   return config
 })

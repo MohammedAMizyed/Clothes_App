@@ -5,11 +5,14 @@ import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Link } from "react-router-dom"
+import { useSignUp } from "@/hooks/useSignUp"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 export default function SignUp() {
   const dataSchema = z
     .object({
-      firstName: z.string().min(1, t("SignUp.firstNameE")),
-      secondName: z.string().min(1, t("SignUp.secondNameE")),
+      name: z.string().min(1, t("SignUp.firstNameE")),
+      email: z.string().min(1, t("SignUp.email")).email(t("unvilde")),
       country: z.string().min(1, t("SignUp.cuntryE")),
       intro: z.string().min(1, t("SignUp.introE")),
       phone: z.string().min(6, t("SignUp.phoneE")),
@@ -33,10 +36,34 @@ export default function SignUp() {
     resolver: zodResolver(dataSchema),
     mode: "onBlur",
   })
+  const navigate = useNavigate()
+  const { mutate, data: dataOfRegister } = useSignUp()
+
   const onSubmit: SubmitHandler<dataSchemaType> = (data) => {
+    const fullPhone = data.intro + data.phone
+    const userData = {
+      phone: fullPhone,
+      email: data.email,
+      password: data.password,
+      address: data.country,
+      name: data.name,
+      region_id: Number(data.isAgree),
+    }
+    mutate(userData)
     console.log(data)
+    console.log(dataOfRegister)
+    console.log(userData)
     reset()
   }
+  useEffect(() => {
+    console.log(dataOfRegister)
+    if (dataOfRegister?.data?.accessToken) {
+      localStorage.setItem("accessToken", dataOfRegister.data.accessToken)
+    }
+    if (dataOfRegister?.data) {
+      navigate("/")
+    }
+  }, [dataOfRegister, navigate])
   return (
     <div className="container">
       <div className="h-screen flex items-center justify-center ">
@@ -45,7 +72,7 @@ export default function SignUp() {
             <img className="w-full h-full" src={img} alt="img" />
           </div>
           <div className="flex items-center justify-center flex-col">
-            <h1 className="sm:text-[40px] text-[20px] font-bold ">
+            <h1 className="sm:text-[40px] text-center text-[20px] font-bold ">
               {t("signUp.title")}
             </h1>
             <h2 className="sm:text-[24px] text-[14px] sm:font-semibold font-normal sm:px-0 px-3 text-center">
@@ -53,26 +80,22 @@ export default function SignUp() {
             </h2>
             <form className="min-w-[310px]" onSubmit={handleSubmit(onSubmit)}>
               <input
-                {...register("firstName")}
+                {...register("name")}
                 placeholder={t("SignUp.firstName")}
                 className="block my-4 myShadow outline-none p-3 bg-white sm:rounded-2xl rounded-xl w-full  "
                 type="text"
               />
-              {errors.firstName && (
-                <span className="text-[#d10404]  ">
-                  {errors.firstName.message}
-                </span>
+              {errors.name && (
+                <span className="text-[#d10404]  ">{errors.name.message}</span>
               )}
               <input
-                {...register("secondName")}
-                placeholder={t("SignUp.secondName")}
+                {...register("email")}
+                placeholder={t("SignUp.emaill")}
                 className="block my-4 myShadow outline-none p-3 bg-white sm:rounded-2xl rounded-xl w-full "
                 type="text"
               />
-              {errors.secondName && (
-                <span className="text-[#d10404]  ">
-                  {errors.secondName.message}
-                </span>
+              {errors.email && (
+                <span className="text-[#d10404]  ">{errors.email.message}</span>
               )}
               <div className="my-4  flex gap-2">
                 <input
@@ -84,7 +107,7 @@ export default function SignUp() {
                 />{" "}
                 <input
                   {...register("phone")}
-                  placeholder="0599634192"
+                  placeholder="599634192"
                   className=" myShadow outline-none p-3 bg-white sm:rounded-2xl rounded-xl flex-1 "
                   type="text"
                 />
