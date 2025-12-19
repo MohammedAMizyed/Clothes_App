@@ -200,7 +200,7 @@
   "Dimensions for weights": "Dimensions for weights",
   "plus size": "Plus Size",
   "our exclusive offers": "Our exclusive offers",
-  "dresses": "dresses",
+  "dresses": "Dresses",
   "Add my size": "Add my size",
   "Now you can know your exact size easily": "Now you can know your exact size easily",
   "Filter Now": "Filter Now",
@@ -264,5 +264,18 @@
   "My Orders": "My Orders",
   "My Profile": "My Profile",
   "Log Out": "Log Out",
-  "unvilde": "the is unvalud email "
+  "unvilde": "the is unvalud email ",
+  "favorite": {
+    "title": "Favorite Products",
+    "description": "Your premium choices, all in one place!",
+    "error": "Note: Favorite items do not guarantee reservation. Hurry to complete your order before the quantity runs out or is removed within 7 days."
+  },
+  "favoritePieces": "Favorite Pieces",
+  "countOfPieces": "Number of pieces",
+  "TravelClothes": "Travel Clothes",
+  "WinterClothes": "Winter Clothes",
+  "hijabs and prayer clothes": "ijabs And Prayer Clothes",
+  "Total": "Total",
+  "add to cart": "Add to cart",
+  "delete": "ازالة"
 }

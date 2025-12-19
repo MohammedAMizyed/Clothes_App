@@ -13,32 +13,36 @@ type Props = {
   product: string | ReactNode
   price: string
   quantity: string | ReactNode
-  total: string
+  total: string | ReactNode
 }
 export default function TableRe({ product, price, quantity, total }: Props) {
   const { t } = useTranslation()
   return (
-    <>
-      <Table>
-        <TableHeader>
-          <TableRow className="bg-[#f3e0c8] rounded-2xl hover:bg-[#f3e0c8c5] ">
-            <TableHead className="text-right w-[400px]">
+    <div className="overflow-hidden rounded-2xl border border-[#f3e0c8]">
+      <Table className="">
+        <TableHeader className="">
+          <TableRow className=" overflow-hidden bg-[#f3e0c8]  hover:bg-[#f3e0c8c5] ">
+            <TableHead className="text-center w-[400px]">
               {t("product")}
             </TableHead>
             <TableHead className="text-right">{t("price")}</TableHead>
-            <TableHead className="text-right">{t("quantity")}</TableHead>
-            <TableHead className="text-right">{t("total")}</TableHead>
+            <TableHead className="">{t("add to cart")}</TableHead>
+            <TableHead className="">{t("delete")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow>
             <TableCell className="font-medium">{product}</TableCell>
             <TableCell>{price}</TableCell>
-            <TableCell>{quantity}</TableCell>
-            <TableCell className="text-right">{total}</TableCell>
+            <TableCell>
+              <div className="flex justify-end items-center">{quantity}</div>
+            </TableCell>
+            <TableCell className="">
+              <div className="flex justify-end items-center">{total}</div>
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
-    </>
+    </div>
   )
 }

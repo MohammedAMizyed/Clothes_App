@@ -12,6 +12,7 @@ import ShoppingCart from "./Pages/ShoppingCart"
 import Error from "./Pages/Error"
 import RequireAuth from "./components/RequireAuth"
 import PublicRoute from "./components/PublicRoute"
+import Favorite from "./Pages/Favorite"
 
 function App() {
   const { i18n } = useTranslation()
@@ -36,7 +37,14 @@ function App() {
         />
         <Route element={<Home />} path="/" />
         <Route element={<Home />} path="home" />
-        <Route element={<Sizing />} path="/sizing" />
+        <Route
+          element={
+            <RequireAuth>
+              <Sizing />
+            </RequireAuth>
+          }
+          path="/sizing"
+        />
         <Route
           element={
             <RequireAuth>
@@ -46,7 +54,22 @@ function App() {
           path="/products"
         />
         <Route element={<ProductDetails />} path="/products/:id" />
-        <Route element={<ShoppingCart />} path="/shoppingCart" />
+        <Route
+          element={
+            <RequireAuth>
+              <ShoppingCart />
+            </RequireAuth>
+          }
+          path="/shoppingCart"
+        />
+        <Route
+          element={
+            <RequireAuth>
+              <Favorite />
+            </RequireAuth>
+          }
+          path="/favorite"
+        />
         <Route element={<Error />} path="*" />
         <Route
           element={<ReplacementAccording />}

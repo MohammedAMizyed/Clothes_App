@@ -42,6 +42,7 @@ export default function Header() {
         "m-4 sm:relative absolute z-20 w-full mx-auto",
         location.pathname === "/products" ||
           location.pathname === "/shoppingCart" ||
+          location.pathname === "/favorite" ||
           /\/products\/\d+$/.test(location.pathname)
           ? "sm:absolute"
           : "sm:relative"
