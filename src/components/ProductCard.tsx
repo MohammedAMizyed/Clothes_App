@@ -5,13 +5,15 @@ import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import { useLocation } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-
+import LikeButton from "./LikeButton"
+import { useState } from "react"
+import { useFavorite } from "@/hooks/useFavorite"
 type product = {
   urlImg: string
   plusSize: string
   rate: string
   discTitle: string
-  iconUrl: string
+  iconUrl?: string
   newPrice: string
   oldPrice?: string
   colors?: string
@@ -25,7 +27,6 @@ export default function ProductCard({
   plusSize,
   rate,
   discTitle,
-  iconUrl,
   newPrice,
   oldPrice,
   colors,
@@ -36,6 +37,25 @@ export default function ProductCard({
   const { i18n } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
+  const { mutate, data } = useFavorite()
+  const [liked, setLiked] = useState<boolean>(false)
+  const onToggle = () => {
+    // setLiked(!liked)
+    if (!id) return
+    mutate(
+      { id, is_favorite: !liked },
+      {
+        onSuccess: (response) => {
+          setLiked(response.data.is_favorite)
+          console.log(response)
+        },
+        onError: (error) => {
+          console.log(error)
+        },
+      }
+    )
+  }
+
   return (
     <Card className="shadow-none border-0 sm:mb-15 bg-[#fffcf9] ">
       <CardContent className={"p-0 relative cursor-pointer "}>
@@ -87,11 +107,11 @@ export default function ProductCard({
 
           <div className="m-2">
             <div className=" mb-2 sm:mb-0 flex justify-between items-center ">
-              <h3 className="sm:text-[24px] text-[14px] text-wrap max-w-[80px] sm:max-w-fit  font-semibold">
+              <h3 className="sm:text-[24px] text-[14px] text-wrap max-w-20 sm:max-w-fit  font-semibold">
                 {discTitle}
               </h3>
-              <div className="myShadow rounded-[50%] sm:p-2 p-1 ">
-                <img className="w-4 sm:w-full" src={iconUrl} alt="icon" />
+              <div className=" myShadow rounded-[50%] flex sm:p-2 p-1 ">
+                <LikeButton liked={liked} onToggle={onToggle} />
               </div>
             </div>
             <div className="flex sm:gap-2 gap-1 justify-start m-y2">

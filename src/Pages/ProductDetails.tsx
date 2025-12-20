@@ -11,8 +11,8 @@ import { useTranslation } from "react-i18next"
 import { Link, Navigate, useParams } from "react-router-dom"
 import arrowImg from "../assets/Vector 110.svg"
 import backgroundImg from "../assets/backgroundForProductsDetauls.jpg"
-import likeIcon from "../assets/like.svg"
 import noteIcon from "../assets/post-it 1.svg"
+// import LikeButton from "@/components/LikeButton"
 export default function ProductDetails() {
   const { t, i18n } = useTranslation()
   const { id } = useParams() as { id: string }
@@ -87,13 +87,7 @@ export default function ProductDetails() {
                 <h2 className="sm:text-[40px] sm:font-bold text-[14px] font-normal">
                   {product?.name}
                 </h2>
-                <button className="cursor-pointer">
-                  <img
-                    className="sm:w-full w-[15px]"
-                    src={likeIcon}
-                    alt="likeIcon"
-                  />
-                </button>
+                {/* <LikeButton  /> */}
               </div>
               <div className="flex gap-2 products-center">
                 <h2 className="sm:text-[24px] text-[12px] font-normal sm:font-bold">
@@ -148,7 +142,7 @@ export default function ProductDetails() {
                       <div
                         className={cn(
                           item.size_code === "free-size" ? "w-18!" : "w-6",
-                          " cursor-pointer  h-6 sm:w-12 sm:h-12 text-[8px] sm:text-[15px] font-bold flex products-center justify-center  border-2 border-black rounded-sm "
+                          " cursor-pointer  h-6 sm:w-12 sm:h-12 text-[8px]  items-center sm:text-[15px] font-bold flex products-center justify-center  border-2 border-black rounded-sm "
                         )}
                         key={product.id}
                       >

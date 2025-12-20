@@ -53,7 +53,14 @@ function App() {
           }
           path="/products"
         />
-        <Route element={<ProductDetails />} path="/products/:id" />
+        <Route
+          element={
+            <RequireAuth>
+              <ProductDetails />
+            </RequireAuth>
+          }
+          path="/products/:id"
+        />
         <Route
           element={
             <RequireAuth>
