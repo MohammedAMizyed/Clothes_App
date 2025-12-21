@@ -277,5 +277,13 @@
   "hijabs and prayer clothes": "ijabs And Prayer Clothes",
   "Total": "Total",
   "add to cart": "Add to cart",
-  "delete": "ازالة"
+  "delete": "ازالة",
+  "profile": {
+    "title": "My Profile",
+    "editmypersonaldata": "Edit my personal data",
+    "My previous requests": "My previous requests",
+    "Security and Password": "Security and Password",
+    "mySize": "My Size",
+    "myAddress": "My Address"
+  }
 }

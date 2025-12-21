@@ -43,6 +43,7 @@ export default function Header() {
         location.pathname === "/products" ||
           location.pathname === "/shoppingCart" ||
           location.pathname === "/favorite" ||
+          location.pathname === "/profile" ||
           /\/products\/\d+$/.test(location.pathname)
           ? "sm:absolute"
           : "sm:relative"
@@ -144,7 +145,7 @@ export default function Header() {
                           {t("My Orders")}
                         </Button>
                       </Link>
-                      <Link to={"/signup"}>
+                      <Link to={"/profile"}>
                         <Button
                           className={cn(
                             "cursor-pointer text-[16px] w-full text-end flex justify-start border-b-2 border-[#f3e0c8] font-bold rounded-none ",

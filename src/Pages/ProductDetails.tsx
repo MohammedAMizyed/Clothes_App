@@ -3,7 +3,6 @@ import Header from "@/components/Header"
 import { ProductDetailsCarouselCol } from "@/components/ProductDetailsCaroselCol"
 import { ProductDetailsCarouselRow } from "@/components/ProductDetailsCarosulRow"
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel"
-import { ProductDetailsCarouselRowSmole } from "@/components/ProductDetailsCarouselRowSmole"
 import { Button } from "@/components/ui/button"
 import { useProduct } from "@/hooks/useProduct"
 import { cn } from "@/lib/utils"
@@ -12,13 +11,34 @@ import { Link, Navigate, useParams } from "react-router-dom"
 import arrowImg from "../assets/Vector 110.svg"
 import backgroundImg from "../assets/backgroundForProductsDetauls.jpg"
 import noteIcon from "../assets/post-it 1.svg"
-// import LikeButton from "@/components/LikeButton"
+import LikeButton from "@/components/LikeButton"
+import { useFavorite } from "@/hooks/useFavorite"
+import { useState } from "react"
+
 export default function ProductDetails() {
   const { t, i18n } = useTranslation()
   const { id } = useParams() as { id: string }
 
   const { data: product, status } = useProduct(id)
 
+  const { mutate } = useFavorite()
+  const [liked, setLiked] = useState<boolean>(false)
+  const onToggle = () => {
+    // setLiked(!liked)
+    if (!id) return
+    mutate(
+      { id, is_favorite: !liked },
+      {
+        onSuccess: (response) => {
+          setLiked(response.data.is_favorite)
+          console.log(response)
+        },
+        onError: (error) => {
+          console.log(error)
+        },
+      }
+    )
+  }
   if (!id || !/^\d+$/.test(id)) {
     return <Navigate to={"/error"} replace />
   }
@@ -87,7 +107,7 @@ export default function ProductDetails() {
                 <h2 className="sm:text-[40px] sm:font-bold text-[14px] font-normal">
                   {product?.name}
                 </h2>
-                {/* <LikeButton  /> */}
+                <LikeButton liked={liked} onToggle={onToggle} />
               </div>
               <div className="flex gap-2 products-center">
                 <h2 className="sm:text-[24px] text-[12px] font-normal sm:font-bold">
@@ -111,11 +131,13 @@ export default function ProductDetails() {
                     {t("productDetails.colors")}:
                   </h3>
                   <h4 className="sm:text-[12px] text-[8px] font-normal">
-                    12 {t("productDetails.color")}
+                    {product?.other_colors.length} {t("productDetails.color")}
                   </h4>
                 </div>
-                <div className="text-[40px]">
-                  <ProductDetailsCarouselRowSmole />
+                <div>
+                  {product?.other_colors.map((item) => {
+                    return <img src={item.image_url} alt={item.name} />
+                  })}{" "}
                 </div>
               </div>
               <div className="sm:m-0 m-2">

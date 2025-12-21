@@ -277,5 +277,13 @@
   "hijabs and prayer clothes": "الحجاب وملابس الصلاة",
   "Total": "المجموع",
   "add to cart": "أضف إلى السلة",
-  "delete": "إزالة"
+  "delete": "إزالة",
+  "profile": {
+    "title": "ملفي الشخصي",
+    "editmypersonaldata": " تعديل بياناتي الشخصية",
+    "My previous requests": "طلباتي السابقة",
+    "Security and Password": "الأمن وكلمة المرور",
+    "mySize": "مقاسي",
+    "myAddress": "عنواني"
+  }
 }

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils"
 import TableRe from "@/components/TableRe"
 import shoppingCartImg from "../assets/shoppingCartImg.jpg"
 import like from "../assets/like.svg"
-import { useState } from "react"
 import plusImg from "../assets/plus.svg"
 import delete1 from "../assets/deleteFromoppingCart.svg"
 

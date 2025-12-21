@@ -5,7 +5,7 @@ const postData = async ({
   id,
   is_favorite,
 }: {
-  id: number
+  id: number | string
   is_favorite: boolean
 }) => {
   const response = await api.post<favoriteResponse>(

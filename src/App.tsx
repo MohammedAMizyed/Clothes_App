@@ -13,6 +13,7 @@ import Error from "./Pages/Error"
 import RequireAuth from "./components/RequireAuth"
 import PublicRoute from "./components/PublicRoute"
 import Favorite from "./Pages/Favorite"
+import Profile from "./Pages/Profile"
 
 function App() {
   const { i18n } = useTranslation()
@@ -81,6 +82,14 @@ function App() {
         <Route
           element={<ReplacementAccording />}
           path="/replacementAccording"
+        />
+        <Route
+          element={
+            // <RequireAuth>
+            <Profile />
+            // </RequireAuth>
+          }
+          path="/profile"
         />
       </Routes>
     </div>
