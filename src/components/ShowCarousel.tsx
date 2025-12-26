@@ -51,6 +51,7 @@ export function ShowCarousel({
                       iconUrl={likeIcon}
                       discTitle={t(item.product_name)}
                       id={item.id}
+                      isFavorite={item.is_favorite}
                     />
                   </CarouselItem>
                 </div>

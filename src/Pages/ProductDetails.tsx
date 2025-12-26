@@ -14,6 +14,7 @@ import noteIcon from "../assets/post-it 1.svg"
 import LikeButton from "@/components/LikeButton"
 import { useFavorite } from "@/hooks/useFavorite"
 import { useState } from "react"
+import { useEffect } from "react"
 
 export default function ProductDetails() {
   const { t, i18n } = useTranslation()
@@ -22,7 +23,13 @@ export default function ProductDetails() {
   const { data: product, status } = useProduct(id)
 
   const { mutate } = useFavorite()
-  const [liked, setLiked] = useState<boolean>(false)
+  const [liked, setLiked] = useState<boolean>(!!product?.is_favorite)
+  useEffect(() => {
+    if (product) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLiked(!!product.is_favorite)
+    }
+  }, [product])
   const onToggle = () => {
     // setLiked(!liked)
     if (!id) return
@@ -39,6 +46,7 @@ export default function ProductDetails() {
       }
     )
   }
+
   if (!id || !/^\d+$/.test(id)) {
     return <Navigate to={"/error"} replace />
   }
@@ -201,7 +209,6 @@ export default function ProductDetails() {
             </div>
           </div>
         </div>
-
         <div className="mb-15 hidden sm:block">
           <div className="flex my-5 justify-between products-center">
             <h3 className="text-[30px] font-medium">

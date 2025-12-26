@@ -5,15 +5,25 @@ import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
+import EditMyData from "@/components/EditMyData"
+import PreviousOrders from "@/components/PreviousOrders"
+import MyAddresses from "@/components/MyAddresses"
+import Footer from "@/components/Footer"
+import EditMySize from "./EditMySize"
 export default function Profile() {
   const { t, i18n } = useTranslation()
+  const [activeItem, setActiveItem] = useState<number>(0)
   const list = [
-    t("profile.editmypersonaldata"),
-    t("profile.My previous requests"),
-    t("profile.Security and Password"),
-    t("profile.mySize"),
-    t("profile.myAddress"),
+    { id: 0, name: t("profile.editmypersonaldata") },
+    { id: 1, name: t("profile.My previous requests") },
+    { id: 2, name: t("profile.Security and Password") },
+    { id: 3, name: t("profile.mySize") },
+    { id: 4, name: t("profile.myAddress") },
   ]
+  const handleToggleClick = (id: number) => {
+    setActiveItem(id)
+  }
 
   return (
     <div>
@@ -27,8 +37,8 @@ export default function Profile() {
         <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-black/45 via-black/45 to-black/45"></div>
       </div>
       <div className="container">
-        <div className="px-50 mt-20">
-          <div className="flex flex-row-reverse justify-between">
+        <div className="px-40 mt-20">
+          <div className="flex flex-row-reverse  justify-between">
             <div
               className={cn(
                 "flex gap-2 mb-5 items-center",
@@ -57,23 +67,36 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center gap-5 my-10">
-          <div className="py-7  border border-[#1a1a1a] rounded-3xl myShadow bg-white flex-1/4  overflow-hidden font-semibold text-[20px] ">
+        <div className="px-40  flex justify-center items-stretch gap-5 my-10">
+          <div className="py-10    border border-[#1a1a1a] rounded-3xl myShadow bg-white flex-1/4  overflow-hidden font-semibold  text-[20px] ">
             {list.map((item, index) => {
               return (
                 <Button
+                  onClick={() => {
+                    handleToggleClick(item.id)
+                  }}
                   key={index}
                   variant={"outline"}
-                  className=" p-5 cursor-pointer rounded-none w-full border-b border-l-0 border-r-0 border-t-0 border-[#f3e0c8]"
+                  className={cn(
+                    "p-7 flex   rounded-2xl  justify-start cursor-pointer w-full border-b border-l-0 border-r-0 border-t-0 border-[#f3e0c8]",
+                    activeItem == item.id &&
+                      "text-[24px] font-bold bg-[#fffcf9]"
+                  )}
                 >
-                  {item}
+                  {item.name}
                 </Button>
               )
             })}
           </div>
-          <div className="flex-3/4"></div>
+          <>
+            {activeItem === 0 && <EditMyData />}
+            {activeItem === 1 && <PreviousOrders />}
+            {activeItem === 3 && <EditMySize />}
+            {activeItem === 4 && <MyAddresses />}
+          </>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

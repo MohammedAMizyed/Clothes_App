@@ -20,6 +20,7 @@ type product = {
   btnTitle?: string
   id?: number
   isPlus?: boolean
+  isFavorite: boolean
 }
 
 export default function ProductCard({
@@ -33,12 +34,15 @@ export default function ProductCard({
   btnTitle,
   id,
   isPlus,
+  isFavorite,
 }: product) {
   const { i18n } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
-  const { mutate, data } = useFavorite()
-  const [liked, setLiked] = useState<boolean>(false)
+  const { mutate } = useFavorite()
+  const [liked, setLiked] = useState<boolean>(isFavorite)
+  console.log("isliked", liked)
+
   const onToggle = () => {
     // setLiked(!liked)
     if (!id) return

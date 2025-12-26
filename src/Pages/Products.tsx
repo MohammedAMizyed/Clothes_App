@@ -101,6 +101,7 @@ export default function Products() {
                       iconUrl={likeIcon}
                       discTitle={item.product_name}
                       id={item.id}
+                      isFavorite={item.is_favorite}
                     />
                   </div>
                 )
@@ -479,6 +480,7 @@ export default function Products() {
                     btnTitle={t("shop.content.btn")}
                     iconUrl={likeIcon}
                     discTitle={t(item.product_name)}
+                    isFavorite={item.is_favorite}
                   />
                 </div>
               )
