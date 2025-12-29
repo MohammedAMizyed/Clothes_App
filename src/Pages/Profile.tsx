@@ -10,7 +10,8 @@ import EditMyData from "@/components/EditMyData"
 import PreviousOrders from "@/components/PreviousOrders"
 import MyAddresses from "@/components/MyAddresses"
 import Footer from "@/components/Footer"
-import EditMySize from "./EditMySize"
+import EditMySize from "@/components/EditMySize"
+import EditMyPassword from "@/components/EditMyPassword"
 export default function Profile() {
   const { t, i18n } = useTranslation()
   const [activeItem, setActiveItem] = useState<number>(0)
@@ -37,7 +38,7 @@ export default function Profile() {
         <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-black/45 via-black/45 to-black/45"></div>
       </div>
       <div className="container">
-        <div className="px-40 mt-20">
+        <div className="sm:px-40 mt-20">
           <div className="flex flex-row-reverse  justify-between">
             <div
               className={cn(
@@ -67,8 +68,8 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div className="px-40  flex justify-center items-stretch gap-5 my-10">
-          <div className="py-10    border border-[#1a1a1a] rounded-3xl myShadow bg-white flex-1/4  overflow-hidden font-semibold  text-[20px] ">
+        <div className="sm:px-40  flex justify-center items-stretch sm:flex-row flex-col gap-5 my-10">
+          <div className="sm:py-10   flex sm:flex-col   border border-[#1a1a1a] rounded-xl sm:rounded-3xl myShadow bg-white flex-1/4  overflow-hidden font-semibold  sm:text-[20px] ">
             {list.map((item, index) => {
               return (
                 <Button
@@ -78,9 +79,9 @@ export default function Profile() {
                   key={index}
                   variant={"outline"}
                   className={cn(
-                    "p-7 flex   rounded-2xl  justify-start cursor-pointer w-full border-b border-l-0 border-r-0 border-t-0 border-[#f3e0c8]",
+                    "sm:p-7 py-7  px-1 flex text-[11.5px] sm:text-[20px]   sm:rounded-2xl  rounded-none justify-start cursor-pointer  sm:w-full border-b border-l-0 border-r-0 border-t-0 border-[#f3e0c8]",
                     activeItem == item.id &&
-                      "text-[24px] font-bold bg-[#fffcf9]"
+                      "sm:text-[24px] font-bold bg-[#fffcf9]"
                   )}
                 >
                   {item.name}
@@ -91,6 +92,7 @@ export default function Profile() {
           <>
             {activeItem === 0 && <EditMyData />}
             {activeItem === 1 && <PreviousOrders />}
+            {activeItem === 2 && <EditMyPassword />}
             {activeItem === 3 && <EditMySize />}
             {activeItem === 4 && <MyAddresses />}
           </>

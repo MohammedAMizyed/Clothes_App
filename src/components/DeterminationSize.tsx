@@ -11,7 +11,7 @@ export default function DeterminationSize() {
         <input
           className="bg-white outline-none myShadow max-w-[60px] rounded-2xl p-3 py-1"
           type="text"
-          placeholder="86cm"
+          placeholder={t("mena")}
         />{" "}
       </div>
       <div className=" flex mb-2 items-center justify-between gap-4">

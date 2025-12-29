@@ -4,7 +4,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-
+import loginIcon from "../assets/loginAccount.svg"
+import register from "../assets/addnewaccount.svg"
 import logo from "../assets/Frame 135 (1).svg"
 import logoAlt from "../assets/image 1 (1).svg"
 import WorldIcon from "../assets/Group 2 (1).svg"
@@ -18,6 +19,11 @@ import { Link } from "react-router-dom"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import profileImg from "../assets/profiel.svg"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 export default function Header() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const location = useLocation()
@@ -63,27 +69,34 @@ export default function Header() {
                   alt="listIcon"
                 />
               </PopoverTrigger>
-              <PopoverContent className="border-2 rounded-2xl absolute -left-4 max-w-[150px]  border-[#f3e0c8]">
-                <div className="flex flex-col gap-2 ">
+              <PopoverContent
+                className={cn(
+                  "p-0 border-2 overflow-hidden mt-4 rounded-2xl absolute max-w-[150px]  border-[#f3e0c8]",
+                  i18n.language === "ar" ? "-left-4" : " -left-30"
+                )}
+              >
+                <div className="flex flex-col    ">
                   <Link to={"/login"}>
                     <Button
                       className={cn(
-                        `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
+                        `cursor-pointer border-b-2 flex  justify-start  w-full rounded-none border-[#f3e0c8]  bg-white text-black text-[12px] font-normal`,
                         "h-11"
                       )}
                     >
-                      {t("header.btn2")}
+                      <img src={loginIcon} alt="loginIcon" />
+                      {t("login")}
                     </Button>
                   </Link>
                   <Link to={"/signup"}>
                     <Button
                       className={cn(
-                        "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
+                        "cursor-pointer bg-white text-black text-[12px] font-normal  ",
                         "h-11"
                       )}
                       variant="default"
                     >
-                      {t("header.btn1")}
+                      <img src={register} alt="loginIcon" />
+                      {t("addAccount")}
                     </Button>
                   </Link>
                 </div>
@@ -92,16 +105,37 @@ export default function Header() {
           </div>
           <div className="sm:block hidden flex-1/3">
             <div className=" flex gap-2 items-center">
-              <span
-                onClick={handleChangeLang}
-                className="cursor-pointer flex font- bold gap-1 justify-center items-center"
-              >
-                <img src={WorldIcon} alt="WorldIcon" />
-                {i18n.language == "ar" ? "EN" : "AR"}
-              </span>
-              <span>
-                <img src={HardIcon} alt="HardIcon" />
-              </span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <span
+                    onClick={handleChangeLang}
+                    className="cursor-pointer flex font- bold gap-1 justify-center items-center"
+                  >
+                    <img src={WorldIcon} alt="WorldIcon" />
+                    {i18n.language == "ar" ? "EN" : "AR"}
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t("changeLang")}</p>
+                </TooltipContent>
+              </Tooltip>
+
+              <Link to={"/favorite"}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <span>
+                      <img
+                        src={HardIcon}
+                        className="cursor-pointer"
+                        alt="HardIcon"
+                      />
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{t("Go to Favorite page")}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </Link>
               <div className="relative">
                 <img
                   className="absolute top-[50%] transform-[translateY(-50%)] pl-2"
@@ -118,7 +152,14 @@ export default function Header() {
           </div>
           <div className="select-none sm:flex justify-center hidden  flex-1/3">
             <Link to={"/"}>
-              <img src={logo} alt="logo" />
+              <Tooltip>
+                <TooltipTrigger>
+                  <img className="cursor-pointer" src={logo} alt="logo" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t("gotohome")}</p>
+                </TooltipContent>
+              </Tooltip>
             </Link>
           </div>
           <div className="sm:block hidden  flex-1/3 ">
@@ -132,14 +173,23 @@ export default function Header() {
                       alt="profileImg"
                     />
                   </PopoverTrigger>
-                  <PopoverContent className="myShadow bg-[#fffcf9] overflow-hidden border-2 rounded-2xl absolute -left-6 md:max-w-[150px] lg:max-w-[190px] p-0  border-[#f3e0c8]">
+                  <PopoverContent
+                    className={cn(
+                      "myShadow bg-[#fffcf9] overflow-hidden border-2 rounded-2xl absolute  md:max-w-[150px] lg:max-w-[190px] p-0  border-[#f3e0c8]",
+                      i18n.language === "en" ? "-left-40 " : "-left-6"
+                    )}
+                  >
                     <div className="flex flex-col justify-start ">
                       <Link to={"/shoppingCart"}>
                         <Button
                           variant={"ghost"}
                           className={cn(
-                            `cursor-pointer text-[16px] w-full text-end flex justify-start font-bold rounded-none  border-b-2 border-[#f3e0c8] `,
-                            "h-11"
+                            `cursor-pointer text-[16px] w-full  flex  font-bold rounded-none  border-b-2 border-[#f3e0c8] `,
+                            "h-11",
+                            "h-11",
+                            i18n.language === "en"
+                              ? "justify-end"
+                              : "justify-start"
                           )}
                         >
                           {t("My Orders")}
@@ -148,8 +198,11 @@ export default function Header() {
                       <Link to={"/profile"}>
                         <Button
                           className={cn(
-                            "cursor-pointer text-[16px] w-full text-end flex justify-start border-b-2 border-[#f3e0c8] font-bold rounded-none ",
-                            "h-11"
+                            "cursor-pointer text-[16px] w-full text-end flex  border-b-2 border-[#f3e0c8] font-bold rounded-none ",
+                            "h-11",
+                            i18n.language === "en"
+                              ? "justify-end"
+                              : "justify-start"
                           )}
                           variant="ghost"
                         >
@@ -160,8 +213,12 @@ export default function Header() {
                       <Button
                         onClick={handleLogOutClick}
                         className={cn(
-                          "cursor-pointer text-[16px] w-full text-end flex justify-start font-bold rounded-none ",
-                          "h-11"
+                          "cursor-pointer text-[16px] w-full text-end flex  font-bold rounded-none ",
+                          "h-11",
+                          "h-11",
+                          i18n.language === "en"
+                            ? "justify-end"
+                            : "justify-start"
                         )}
                         variant="ghost"
                       >

@@ -287,7 +287,8 @@
     "myAddress": "My Address",
     "mypreviosrequestes": "My previous requests",
     "myAddresses": "My addresse",
-    "sizes": "My size"
+    "sizes": "My size",
+    "addNewSizes": "Add a new size"
   },
   "firstName": "First Name",
   "secondeName": "Second Name",
@@ -323,5 +324,26 @@
   "You haven": "You haven't entered your measurements yet.\n",
   "Enter your size": "Enter your bust and hip measurements now to get the best fit for each style.",
   "addYrSize": "Add your size",
-  "havent": "You haven't entered your measurements yet."
+  "havent": "You haven't entered your measurements yet.",
+  "enterYrname": "Enter Your Name",
+  "It": "It's best to take your measurements twice to ensure accuracy.\nIf your measurements fall between sizes, we recommend choosing the larger size for greater comfort.",
+  "wory": "It's best to take your measurements twice to ensure accuracy.\nIf your measurements fall between sizes, we recommend choosing the larger size for greater comfort.",
+  "Chest circumference ": "Chest circumference :",
+  "Hip rotation ": "Hip rotation :",
+  "Hiprotation": "Hip rotation :",
+  "Chestcircumference ": "Chest circumference :",
+  "Chestcircumference": "ChestCircumference",
+  "the name is requierd": "The Name is required",
+  "Chestcir": "Chest Circumference is requierd",
+  "hipRo": "Hip rotation is required",
+  "mena": "Mena",
+  "SecurityandPassword": "Security and Password",
+  "Enter your phone number to send the secret code": "Enter your phone number to send the secret code:",
+  "enterCode": "Enter the code",
+  "Go to Favorite page": "Go to favorite page",
+  "changeLang": "Change Language",
+  "gotohome": "Go to home page",
+  "Enteryourphone": "Enter your phone number to send the secret code:",
+  "login": "Log In",
+  "addAccount": "New Account"
 }

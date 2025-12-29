@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next"
 import { Button } from "./ui/button"
 import noteIcon from "../assets/note.svg"
 import { useState } from "react"
-import EditAddresses from "@/EditAddresses"
+import EditAddresses from "@/Pages/EditAddresses"
 import { cn } from "@/lib/utils"
 export default function MyAddresses() {
   const [isEdit, setIsEdit] = useState<boolean>(false)
@@ -26,7 +26,7 @@ export default function MyAddresses() {
           <p className="text-[14px] mb-2 font-normal">
             {t("addresses.paragraph")}
           </p>
-          <ul>
+          <ul className="ml-10">
             <li className="list-decimal! text-[14px] my-2 font-normal">
               {t("firstList")}
             </li>

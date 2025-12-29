@@ -2,10 +2,10 @@ import { useTranslation } from "react-i18next"
 import { z } from "zod"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button } from "./components/ui/button"
-import { cn } from "./lib/utils"
+import { Button } from "../components/ui/button"
+import { cn } from "../lib/utils"
 
-import { useAddress } from "./hooks/useAddress"
+import { useAddress } from "../hooks/useAddress"
 export default function EditAddresses() {
   const { t } = useTranslation()
   const addressSchema = z.object({
@@ -53,9 +53,9 @@ export default function EditAddresses() {
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-full  my-5 flex gap-3  items-center">
+      <div className="w-full  mt-5 sm:flex gap-3  items-center">
         <label
-          className="flex text-[12px] font-semibold flex-col flex-1/2"
+          className="flex sm:mb-0 mb-5 text-[12px] font-semibold flex-col flex-1/2"
           htmlFor=""
         >
           {t("firstName")}
@@ -98,19 +98,19 @@ export default function EditAddresses() {
         htmlFor=""
       >
         {t("phoneNumber")}
-        <div className="flex  gap-5">
-          <input
-            {...register("firstPhone")}
-            className="text-end bg-white flex-5/6  outline-none myShadow  rounded-2xl p-3"
-            type="text"
-            placeholder="599634192"
-          />
-
+        <div className="flex  gap-2">
           <input
             {...register("firstIntroPhone")}
             className="max-w-20 bg-white flex-1/6 outline-none myShadow  rounded-2xl p-3"
             type="text"
+            maxLength={4}
             placeholder="+972"
+          />
+          <input
+            {...register("firstPhone")}
+            className=" bg-white flex-5/6  outline-none myShadow  rounded-2xl p-3"
+            type="text"
+            placeholder="599634192"
           />
         </div>
         <div className="flex flex-row-reverse text-[15px] gap-10 mt-2">
@@ -132,19 +132,19 @@ export default function EditAddresses() {
         htmlFor=""
       >
         {t("anotherPhoneNumber")}
-        <div className="flex  gap-5">
-          <input
-            {...register("secondPhone")}
-            className="text-end bg-white flex-5/6  outline-none myShadow  rounded-2xl p-3"
-            type="text"
-            placeholder="599634192"
-          />
-
+        <div className="flex  gap-2">
           <input
             {...register("secondIntroPhone")}
             className="max-w-20 bg-white flex-1/6 outline-none myShadow  rounded-2xl p-3"
             type="text"
             placeholder="+972"
+            maxLength={4}
+          />
+          <input
+            {...register("secondPhone")}
+            className=" bg-white flex-5/6  outline-none myShadow  rounded-2xl p-3"
+            type="text"
+            placeholder="599634192"
           />
         </div>
       </label>
