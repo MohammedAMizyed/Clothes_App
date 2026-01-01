@@ -7,7 +7,7 @@ export default function EditMySize() {
   const [isEdit, setIsEdit] = useState<boolean>(false)
   const { t } = useTranslation()
   return (
-    <div className="py-10 sm:px-50 px-10 border border-[#1a1a1a] rounded-3xl myShadow bg-white flex-3/4  overflow-hidden font-semibold text-[20px]">
+    <div className="sm:py-10 pb-10 sm:px-50 px-10 sm:border sm:border-[#1a1a1a] sm:rounded-3xl sm:myShadow sm:bg-white flex-3/4  overflow-hidden font-semibold text-[20px]">
       <h2 className="text-start pb-4 text-[20px] font-semibold border-b border-l-0 border-r-0 border-t-0 border-[#f3e0c8]">
         {" "}
         {isEdit ? t("profile.addNewSizes") : t("profile.sizes")}:

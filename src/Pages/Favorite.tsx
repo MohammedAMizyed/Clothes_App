@@ -61,7 +61,7 @@ export default function Favorite() {
               </h1>
             </div>
           </div>
-          <div className="mb-100 flex gap-5">
+          <div className="mb-100 flex sm:flex-row flex-col gap-5">
             <div className="flex-4/5">
               <TableRe
                 product={

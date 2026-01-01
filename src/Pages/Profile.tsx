@@ -38,7 +38,7 @@ export default function Profile() {
         <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-black/45 via-black/45 to-black/45"></div>
       </div>
       <div className="container">
-        <div className="sm:px-40 mt-20">
+        <div className="sm:px-40 mt-10 sm:mt-20">
           <div className="flex flex-row-reverse  justify-between">
             <div
               className={cn(
@@ -68,8 +68,8 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div className="sm:px-40  flex justify-center items-stretch sm:flex-row flex-col gap-5 my-10">
-          <div className="sm:py-10   flex sm:flex-col   border border-[#1a1a1a] rounded-xl sm:rounded-3xl myShadow bg-white flex-1/4  overflow-hidden font-semibold  sm:text-[20px] ">
+        <div className="sm:px-40  flex  justify-center items-stretch sm:flex-row flex-col gap-5 sm:my-10">
+          <div className="sm:py-10 border-b border-[#f3e0c8]  flex sm:flex-col justify-around   sm:border sm:border-[#1a1a1a] rounded-xl sm:rounded-3xl myShadow bg-white flex-1/4  overflow-hidden font-semibold  sm:text-[20px] ">
             {list.map((item, index) => {
               return (
                 <Button
@@ -79,9 +79,9 @@ export default function Profile() {
                   key={index}
                   variant={"outline"}
                   className={cn(
-                    "sm:p-7 py-7  px-1 flex text-[11.5px] sm:text-[20px]   sm:rounded-2xl  rounded-none justify-start cursor-pointer  sm:w-full border-b border-l-0 border-r-0 border-t-0 border-[#f3e0c8]",
+                    "sm:p-7 py-7  px-1 flex text-[8px] sm:text-[20px]   sm:rounded-2xl  rounded-none justify-start cursor-pointer  sm:w-full  border-b border-l-0 border-r-0 border-t-0  sm:border-[#f3e0c8]",
                     activeItem == item.id &&
-                      "sm:text-[24px] font-bold bg-[#fffcf9]"
+                      "sm:text-[24px] font-bold sm:bg-[#fffcf9]"
                   )}
                 >
                   {item.name}

@@ -49,7 +49,7 @@ export default function EditMyData() {
     reset()
   }
   return (
-    <div className="py-10 px-10  border border-[#1a1a1a] rounded-3xl myShadow bg-white flex-3/4  overflow-hidden font-semibold text-[20px]">
+    <div className="sm:py-10 pb-10 px-10  sm:border sm:border-[#1a1a1a] sm:rounded-3xl sm:myShadow sm:bg-white flex-3/4  overflow-hidden font-semibold text-[20px]">
       <h2 className="text-start pb-4 text-[20px] font-semibold border-b border-l-0 border-r-0 border-t-0 border-[#f3e0c8]">
         {" "}
         {t("profile.editmypersonaldata")}:
@@ -89,7 +89,7 @@ export default function EditMyData() {
           )}
           {errors.secondName && "|||"}
           {errors.secondName && (
-            <span className="text-[#d10404] text-[15px] block">
+            <span className="text-[#d10404] text-[12px] sm:text-[15px] block">
               {errors.secondName.message}
             </span>
           )}
@@ -115,7 +115,7 @@ export default function EditMyData() {
             />
           </div>
         </label>
-        <div className="flex flex-row-reverse text-[15px] gap-10 mt-2">
+        <div className="flex flex-row-reverse justify-center  text-[12px] sm:text-[15px] gap-5 sm:gap-10 mt-2">
           {errors.firstIntroPhone && (
             <span className="text-[#d10404] ">
               {errors.firstIntroPhone.message}
