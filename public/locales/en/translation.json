@@ -345,5 +345,7 @@
   "gotohome": "Go to home page",
   "Enteryourphone": "Enter your phone number to send the secret code:",
   "login": "Log In",
-  "addAccount": "New Account"
+  "addAccount": "New Account",
+  "color": "color",
+  "sizeIs": "Size"
 }

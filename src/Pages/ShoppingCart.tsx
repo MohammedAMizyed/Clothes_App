@@ -4,7 +4,7 @@ import arrowImg from "../assets/Vector 110.svg"
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
-import TableRe from "@/components/TableRe"
+import TableCart from "@/components/tableCart"
 import deleteProduct from "../assets/deleteFromoppingCart.svg"
 import shoppingCartImg from "../assets/shoppingCartImg.jpg"
 import { useState } from "react"
@@ -22,12 +22,12 @@ export default function ShoppingCart() {
         />
         <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-black/45 via-black/45 to-black/45"></div>
       </div>
-      <div className="container">
+      <div className="container px-40!">
         <div className="text-center my-15">
           <h1 className="mb-2 sm:font-bold font-medium text-[18px] sm:text-[40px] ">
             {t("shoppingCart.title")}
           </h1>
-          <p className=" text-[12px] font-normal sm:text-[24px] sm:font-semibold">
+          <p className="  text-[12px] font-normal sm:text-[24px] sm:font-semibold">
             {t("shoppingCart.description")}
           </p>
         </div>
@@ -43,23 +43,19 @@ export default function ShoppingCart() {
             </h2>
           </Link>
 
-          <img
-            className="sm:w-fill max-w-[44px]"
-            src={arrowImg}
-            alt="arrowIcon"
-          />
+          <img className="sm:w-fill max-w-11" src={arrowImg} alt="arrowIcon" />
           <h2 className="sm:text-[24px] text-[17px] font-normal sm:font-bold">
             Products Details
           </h2>
         </div>
         <div>
-          <h1 className="font-semibold sm:text-[18px] text-[#ff0000]">
+          <h1 className=" mb-5 font-semibold sm:text-[18px] text-[#ff0000]">
             {t("shoppingCart.error")}
           </h1>
         </div>
         <div className="mb-100">
           <div>
-            <TableRe
+            <TableCart
               product={
                 <div className="mr-1 flex  gap-2 justify-center items-center">
                   <img src={deleteProduct} alt="deleteIcon" />

@@ -15,21 +15,38 @@ import LikeButton from "@/components/LikeButton"
 import { useFavorite } from "@/hooks/useFavorite"
 import { useState } from "react"
 import { useEffect } from "react"
-
+import { useAddToCart } from "@/hooks/useAddToCart"
 export default function ProductDetails() {
   const { t, i18n } = useTranslation()
   const { id } = useParams() as { id: string }
 
   const { data: product, status } = useProduct(id)
-
+  const { mutate: mutateAddToCart } = useAddToCart()
   const { mutate } = useFavorite()
+
+  const [selectedSize, setSelectedSize] = useState<string>("S")
   const [liked, setLiked] = useState<boolean>(!!product?.is_favorite)
+  const [quantity, setQuantity] = useState<number>(1)
   useEffect(() => {
     if (product) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setLiked(!!product.is_favorite)
     }
   }, [product])
+  const handleAddToCart = () => {
+    mutateAddToCart(
+      { color_id: Number(id), size_code: selectedSize, quantity },
+      {
+        onSuccess: (response) => {
+          console.log(response.data.quantity)
+          console.log(response.data.size_code)
+        },
+        onError: (error) => {
+          console.log(error)
+        },
+      }
+    )
+  }
   const onToggle = () => {
     // setLiked(!liked)
     if (!id) return
@@ -144,7 +161,9 @@ export default function ProductDetails() {
                 </div>
                 <div>
                   {product?.other_colors.map((item) => {
-                    return <img src={item.image_url} alt={item.name} />
+                    return (
+                      <img key={item.id} src={item.image_url} alt={item.name} />
+                    )
                   })}{" "}
                 </div>
               </div>
@@ -170,11 +189,16 @@ export default function ProductDetails() {
                   {product?.sizes.map((item) => {
                     return (
                       <div
+                        onClick={() => {
+                          setSelectedSize(item.size_code)
+                        }}
                         className={cn(
-                          item.size_code === "free-size" ? "w-18!" : "w-6",
-                          " cursor-pointer  h-6 sm:w-12 sm:h-12 text-[8px]  items-center sm:text-[15px] font-bold flex products-center justify-center  border-2 border-black rounded-sm "
+                          selectedSize === item.size_code &&
+                            "text-white bg-[#FF914C] border-white!",
+
+                          "w-6 cursor-pointer  h-6 sm:w-12 sm:h-12 text-[8px]  items-center sm:text-[15px] font-bold flex products-center justify-center  border-2 border-black rounded-sm "
                         )}
-                        key={product.id}
+                        key={item.id}
                       >
                         {item.size_code}
                       </div>
@@ -187,16 +211,44 @@ export default function ProductDetails() {
                   )}
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex items-center  gap-2">
                 <Button
                   variant={"outline"}
-                  className="cursor-pointer text-[#FF914C] myShadow rounded-[18px] text-[12px] sm:text-[24px] p-6 "
+                  className="cursor-pointer  text-[#FF914C] myShadow rounded-[18px] text-[12px] sm:text-[24px] p-6 "
                 >
                   {t("baunow")}
                 </Button>
-                <Button className="cursor-pointer bg-[#FF914C] myShadow text-[12px] sm:text-[24px] p-6 font-medium rounded-[18px] ">
+                <Button
+                  onClick={() => {
+                    handleAddToCart()
+                  }}
+                  className="cursor-pointer bg-[#FF914C] myShadow text-[12px] sm:text-[24px] p-6 font-medium rounded-[18px] "
+                >
                   {t("addtocart")}
                 </Button>
+                <div className="flex p-0   border-2 overflow-hidden rounded-2xl  border-[#f8e0c8] justify-center items-center ">
+                  <Button
+                    variant={"ghost"}
+                    className=" p-3 h-full cursor-pointer text-3xl rounded-none"
+                    onClick={() => {
+                      setQuantity(quantity + 1)
+                    }}
+                  >
+                    +
+                  </Button>
+                  <div className="px-4 h-full  flex justify-center items-center font-bold border-r-2 border-l-2 border-[#f8e0c8]  text-[18px] ">
+                    {quantity}
+                  </div>
+                  <Button
+                    className=" p-3 h-full cursor-pointer text-3xl  rounded-none"
+                    variant={"ghost"}
+                    onClick={() => {
+                      setQuantity(quantity - 1)
+                    }}
+                  >
+                    -
+                  </Button>
+                </div>
               </div>
               <div className="text-[12px] font-semibold flex my-4">
                 <p>{t("accept")}</p>--{" "}

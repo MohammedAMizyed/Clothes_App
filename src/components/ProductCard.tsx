@@ -70,6 +70,7 @@ export default function ProductCard({
             }}
             className="relative overflow-hidden sm:rounded-4xl rounded-2xl myShadow"
           >
+            e
             <img
               className={cn(
                 "object-cover  sm:h-[339px] h-[125px]  sm:w-[339px]",
@@ -79,7 +80,6 @@ export default function ProductCard({
               alt="img"
             />
             <div className="absolute inset-0 bg-black/20"></div>
-
             <div
               className={cn(
                 "sm:flex hidden absolute bg-[#FF914C] overflow-hidden  border  top-0  text-white",
@@ -129,7 +129,12 @@ export default function ProductCard({
             <span className=" text-[#00000033] sm:text-[18px] text-[12px] block">
               {colors}
             </span>
-            <Button className="sm:flex hidden text-[24px] font-semibold w-full rounded-[20px] bg-[#FFFFFF] text-[#FF914C] myShadow py-8 cursor-pointer hover:text-white hover:bg-[#FF914C] transition-all duration-200">
+            <Button
+              onClick={() => {
+                navigate(`/products/${id}`)
+              }}
+              className="sm:flex hidden text-[24px] font-semibold w-full rounded-[20px] bg-[#FFFFFF] text-[#FF914C] myShadow py-8 cursor-pointer hover:text-white hover:bg-[#FF914C] transition-all duration-200"
+            >
               {btnTitle}
             </Button>
           </div>
