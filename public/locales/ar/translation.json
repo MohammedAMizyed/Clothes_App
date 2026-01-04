@@ -347,5 +347,11 @@
   "login": "تسجيل الدخول",
   "addAccount": "حساب جديد",
   "color": "اللون",
-  "sizeIs": "المقاس"
+  "sizeIs": "المقاس",
+  "numOfProducts": "عدد القطع",
+  "totalHave": "المجموع الجزئي",
+  "salll": "الشراء",
+  "dareba": "ضريبة الشراء",
+  "priceOfDelevery": "سعر التوصيل",
+  "asema": "قسيمة خصم"
 }

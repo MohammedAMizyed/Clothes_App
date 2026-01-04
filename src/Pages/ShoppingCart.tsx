@@ -5,12 +5,17 @@ import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import TableCart from "@/components/tableCart"
-import deleteProduct from "../assets/deleteFromoppingCart.svg"
-import shoppingCartImg from "../assets/shoppingCartImg.jpg"
-import { useState } from "react"
 export default function ShoppingCart() {
   const { t, i18n } = useTranslation()
-  const [count, setCount] = useState(0)
+  const list = [
+    { id: 1, name: t("numOfProducts") },
+    { id: 2, name: t("totalHave") },
+    { id: 3, name: t("salll") },
+    { id: 4, name: t("dareba") },
+    { id: 5, name: t("priceOfDelevery") },
+    { id: 6, name: t("asema") },
+    { id: 7, name: t("total") },
+  ]
   return (
     <>
       <div className="relative">
@@ -53,49 +58,22 @@ export default function ShoppingCart() {
             {t("shoppingCart.error")}
           </h1>
         </div>
-        <div className="mb-100">
-          <div>
-            <TableCart
-              product={
-                <div className="mr-1 flex  gap-2 justify-center items-center">
-                  <img src={deleteProduct} alt="deleteIcon" />
-
-                  <img
-                    className="  max-h-[77px] max-w-[81px] rounded-[10px] "
-                    src={shoppingCartImg}
-                    alt="ProductImg"
-                  />
-
-                  <div>
-                    <h2>{t("prayer")}</h2>
-                    <span>{t("product-colors")}</span>
-                  </div>
-                </div>
-              }
-              price={120 + t("usa")}
-              total={120 + t("usa")}
-              quantity={
-                <div className="flex gap-2 justify-center items-center rounded-[5px] border-[#F8E0C8] border ">
-                  <button
-                    onClick={() => {
-                      setCount((count) => count - 1)
-                    }}
-                  >
-                    -
-                  </button>
-                  <div>{count}</div>
-                  <button
-                    onClick={() => {
-                      setCount((count) => count + 1)
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-              }
-            />
+        <div className="mb-100 flex">
+          <div className="flex-1">
+            <TableCart />
           </div>
-          <div></div>
+          <div>
+            <h3></h3>
+            <div>
+              {list.map((item) => {
+                return (
+                  <div key={item.id}>
+                    <div>{item.name}</div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </>
