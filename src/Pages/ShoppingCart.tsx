@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import TableCart from "@/components/tableCart"
+import Tost from "@/components/Tost"
 export default function ShoppingCart() {
   const { t, i18n } = useTranslation()
   const list = [
@@ -17,7 +18,7 @@ export default function ShoppingCart() {
     { id: 7, name: t("total") },
   ]
   return (
-    <>
+    <div className="">
       <div className="relative">
         <Header />
         <img
@@ -76,6 +77,6 @@ export default function ShoppingCart() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

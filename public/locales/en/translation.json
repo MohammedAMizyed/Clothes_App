@@ -347,5 +347,8 @@
   "login": "Log In",
   "addAccount": "New Account",
   "color": "color",
-  "sizeIs": "Size"
+  "sizeIs": "Size",
+  "DeleteSec": "Delete Successfully",
+  "addSec": "Update Successfully\t",
+  "addSece": "Add Successfully\t"
 }

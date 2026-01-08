@@ -5,6 +5,7 @@ import { useForm, type SubmitHandler } from "react-hook-form"
 import z from "zod"
 import { useTranslation } from "react-i18next"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useTost } from "@/context/TostContext"
 export default function EditMyData() {
   const { t } = useTranslation()
   const { data: me } = useMe()
@@ -35,6 +36,7 @@ export default function EditMyData() {
     mode: "onBlur",
     resolver: zodResolver(meSchema),
   })
+  const { handleShowMessage } = useTost()
   const onSubmit: SubmitHandler<meSchemaType> = (data) => {
     console.log(data)
     const name = data.firstName + " " + data.secondName
@@ -43,6 +45,12 @@ export default function EditMyData() {
       {
         onSuccess: (res) => {
           console.log(res)
+          handleShowMessage(
+            <>
+              {t("addSec")}
+              <></>
+            </>
+          )
         },
       }
     )

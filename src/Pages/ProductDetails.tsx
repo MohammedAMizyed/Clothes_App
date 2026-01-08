@@ -16,6 +16,8 @@ import { useFavorite } from "@/hooks/useFavorite"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useAddToCart } from "@/hooks/useAddToCart"
+import { useTost } from "@/context/TostContext"
+import { PanelRightIcon } from "lucide-react"
 export default function ProductDetails() {
   const { t, i18n } = useTranslation()
   const { id } = useParams() as { id: string }
@@ -27,6 +29,7 @@ export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState<string>("S")
   const [liked, setLiked] = useState<boolean>(!!product?.is_favorite)
   const [quantity, setQuantity] = useState<number>(1)
+  const { handleShowMessage } = useTost()
   useEffect(() => {
     if (product) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -39,7 +42,12 @@ export default function ProductDetails() {
       {
         onSuccess: (response) => {
           console.log(response.data.quantity)
-          console.log(response.data.size_code)
+          handleShowMessage(
+            <>
+              {t("addSece")}
+              <></>
+            </>
+          )
         },
         onError: (error) => {
           console.log(error)
@@ -56,6 +64,12 @@ export default function ProductDetails() {
         onSuccess: (response) => {
           setLiked(response.data.is_favorite)
           console.log(response)
+          handleShowMessage(
+            <>
+              {t("addSec")}
+              <PanelRightIcon></PanelRightIcon>
+            </>
+          )
         },
         onError: (error) => {
           console.log(error)

@@ -1,6 +1,7 @@
 import {
   Table,
   TableBody,
+  TableCaption,
   TableHead,
   TableHeader,
   TableRow,
@@ -28,12 +29,16 @@ export default function TableCart() {
           </TableRow>
         </TableHeader>
         {isError && (
-          <div className="text-red-600 font-bold w-full ">{t("error")}</div>
+          <TableCaption>
+            <div className="text-red-600 font-bold w-full ">{t("error")}</div>
+          </TableCaption>
         )}
         {isPending ? (
-          <div className="flex justify-center m-10">
-            <Loader2 className="animate-spin size-10.5 " />
-          </div>
+          <TableCaption>
+            <div className="flex justify-center m-10">
+              <Loader2 className="animate-spin size-10.5 " />
+            </div>
+          </TableCaption>
         ) : (
           <TableBody>
             {myCart?.data.items.map((item) => {

@@ -5,18 +5,28 @@ import shoppingCartImg from "../assets/shoppingCartImg.jpg"
 import QuantityButton from "./QuantityButton"
 import { DeleteIcon } from "lucide-react"
 import { useRemoveProductFromCart } from "@/hooks/useRemoveProductFromCart"
+import { useTost } from "@/context/TostContext"
 type Props = cartResult["data"]["items"][number]
 const CartRow = (item: Props) => {
   const { t } = useTranslation()
   const { mutate } = useRemoveProductFromCart()
-
+  const { handleShowMessage } = useTost()
   return (
     <TableRow>
       <TableCell className="font-medium">
         <div className="mr-1 flex  gap-2 justify-center items-center">
           <DeleteIcon
             onClick={() => {
-              mutate(item.id)
+              mutate(item.id, {
+                onSuccess: () => {
+                  handleShowMessage(
+                    <>
+                      {t("DeleteSec")}
+                      <DeleteIcon></DeleteIcon>
+                    </>
+                  )
+                },
+              })
             }}
             className="cursor-pointer hover:text-red-700 "
           />

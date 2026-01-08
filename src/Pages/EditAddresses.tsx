@@ -4,6 +4,7 @@ import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "../components/ui/button"
 import { cn } from "../lib/utils"
+import { useTost } from "@/context/TostContext"
 
 import { useAddress } from "../hooks/useAddress"
 export default function EditAddresses() {
@@ -38,6 +39,7 @@ export default function EditAddresses() {
     resolver: zodResolver(addressSchema),
   })
   const { mutate } = useAddress()
+  const { handleShowMessage } = useTost()
   const onSubmit: SubmitHandler<addressSchemaType> = (data) => {
     console.log(data)
 
@@ -46,6 +48,12 @@ export default function EditAddresses() {
       {
         onSuccess: (res) => {
           console.log(res)
+          handleShowMessage(
+            <>
+              {t("addSec")}
+              <></>
+            </>
+          )
         },
       }
     )

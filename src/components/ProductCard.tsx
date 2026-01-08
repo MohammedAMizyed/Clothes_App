@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom"
 import LikeButton from "./LikeButton"
 import { useState } from "react"
 import { useFavorite } from "@/hooks/useFavorite"
+import { PanelRightIcon } from "lucide-react"
+import { useTost } from "@/context/TostContext"
 type product = {
   urlImg: string
   plusSize: string
@@ -41,8 +43,9 @@ export default function ProductCard({
   const navigate = useNavigate()
   const { mutate } = useFavorite()
   const [liked, setLiked] = useState<boolean>(isFavorite)
+  const { handleShowMessage } = useTost()
   console.log("isliked", liked)
-
+  const { t } = useTranslation()
   const onToggle = () => {
     // setLiked(!liked)
     if (!id) return
@@ -51,7 +54,13 @@ export default function ProductCard({
       {
         onSuccess: (response) => {
           setLiked(response.data.is_favorite)
-          console.log(response)
+
+          handleShowMessage(
+            <>
+              {t("addSec")}
+              <PanelRightIcon></PanelRightIcon>
+            </>
+          )
         },
         onError: (error) => {
           console.log(error)
