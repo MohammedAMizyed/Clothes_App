@@ -3,9 +3,9 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
-import exampleImg from "../assets/eximple.jpg"
-
+import { useRecentProduct } from "@/hooks/useResentProducts"
 export function ProductDetailsCarouselRow() {
+  const { data } = useRecentProduct()
   return (
     <Carousel
       opts={{
@@ -14,16 +14,16 @@ export function ProductDetailsCarouselRow() {
       className="w-full select-none "
     >
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {data?.map((item) => (
           <CarouselItem
-            key={index}
+            key={item.id}
             className=" cursor-pointer md:basis-1/2 lg:basis-1/4 -ml-1"
           >
             <div className="relative rounded-2xl overflow-hidden m-1">
               <img
                 className="object-cover h-[408px] w-[410px]"
-                src={exampleImg}
-                alt="exampleImg"
+                src={item.main_image_url}
+                alt="img of product"
               />
               <div className="absolute inset-0 bg-black/40"></div>
             </div>

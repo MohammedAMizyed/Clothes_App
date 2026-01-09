@@ -18,6 +18,8 @@ import { useEffect } from "react"
 import { useAddToCart } from "@/hooks/useAddToCart"
 import { useTost } from "@/context/TostContext"
 import { PanelRightIcon } from "lucide-react"
+import QuantitySelector from "@/components/QuantitySelector"
+import ProductSizes from "@/components/ProductSizes"
 export default function ProductDetails() {
   const { t, i18n } = useTranslation()
   const { id } = useParams() as { id: string }
@@ -135,7 +137,7 @@ export default function ProductDetails() {
 
             <div>
               <h3 className="text-[#A97C50] font-semibold text-[14px]">
-                {t("catoucory")} {t(product?.categories[0].name)}
+                {t("catoucory")} {product?.categories[0].name}
                 {status === "pending" && (
                   <div className="font-bold text-[10px]  products-centers  animate-pulse ">
                     {t("loading")}...
@@ -199,31 +201,10 @@ export default function ProductDetails() {
                     {t("productDetails.note")}
                   </h3>
                 </div>
-                <div className="my-4 flex sm:gap-2 gap-1 flex-wrap">
-                  {product?.sizes.map((item) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          setSelectedSize(item.size_code)
-                        }}
-                        className={cn(
-                          selectedSize === item.size_code &&
-                            "text-white bg-[#FF914C] border-white!",
-
-                          "w-6 cursor-pointer  h-6 sm:w-12 sm:h-12 text-[8px]  items-center sm:text-[15px] font-bold flex products-center justify-center  border-2 border-black rounded-sm "
-                        )}
-                        key={item.id}
-                      >
-                        {item.size_code}
-                      </div>
-                    )
-                  })}
-                  {status === "pending" && (
-                    <div className="font-bold text-[10px]  products-centers  animate-pulse ">
-                      {t("loading")}...
-                    </div>
-                  )}
-                </div>
+                <ProductSizes
+                  selectedSize={selectedSize}
+                  setSelectedSize={setSelectedSize}
+                />
               </div>
               <div className="flex items-center  gap-2">
                 <Button
@@ -240,29 +221,10 @@ export default function ProductDetails() {
                 >
                   {t("addtocart")}
                 </Button>
-                <div className="flex p-0   border-2 overflow-hidden rounded-2xl  border-[#f8e0c8] justify-center items-center ">
-                  <Button
-                    variant={"ghost"}
-                    className=" p-3 h-full cursor-pointer text-3xl rounded-none"
-                    onClick={() => {
-                      setQuantity(quantity + 1)
-                    }}
-                  >
-                    +
-                  </Button>
-                  <div className="px-4 h-full  flex justify-center items-center font-bold border-r-2 border-l-2 border-[#f8e0c8]  text-[18px] ">
-                    {quantity}
-                  </div>
-                  <Button
-                    className=" p-3 h-full cursor-pointer text-3xl  rounded-none"
-                    variant={"ghost"}
-                    onClick={() => {
-                      setQuantity(quantity - 1)
-                    }}
-                  >
-                    -
-                  </Button>
-                </div>
+                <QuantitySelector
+                  quantity={quantity}
+                  setQuantity={setQuantity}
+                />
               </div>
               <div className="text-[12px] font-semibold flex my-4">
                 <p>{t("accept")}</p>--{" "}
@@ -280,9 +242,11 @@ export default function ProductDetails() {
             <h3 className="text-[30px] font-medium">
               {t("productDetails.more")}
             </h3>
-            <p className="text-[#006FFF] text-[20px] font-medium">
-              {t("seeMore")}
-            </p>
+            <Link to={"/products"}>
+              <p className="underline cursor-pointer text-[#006FFF] text-[20px] font-medium">
+                {t("seeMore")}
+              </p>
+            </Link>
           </div>
           <ProductDetailsCarouselRow />
         </div>

@@ -13,7 +13,6 @@ export default function AddNewSize() {
   type sizeSchemaType = z.infer<typeof sizeSchema>
   const {
     register,
-    reset,
     formState: { errors },
     handleSubmit,
   } = useForm<sizeSchemaType>({

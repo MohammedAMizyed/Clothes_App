@@ -6,6 +6,7 @@ import Footer from "../components/Footer"
 import { ShowCarousel } from "@/components/ShowCarousel"
 import { useTranslation } from "react-i18next"
 import SliderAlt from "@/components/SliderAlt"
+import { ShowFeaturedProducts } from "@/components/ShowFeaturedProducts"
 
 export default function Home() {
   const { t } = useTranslation()
@@ -16,9 +17,9 @@ export default function Home() {
       <CarouselProducts />
       <SliderAlt />
       <Size />
-      <ShowCarousel title={t("shop.title")} seeMore={t("shop.seeMore")} />
-      <ShowCarousel title={t("shop.title2")} seeMore={t("shop.seeMore")} />
-      <ShowCarousel title={t("shop.title3")} seeMore={t("shop.seeMore")} />
+      <ShowCarousel title={t("shop.title")} />
+      <ShowFeaturedProducts title={t("shop.title2")} />
+      <ShowCarousel title={t("shop.title3")} />
       <Footer />
     </div>
   )

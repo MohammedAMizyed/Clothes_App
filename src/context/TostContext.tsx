@@ -1,7 +1,11 @@
 import Tost from "@/components/Tost"
 import { createContext, useContext, type ReactNode } from "react"
 import { useState } from "react"
-const TostContext = createContext("")
+interface TostContextType {
+  handleShowMessage: (theMEssage: string | ReactNode) => void
+}
+const TostContext = createContext<null | TostContextType>(null)
+
 export const TostProvider = ({ children }: { children: ReactNode }) => {
   const [isOk, setIsOk] = useState<boolean>(false)
   const [message, setMessage] = useState<string | ReactNode>("false")

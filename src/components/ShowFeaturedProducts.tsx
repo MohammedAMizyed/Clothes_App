@@ -6,11 +6,13 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import ProductCard from "./ProductCard"
-import { useRecentProduct } from "@/hooks/useResentProducts"
+import { useFeatured } from "@/hooks/useFeatured"
 import { Link } from "react-router-dom"
-export function ShowCarousel({ title }: { title: string }) {
+export function ShowFeaturedProducts({ title }: { title: string }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation()
-  const { data, isLoading, error } = useRecentProduct()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { data, isLoading, error } = useFeatured()
   return (
     <Carousel
       opts={{

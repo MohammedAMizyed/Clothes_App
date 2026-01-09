@@ -40,20 +40,17 @@ export default function EditMyData() {
   const onSubmit: SubmitHandler<meSchemaType> = (data) => {
     console.log(data)
     const name = data.firstName + " " + data.secondName
-    mutate(
-      { name },
-      {
-        onSuccess: (res) => {
-          console.log(res)
-          handleShowMessage(
-            <>
-              {t("addSec")}
-              <></>
-            </>
-          )
-        },
-      }
-    )
+    mutate(name, {
+      onSuccess: (res) => {
+        console.log(res)
+        handleShowMessage(
+          <>
+            {t("addSec")}
+            <></>
+          </>
+        )
+      },
+    })
     reset()
   }
   return (

@@ -57,11 +57,13 @@ export interface Branch {
   id: number
   name: Name
 }
+export const Name = {
+  SMALL: "small",
+  MEDIUM: "medium",
+  LARGE: "large",
+} as const
 
-export enum Name {
-  AbuDhabiMarinaBranch = "Abu Dhabi Marina Branch",
-  DubaiMallBranch = "Dubai Mall Branch",
-}
+export type Name = (typeof Name)[keyof typeof Name]
 
 export interface PaymentSummary {
   totalItems: number

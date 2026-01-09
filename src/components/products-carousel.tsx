@@ -6,6 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+import { Link } from "react-router-dom"
 
 export function CarouselProducts() {
   const { t } = useTranslation()
@@ -71,9 +72,11 @@ export function CarouselProducts() {
                     <p className="text-white sm:text-[30px] font-medium mb-2">
                       {box.title}
                     </p>
-                    <Button className="bg-[#FFFCF9] rounded-[16px] hover:bg-[#e8e6e6] cursor-pointer hover:myShadow text-[#FF914C] sm:text-[20px] py-6 px-5  font-semibold">
-                      {box.ptn}
-                    </Button>
+                    <Link to={"/products"}>
+                      <Button className="bg-[#FFFCF9] rounded-[16px] hover:bg-[#e8e6e6] cursor-pointer hover:myShadow text-[#FF914C] sm:text-[20px] py-6 px-5  font-semibold">
+                        {box.ptn}
+                      </Button>
+                    </Link>
                   </div>
                   <div className="sm:hidden block absolute text-center top-[50%] left-[50%] transform-[translate(-50%,-50%)]">
                     <p className="text-[#FFFCF9] text-[8px] font-bold mb-2 ">
@@ -81,9 +84,11 @@ export function CarouselProducts() {
                     </p>
                   </div>
                   <div className="sm:hidden block absolute text-center -top-2 left-0 ">
-                    <Button className="bg-[#FFFCF9] rounded-br-[40px] w-[62px] h-[17px] rounded-tl-[8px] text-[8px] hover:bg-[#e8e6e6] cursor-pointer text-[#FF914C]  muShadow   font-semibold">
-                      {box.ptn}
-                    </Button>
+                    <Link to={"/products"}>
+                      <Button className="bg-[#FFFCF9] rounded-br-[40px] w-[62px] h-[17px] rounded-tl-[8px] text-[8px] hover:bg-[#e8e6e6] cursor-pointer text-[#FF914C]  muShadow   font-semibold">
+                        {box.ptn}
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

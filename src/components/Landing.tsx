@@ -3,7 +3,10 @@ import { Button } from "./ui/button"
 import cardIcon from "../assets/card.svg"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
+import { useCart } from "@/hooks/useMyCart"
+import { Loader2 } from "lucide-react"
 export default function Landing() {
+  const { data: myCart, status } = useCart()
   const { t } = useTranslation()
   return (
     <div className="sm:container m-auto">
@@ -42,12 +45,19 @@ export default function Landing() {
             </Link>
           </div>
         </div>
-        <div className="absolute sm:bottom-[-120px] bottom-20 left-5 rounded-[50%] sm:left-[30px] myShadow p-3 bg-[white]">
-          <img src={cardIcon} alt="cardIcon" />
-          <span className="absolute -top-1 left-9 bg-[#FF914C] px-2 py-1 text-[10px] rounded-2xl font-bold text-white myShadow">
-            330
-          </span>
-        </div>
+        <Link to={"/shoppingCart"}>
+          <div className="absolute cursor-pointer sm:bottom-[-120px] bottom-20 left-5 rounded-[50%] sm:left-[30px] myShadow p-3 bg-[white]">
+            <img src={cardIcon} alt="cardIcon" />
+            <span className="absolute -top-1 left-9 bg-[#FF914C] px-2 py-1 text-[10px] rounded-2xl font-bold text-white myShadow">
+              {myCart?.data.paymentSummary.totalItems}
+              {status === "pending" && (
+                <div className="flex justify-center ">
+                  <Loader2 className="animate-spin size-4.5 " />
+                </div>
+              )}
+            </span>
+          </div>
+        </Link>
       </div>
     </div>
   )

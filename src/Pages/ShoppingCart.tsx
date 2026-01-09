@@ -5,18 +5,13 @@ import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import TableCart from "@/components/tableCart"
-import Tost from "@/components/Tost"
+import { useCart } from "@/hooks/useMyCart"
+import { Button } from "@/components/ui/button"
+import { Loader2 } from "lucide-react"
+
 export default function ShoppingCart() {
   const { t, i18n } = useTranslation()
-  const list = [
-    { id: 1, name: t("numOfProducts") },
-    { id: 2, name: t("totalHave") },
-    { id: 3, name: t("salll") },
-    { id: 4, name: t("dareba") },
-    { id: 5, name: t("priceOfDelevery") },
-    { id: 6, name: t("asema") },
-    { id: 7, name: t("total") },
-  ]
+  const { data, status } = useCart()
   return (
     <div className="">
       <div className="relative">
@@ -28,7 +23,7 @@ export default function ShoppingCart() {
         />
         <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-black/45 via-black/45 to-black/45"></div>
       </div>
-      <div className="container px-40!">
+      <div className="container sm:px-40!">
         <div className="text-center my-15">
           <h1 className="mb-2 sm:font-bold font-medium text-[18px] sm:text-[40px] ">
             {t("shoppingCart.title")}
@@ -55,24 +50,73 @@ export default function ShoppingCart() {
           </h2>
         </div>
         <div>
-          <h1 className=" mb-5 font-semibold sm:text-[18px] text-[#ff0000]">
+          <h1 className=" mb-5 font-semibold text-[12px] sm:text-[18px] text-[#ff0000]">
             {t("shoppingCart.error")}
           </h1>
         </div>
-        <div className="mb-100 flex">
-          <div className="flex-1">
+        <div className=" gap-5 mb-100 flex flex-col sm:flex-row">
+          <div className="flex-5/6">
             <TableCart />
           </div>
-          <div>
-            <h3></h3>
-            <div>
-              {list.map((item) => {
-                return (
-                  <div key={item.id}>
-                    <div>{item.name}</div>
-                  </div>
-                )
-              })}
+          <div className="flex-1/6">
+            <div className=" border-2 border-[#F3E0C8] rounded-2xl">
+              <h3 className="text-left p-2 border-b-2 border-[#F3E0C8] text-[20px] font-semibold">
+                Order Summary
+              </h3>
+              <div>
+                <div className="flex justify-between p-2 text-[16px] font-semibold">
+                  {t("numOfProducts")}
+                  <span>{data?.data?.paymentSummary.totalItems}</span>
+                  {status === "pending" && (
+                    <Loader2 className="animate-spin"></Loader2>
+                  )}
+                </div>
+                <div className=" flex justify-between mp-2 text-[16px] font-semibold p-2">
+                  {t("totalHave")}
+                  <Loader2 className="animate-spin"></Loader2>
+                </div>
+                <div className="flex justify-between mp-2 text-[16px] font-semibold p-2">
+                  {t("salll")}
+                  <Loader2 className="animate-spin"></Loader2>
+                </div>
+                <div className=" flex justify-between mp-2 text-[16px] font-semibold p-2">
+                  {t("dareba")}
+                  <Loader2 className="animate-spin"></Loader2>
+                </div>
+                <div className="flex justify-between mp-2 text-[16px] font-semibold p-2">
+                  {t("priceOfDelevery")}
+                  <Loader2 className="animate-spin"></Loader2>
+                </div>
+                <div className="mp-2 text-[16px] flex justify-between font-semibold p-2">
+                  {t("asema")}
+                  <Loader2 className="animate-spin"></Loader2>
+                </div>
+                <div className="border-t-2 p-3 border-[#F3E0C8] gap-2 flex justify-between  mp-2 text-[16px] font-semibold ">
+                  {t("total")}
+                  <span>
+                    {Math.trunc(data?.data?.paymentSummary.totalPrice || 0)}
+                    {status === "pending" && (
+                      <Loader2 className="animate-spin"></Loader2>
+                    )}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center my-2 ">
+              <Button
+                className=" cursor-pointer hover:bg-[#FF914C] myShadow text-[16px] font-bold p-5 w-full rounded-2xl bg-[#FF914C] "
+                variant={"default"}
+              >
+                {t("confirm order")}
+              </Button>
+            </div>
+            <div className="text-center">
+              {t("shoppingRelacx")}{" "}
+              <Link to={"/replacementAccording"}>
+                <span className="text-[12px] font-semibold underline text-[#006FFF]">
+                  {t("according to policy")}
+                </span>
+              </Link>
             </div>
           </div>
         </div>

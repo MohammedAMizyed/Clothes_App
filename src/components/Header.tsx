@@ -57,10 +57,12 @@ export default function Header() {
     >
       <div className="container">
         <div className="bg-[#fffcf9] myShadow border-[#f2dfc7] border flex items-center justify-between sm:justify-center px-5  py-2 sm:rounded-[25px] rounded-[12px]">
-          <div className=" select-none block sm:hidden w-[25px] h-[18px]">
-            <img src={logoAlt} className="w-full h-full" alt="logo" />
-          </div>
-          <div className="block sm:hidden relative">
+          <Link to={"/"}>
+            <div className=" select-none block sm:hidden w-[25px] h-[18px]">
+              <img src={logoAlt} className="w-full h-full" alt="logo" />
+            </div>
+          </Link>
+          <div className="flex flex-row-reverse gap-3 sm:hidden relative">
             <Popover>
               <PopoverTrigger>
                 <img
@@ -72,36 +74,90 @@ export default function Header() {
               <PopoverContent
                 className={cn(
                   "p-0 border-2 overflow-hidden mt-4 rounded-2xl absolute max-w-[150px]  border-[#f3e0c8]",
-                  i18n.language === "ar" ? "-left-4" : " -left-30"
+                  i18n.language === "ar" ? "-left-6" : " -left-30"
                 )}
               >
-                <div className="flex flex-col    ">
-                  <Link to={"/login"}>
+                {localStorage.getItem("accessToken") ? (
+                  <div className="flex flex-col justify-start ">
+                    <Link to={"/shoppingCart"}>
+                      <Button
+                        variant={"ghost"}
+                        className={cn(
+                          `cursor-pointer text-[16px] w-full  flex  font-bold rounded-none  border-b-2 border-[#f3e0c8] `,
+                          "h-11",
+                          "h-11",
+                          i18n.language === "en"
+                            ? "justify-end"
+                            : "justify-start"
+                        )}
+                      >
+                        {t("My Orders")}
+                      </Button>
+                    </Link>
+                    <Link to={"/profile"}>
+                      <Button
+                        className={cn(
+                          "cursor-pointer text-[16px] w-full text-end flex  border-b-2 border-[#f3e0c8] font-bold rounded-none ",
+                          "h-11",
+                          i18n.language === "en"
+                            ? "justify-end"
+                            : "justify-start"
+                        )}
+                        variant="ghost"
+                      >
+                        {t("My Profile")}
+                      </Button>
+                    </Link>
+
                     <Button
+                      onClick={handleLogOutClick}
                       className={cn(
-                        `cursor-pointer border-b-2 flex  justify-start  w-full rounded-none border-[#f3e0c8]  bg-white text-black text-[12px] font-normal`,
-                        "h-11"
+                        "cursor-pointer text-[16px] w-full text-end flex  font-bold rounded-none ",
+                        "h-11",
+                        "h-11",
+                        i18n.language === "en" ? "justify-end" : "justify-start"
                       )}
+                      variant="ghost"
                     >
-                      <img src={loginIcon} alt="loginIcon" />
-                      {t("login")}
+                      {t("Log Out")}
                     </Button>
-                  </Link>
-                  <Link to={"/signup"}>
-                    <Button
-                      className={cn(
-                        "cursor-pointer bg-white text-black text-[12px] font-normal  ",
-                        "h-11"
-                      )}
-                      variant="default"
-                    >
-                      <img src={register} alt="loginIcon" />
-                      {t("addAccount")}
-                    </Button>
-                  </Link>
-                </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col    ">
+                    <Link to={"/login"}>
+                      <Button
+                        className={cn(
+                          `cursor-pointer border-b-2 flex  justify-start  w-full rounded-none border-[#f3e0c8]  bg-white text-black text-[12px] font-normal`,
+                          "h-11"
+                        )}
+                      >
+                        <img src={loginIcon} alt="loginIcon" />
+                        {t("login")}
+                      </Button>
+                    </Link>
+                    <Link to={"/signup"}>
+                      <Button
+                        className={cn(
+                          "cursor-pointer bg-white text-black text-[12px] font-normal  ",
+                          "h-11"
+                        )}
+                        variant="default"
+                      >
+                        <img src={register} alt="loginIcon" />
+                        {t("addAccount")}
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </PopoverContent>
             </Popover>
+            <span
+              onClick={handleChangeLang}
+              className="cursor-pointer text-[14px] flex font- bold gap-1 justify-center items-center"
+            >
+              <img className="w-5" src={WorldIcon} alt="WorldIcon" />
+              {i18n.language == "ar" ? "EN" : "AR"}
+            </span>
           </div>
           <div className="sm:block hidden flex-1/3">
             <div className=" flex gap-2 items-center">

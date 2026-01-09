@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next"
 // import { Button } from "./ui/button"
-import img from "../assets/image 1 (1).svg"
 import { useCart } from "@/hooks/useMyCart"
 export default function PreviousOrders() {
   const { t } = useTranslation()
@@ -21,7 +20,7 @@ export default function PreviousOrders() {
                 </span>
                 <div className="flex items-center gap-5">
                   <img
-                    className="w-[80px] h-[77px]"
+                    className="w-[81px] h-[77px]"
                     src={item.product.main_image_url}
                     alt={"img"}
                   />
@@ -37,7 +36,7 @@ export default function PreviousOrders() {
               </div>
               <span className="text-[14px] font-medium">
                 {" "}
-                {data.data.updatedAt}
+                {new Date(data.data.updatedAt).toLocaleDateString()}
               </span>
             </div>
           )
