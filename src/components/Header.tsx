@@ -17,6 +17,7 @@ import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
+import { useQueryClient } from "@tanstack/react-query"
 import profileImg from "../assets/profiel.svg"
 import {
   Tooltip,
@@ -26,10 +27,12 @@ import {
 export default function Header() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { t, i18n } = useTranslation()
+  const queryClient = useQueryClient()
   useEffect(() => {
     i18n.changeLanguage(i18n.language)
   }, [])
   function handleChangeLang() {
+    queryClient.invalidateQueries()
     if (i18n.language === "ar") {
       i18n.changeLanguage("en")
     } else {
