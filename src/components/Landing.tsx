@@ -9,7 +9,7 @@ export default function Landing() {
   const { data: myCart, status } = useCart()
   const { t } = useTranslation()
   return (
-    <div className="sm:container m-auto">
+    <div className="sm:container m-auto mt-28">
       <div className="sm:mt-5 ">
         <div className="relative sm:rounded-3xl sm:max-w-[1470px]  m-auto overflow-hidden">
           <img

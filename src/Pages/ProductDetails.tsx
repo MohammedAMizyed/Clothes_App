@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
 import { ProductDetailsCarouselCol } from "@/components/ProductDetailsCaroselCol"
 import { ProductDetailsCarouselRow } from "@/components/ProductDetailsCarosulRow"
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel"
@@ -48,13 +46,13 @@ export default function ProductDetails() {
             <>
               {t("addSece")}
               <></>
-            </>
+            </>,
           )
         },
         onError: (error) => {
           console.log(error)
         },
-      }
+      },
     )
   }
   const onToggle = () => {
@@ -70,13 +68,13 @@ export default function ProductDetails() {
             <>
               {t("addSec")}
               <PanelRightIcon></PanelRightIcon>
-            </>
+            </>,
           )
         },
         onError: (error) => {
           console.log(error)
         },
-      }
+      },
     )
   }
 
@@ -87,7 +85,6 @@ export default function ProductDetails() {
   return (
     <>
       <div className="relative">
-        <Header />
         <img
           className="select-none object-cover w-full h-[98px] sm:h-[250px]"
           src={backgroundImg}
@@ -107,7 +104,7 @@ export default function ProductDetails() {
         <div
           className={cn(
             "flex gap-2 mb-5 products-center",
-            i18n.language === "en" ? "justify-start" : "flex-row-reverse"
+            i18n.language === "en" ? "justify-start" : "flex-row-reverse",
           )}
         >
           <Link to={"/"}>
@@ -251,7 +248,6 @@ export default function ProductDetails() {
           <ProductDetailsCarouselRow />
         </div>
       </div>
-      <Footer />
     </>
   )
 }

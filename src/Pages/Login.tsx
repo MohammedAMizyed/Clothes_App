@@ -42,9 +42,6 @@ export default function LogIn() {
     reset()
   }
   useEffect(() => {
-    console.log(data)
-    console.log(data?.message)
-    console.log(data?.data)
     const token = data?.data?.accessToken
     if (token) {
       localStorage.setItem("accessToken", token)
@@ -53,9 +50,6 @@ export default function LogIn() {
       navigate("/", { replace: true })
     }
   }, [data, navigate])
-  //  const onSubmit: SubmitHandler<userSchemaType> = (data) => {
-  //   reset()
-  // }
 
   return (
     <div className="container">

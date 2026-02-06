@@ -1,6 +1,4 @@
 import AccordionComponent from "@/components/AccordionComponent"
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
 import ProductCard from "@/components/ProductCard"
 import { Button } from "@/components/ui/button"
 import { useCategories } from "@/hooks/useCategories"
@@ -24,7 +22,7 @@ export default function Products() {
 
   const [selected, setSelected] = useState<number | undefined>(undefined)
   const [selectedSize, setSelectedSize] = useState<number | undefined>(
-    undefined
+    undefined,
   )
   const [determine, setDetermine] = useState<boolean>(true)
   const [hasPlusSize, setHasPlusSize] = useState<boolean>(false)
@@ -48,8 +46,7 @@ export default function Products() {
 
   return (
     <>
-      <Header />
-      <div className="relative">
+      <div className="z-0">
         <img
           className="object-cover w-full h-full"
           src={shoppingImg}
@@ -70,7 +67,7 @@ export default function Products() {
             "flex gap-1  items-center",
             i18n.language == "ar"
               ? "justify-start flex-row-reverse"
-              : "justify-start"
+              : "justify-start",
           )}
         >
           <Link to={"/"}>
@@ -510,8 +507,6 @@ export default function Products() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   )
 }

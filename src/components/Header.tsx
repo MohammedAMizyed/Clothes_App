@@ -17,7 +17,6 @@ import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
-import { useLocation } from "react-router-dom"
 import profileImg from "../assets/profiel.svg"
 import {
   Tooltip,
@@ -26,7 +25,6 @@ import {
 } from "@/components/ui/tooltip"
 export default function Header() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const location = useLocation()
   const { t, i18n } = useTranslation()
   useEffect(() => {
     i18n.changeLanguage(i18n.language)
@@ -43,19 +41,8 @@ export default function Header() {
     window.location.reload()
   }
   return (
-    <div
-      className={cn(
-        "m-4 sm:relative absolute z-20 w-full mx-auto",
-        location.pathname === "/products" ||
-          location.pathname === "/shoppingCart" ||
-          location.pathname === "/favorite" ||
-          location.pathname === "/profile" ||
-          /\/products\/\d+$/.test(location.pathname)
-          ? "sm:absolute"
-          : "sm:relative"
-      )}
-    >
-      <div className="container">
+    <div className={" -mb-21  z-10 relative w-full mx-auto pt-3 "}>
+      <div className="container  ">
         <div className="bg-[#fffcf9] myShadow border-[#f2dfc7] border flex items-center justify-between sm:justify-center px-5  py-2 sm:rounded-[25px] rounded-[12px]">
           <Link to={"/"}>
             <div className=" select-none block sm:hidden w-[25px] h-[18px]">
@@ -74,7 +61,7 @@ export default function Header() {
               <PopoverContent
                 className={cn(
                   "p-0 border-2 overflow-hidden mt-4 rounded-2xl absolute max-w-[150px]  border-[#f3e0c8]",
-                  i18n.language === "ar" ? "-left-6" : " -left-30"
+                  i18n.language === "ar" ? "-left-6" : " -left-30",
                 )}
               >
                 {localStorage.getItem("accessToken") ? (
@@ -88,7 +75,7 @@ export default function Header() {
                           "h-11",
                           i18n.language === "en"
                             ? "justify-end"
-                            : "justify-start"
+                            : "justify-start",
                         )}
                       >
                         {t("My Orders")}
@@ -101,7 +88,7 @@ export default function Header() {
                           "h-11",
                           i18n.language === "en"
                             ? "justify-end"
-                            : "justify-start"
+                            : "justify-start",
                         )}
                         variant="ghost"
                       >
@@ -115,7 +102,9 @@ export default function Header() {
                         "cursor-pointer text-[16px] w-full text-end flex  font-bold rounded-none ",
                         "h-11",
                         "h-11",
-                        i18n.language === "en" ? "justify-end" : "justify-start"
+                        i18n.language === "en"
+                          ? "justify-end"
+                          : "justify-start",
                       )}
                       variant="ghost"
                     >
@@ -128,7 +117,7 @@ export default function Header() {
                       <Button
                         className={cn(
                           `cursor-pointer border-b-2 flex  justify-start  w-full rounded-none border-[#f3e0c8]  bg-white text-black text-[12px] font-normal`,
-                          "h-11"
+                          "h-11",
                         )}
                       >
                         <img src={loginIcon} alt="loginIcon" />
@@ -139,7 +128,7 @@ export default function Header() {
                       <Button
                         className={cn(
                           "cursor-pointer bg-white text-black text-[12px] font-normal  ",
-                          "h-11"
+                          "h-11",
                         )}
                         variant="default"
                       >
@@ -232,7 +221,7 @@ export default function Header() {
                   <PopoverContent
                     className={cn(
                       "myShadow bg-[#fffcf9] overflow-hidden border-2 rounded-2xl absolute  md:max-w-[150px] lg:max-w-[190px] p-0  border-[#f3e0c8]",
-                      i18n.language === "en" ? "-left-40 " : "-left-6"
+                      i18n.language === "en" ? "-left-40 " : "-left-6",
                     )}
                   >
                     <div className="flex flex-col justify-start ">
@@ -245,7 +234,7 @@ export default function Header() {
                             "h-11",
                             i18n.language === "en"
                               ? "justify-end"
-                              : "justify-start"
+                              : "justify-start",
                           )}
                         >
                           {t("My Orders")}
@@ -258,7 +247,7 @@ export default function Header() {
                             "h-11",
                             i18n.language === "en"
                               ? "justify-end"
-                              : "justify-start"
+                              : "justify-start",
                           )}
                           variant="ghost"
                         >
@@ -274,7 +263,7 @@ export default function Header() {
                           "h-11",
                           i18n.language === "en"
                             ? "justify-end"
-                            : "justify-start"
+                            : "justify-start",
                         )}
                         variant="ghost"
                       >
@@ -290,7 +279,7 @@ export default function Header() {
                   <Button
                     className={cn(
                       `cursor-pointer hover:bg-white myShadow  text-[16px] font-bold rounded-[14px] bg-white text-[#ff914c]`,
-                      "h-11"
+                      "h-11",
                     )}
                   >
                     {t("header.btn2")}
@@ -300,7 +289,7 @@ export default function Header() {
                   <Button
                     className={cn(
                       "cursor-pointer hover:bg-[#ff914c] myShadow  bg-[#ff914c] text-[16px] font-bold rounded-[14px] ",
-                      "h-11"
+                      "h-11",
                     )}
                     variant="default"
                   >

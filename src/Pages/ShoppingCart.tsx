@@ -1,4 +1,3 @@
-import Header from "@/components/Header"
 import backgroundImg from "../assets/backgroundForProductsDetauls.jpg"
 import arrowImg from "../assets/Vector 110.svg"
 import { Link } from "react-router-dom"
@@ -14,8 +13,7 @@ export default function ShoppingCart() {
   const { data, status } = useCart()
   return (
     <div className="">
-      <div className="relative">
-        <Header />
+      <div className="relative ">
         <img
           className="select-none object-cover w-full h-[98px] sm:h-[250px]"
           src={backgroundImg}
@@ -35,7 +33,7 @@ export default function ShoppingCart() {
         <div
           className={cn(
             "flex gap-2 mb-5 items-center",
-            i18n.language === "en" ? "justify-start" : "flex-row-reverse"
+            i18n.language === "en" ? "justify-start" : "flex-row-reverse",
           )}
         >
           <Link to={"/"}>

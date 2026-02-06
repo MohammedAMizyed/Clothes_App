@@ -50,13 +50,9 @@ export default function SignUp() {
       region_id: Number(data.isAgree),
     }
     mutate(userData)
-    console.log(data)
-    console.log(dataOfRegister)
-    console.log(userData)
     reset()
   }
   useEffect(() => {
-    console.log(dataOfRegister)
     if (dataOfRegister?.data?.accessToken) {
       localStorage.setItem("accessToken", dataOfRegister.data.accessToken)
     }

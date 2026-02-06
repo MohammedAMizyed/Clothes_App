@@ -1,4 +1,3 @@
-import Header from "@/components/Header"
 import backgroundImg from "../assets/backgroundForProductsDetauls.jpg"
 import arrowImg from "../assets/Vector 110.svg"
 import { Link } from "react-router-dom"
@@ -9,7 +8,6 @@ import { useState } from "react"
 import EditMyData from "@/components/EditMyData"
 import PreviousOrders from "@/components/PreviousOrders"
 import MyAddresses from "@/components/MyAddresses"
-import Footer from "@/components/Footer"
 import EditMySize from "@/components/EditMySize"
 import EditMyPassword from "@/components/EditMyPassword"
 export default function Profile() {
@@ -29,7 +27,6 @@ export default function Profile() {
   return (
     <div>
       <div className="relative">
-        <Header />
         <img
           className="select-none object-cover w-full h-[98px] sm:h-[250px]"
           src={backgroundImg}
@@ -43,7 +40,7 @@ export default function Profile() {
             <div
               className={cn(
                 "flex gap-2 mb-5 items-center",
-                i18n.language === "en" ? "justify-start" : "flex-row-reverse"
+                i18n.language === "en" ? "justify-start" : "flex-row-reverse",
               )}
             >
               <Link to={"/"}>
@@ -81,7 +78,7 @@ export default function Profile() {
                   className={cn(
                     "sm:p-7 py-7  px-1 flex text-[8px] sm:text-[20px]   sm:rounded-2xl  rounded-none justify-start cursor-pointer  sm:w-full  border-b border-l-0 border-r-0 border-t-0  sm:border-[#f3e0c8]",
                     activeItem == item.id &&
-                      "sm:text-[24px] font-bold sm:bg-[#fffcf9]"
+                      "sm:text-[24px] font-bold sm:bg-[#fffcf9]",
                   )}
                 >
                   {item.name}
@@ -98,7 +95,6 @@ export default function Profile() {
           </>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

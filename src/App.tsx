@@ -14,12 +14,62 @@ import RequireAuth from "./components/RequireAuth"
 import PublicRoute from "./components/PublicRoute"
 import Favorite from "./Pages/Favorite"
 import Profile from "./Pages/Profile"
+import Layout from "./components/layout/Layout"
 
 function App() {
   const { i18n } = useTranslation()
   return (
     <div style={{ direction: i18n.language === "ar" ? "rtl" : "ltr" }}>
       <Routes>
+        <Route element={<Layout />}>
+          <Route element={<Home />} index />
+          <Route element={<Home />} path="home" />
+          <Route
+            element={
+              <RequireAuth>
+                <Products />
+              </RequireAuth>
+            }
+            path="/products"
+          />
+          <Route
+            element={
+              <RequireAuth>
+                <ProductDetails />
+              </RequireAuth>
+            }
+            path="/products/:id"
+          />
+          <Route
+            element={
+              <RequireAuth>
+                <ShoppingCart />
+              </RequireAuth>
+            }
+            path="/shoppingCart"
+          />
+          <Route
+            element={
+              <RequireAuth>
+                <Favorite />
+              </RequireAuth>
+            }
+            path="/favorite"
+          />
+          <Route
+            element={<ReplacementAccording />}
+            path="/replacementAccording"
+          />
+          <Route
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+            path="/profile"
+          />
+        </Route>
+
         <Route
           element={
             <PublicRoute>
@@ -36,8 +86,7 @@ function App() {
           }
           path="/login"
         />
-        <Route element={<Home />} path="/" />
-        <Route element={<Home />} path="home" />
+
         <Route
           element={
             <RequireAuth>
@@ -46,51 +95,8 @@ function App() {
           }
           path="/sizing"
         />
-        <Route
-          element={
-            <RequireAuth>
-              <Products />
-            </RequireAuth>
-          }
-          path="/products"
-        />
-        <Route
-          element={
-            <RequireAuth>
-              <ProductDetails />
-            </RequireAuth>
-          }
-          path="/products/:id"
-        />
-        <Route
-          element={
-            <RequireAuth>
-              <ShoppingCart />
-            </RequireAuth>
-          }
-          path="/shoppingCart"
-        />
-        <Route
-          element={
-            <RequireAuth>
-              <Favorite />
-            </RequireAuth>
-          }
-          path="/favorite"
-        />
+
         <Route element={<Error />} path="*" />
-        <Route
-          element={<ReplacementAccording />}
-          path="/replacementAccording"
-        />
-        <Route
-          element={
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          }
-          path="/profile"
-        />
       </Routes>
     </div>
   )
